@@ -1,0 +1,26 @@
+{
+  "name": "ibikes-backend",
+  "version": "1.0.0",
+  "description": "iBikes Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "container": "docker exec -it ibikes_app bash",
+    "dev": "nodemon index.js",
+    "docker": "docker-compose up -d",
+    "docker:stop": "docker-compose down"
+  },
+  "keywords": [],
+  "author": "Allan Hubner",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "express-async-errors": "^3.1.1",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.20"
+  }
+}
