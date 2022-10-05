@@ -1,7 +1,5 @@
 import { Router } from 'routes';
 
-function App() {
+export function App() {
   return (<Router />);
 }
-
-export default App;
