@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  node:
+    build: .
+    container_name: ibikes_app
+    tty: true
+    stdin_open: true
+    command: bash
+    restart: always
+    working_dir: /home/node/app
+    volumes:
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    depends_on:
+      - db
+    ports:
+      - 3011:3001
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_HOST: db
+      PORT: '3001'
+
+  db:
+    container_name: ibikes_app_db
+    image: mysql:8
+    platform: linux/amd64
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - 3316:3306
+
+networks:
+  default:
+    name: ibikes_app_net
+
+volumes:
+  node_modules:
