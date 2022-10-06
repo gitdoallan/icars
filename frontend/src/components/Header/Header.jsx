@@ -1,7 +1,10 @@
+import * as S from './styles';
 import { Visitor } from './Visitor';
 
 export function Header() {
   return (
-    <Visitor />
+    <S.Header>
+      <Visitor />
+    </S.Header>
   );
 }

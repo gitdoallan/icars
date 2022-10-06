@@ -1,1 +1,2 @@
-export { Container } from './Common.styles';
+export { palette } from './palette';
+export { shadows } from './shadows';

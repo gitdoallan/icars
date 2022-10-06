@@ -1,9 +1,12 @@
 import { Router } from 'routes';
 import { useEffect } from 'react';
+import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, useMediaQuery } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import { setDarkMode } from 'redux/slices';
-import * as S from 'themes/styles/';
+import { getTheme } from 'themes';
+import { checkCurrentTheme } from 'utils';
+import * as S from 'themes/components';
 
 export function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -16,10 +19,14 @@ export function App() {
     }
   }, []);
 
+  const currentTheme = checkCurrentTheme(darkMode);
+
   return (
-    <S.Container>
-      <CssBaseline />
-      <Router />
-    </S.Container>
+    <ThemeProvider theme={getTheme(currentTheme)}>
+      <S.Container>
+        <CssBaseline />
+        <Router />
+      </S.Container>
+    </ThemeProvider>
   );
 }
