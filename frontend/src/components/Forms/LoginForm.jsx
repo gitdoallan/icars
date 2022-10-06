@@ -1,5 +1,4 @@
 import { useFormik } from 'formik';
-import { TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { loginFormValidation } from 'utils';
 import { loginUser } from 'services';
@@ -32,11 +31,13 @@ export function LoginForm() {
       setIsSubmitting(false);
     }
   };
+
   const formik = useFormik({
     initialValues: INITIAL_FORM_VALUES,
     validationSchema: loginFormValidation,
     onSubmit: () => onSubmit(formik.values),
   });
+
   return (
     <S.Form onSubmit={formik.handleSubmit}>
       <S.FormTitle>iBikes Login</S.FormTitle>
@@ -48,7 +49,7 @@ export function LoginForm() {
       <S.FormContainer>
         <S.Input>
           <S.LabelText>Enter your email</S.LabelText>
-          <TextField
+          <S.TextField
             label="Email *"
             variant="outlined"
             name="email"
@@ -61,12 +62,10 @@ export function LoginForm() {
         </S.Input>
         <S.Input>
           <S.LabelText>Enter your password</S.LabelText>
-          <TextField
+          <S.TextField
             label="Password *"
-            variant="outlined"
             name="password"
             type="password"
-            fullWidth
             value={formik.values.password}
             onChange={formik.handleChange}
             error={formik.touched.password && Boolean(formik.errors.password)}

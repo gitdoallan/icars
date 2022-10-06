@@ -1,4 +1,6 @@
-import { Box, Grid, Typography } from '@mui/material';
+import {
+  Box, Grid, Typography, TextField as MUITextField,
+} from '@mui/material';
 import MUILoadingButton from '@mui/lab/LoadingButton';
 import SendIcon from '@mui/icons-material/Send';
 import { Container } from 'themes/styles';
@@ -25,6 +27,12 @@ export const FormTitle = ({ children }) => (
   </Typography>
 );
 
+export const FormSubtitle = ({ children }) => (
+  <Typography variant="h6" component="h2" textAlign="center" gutterBottom>
+    {children}
+  </Typography>
+);
+
 export const FormContainer = ({ children }) => (
   <Grid container spacing={4}>
     {children}
@@ -35,6 +43,22 @@ export const Input = ({ children }) => (
   <Grid item xs={12}>
     {children}
   </Grid>
+);
+
+export const LabelText = ({ children }) => (
+  <Typography variant="subtitle2" sx={{ marginBottom: 2 }}>
+    {children}
+  </Typography>
+);
+
+export const TextField = ({ children, ...rest }) => (
+  <MUITextField
+    variant="outlined"
+    fullWidth
+    {...rest}
+  >
+    {children}
+  </MUITextField>
 );
 
 export const LoadingButton = ({ children, ...rest }) => (
@@ -51,10 +75,4 @@ export const LoadingButton = ({ children, ...rest }) => (
       </MUILoadingButton>
     </Box>
   </Grid>
-);
-
-export const LabelText = ({ children }) => (
-  <Typography variant="subtitle2" sx={{ marginBottom: 2 }}>
-    {children}
-  </Typography>
 );

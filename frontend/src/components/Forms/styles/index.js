@@ -1,3 +1,3 @@
 export {
-  FormContainer, FormTitle, Form, Input, LabelText, LoadingButton,
+  FormContainer, FormTitle, FormSubtitle, Form, Input, LabelText, TextField, LoadingButton,
 } from './Forms.styles';
