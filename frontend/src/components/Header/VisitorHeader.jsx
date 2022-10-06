@@ -1,15 +1,17 @@
 import { NightModeToggle } from 'components/Buttons';
+import { Logo } from 'assets/svg';
+import { LoginModal } from 'components/Modals';
 import * as S from './styles';
 
-export function Visitor() {
+export function VisitorHeader() {
   return (
     <S.TopBarContainer>
-      <span>Logo</span>
+      <Logo />
       <S.RightMenu>
         <S.SwitchThemeButton>
           <NightModeToggle />
         </S.SwitchThemeButton>
-        <span>LoginModal</span>
+        <LoginModal />
       </S.RightMenu>
     </S.TopBarContainer>
   );

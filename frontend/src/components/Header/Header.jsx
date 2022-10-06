@@ -1,10 +1,10 @@
 import * as S from './styles';
-import { Visitor } from './Visitor';
+import { VisitorHeader } from './VisitorHeader';
 
 export function Header() {
   return (
     <S.Header>
-      <Visitor />
+      <VisitorHeader />
     </S.Header>
   );
 }

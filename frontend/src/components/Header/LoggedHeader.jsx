@@ -1,4 +1,4 @@
-export function Logged() {
+export function LoggedHeader() {
   return (
     <div>Logged</div>
   );
