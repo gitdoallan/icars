@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setDarkMode } from 'redux/slices';
 import { getTheme } from 'themes';
 import { checkCurrentTheme } from 'utils';
-import { MainContainer } from 'themes/styles';
+import { Container } from 'themes/styles';
 
 export function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -23,10 +23,10 @@ export function App() {
 
   return (
     <ThemeProvider theme={getTheme(currentTheme)}>
-      <MainContainer>
+      <Container>
         <CssBaseline />
         <Router />
-      </MainContainer>
+      </Container>
     </ThemeProvider>
   );
 }

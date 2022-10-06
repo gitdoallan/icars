@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
 
-export const MainContainer = ({ children, ...rest }) => (
+export const Container = ({ children, ...rest }) => (
   <Box
     maxWidth={{ sm: 720, md: 1236 }}
     width="100%"
@@ -14,6 +14,6 @@ export const MainContainer = ({ children, ...rest }) => (
   </Box>
 );
 
-MainContainer.propTypes = {
+Container.propTypes = {
   children: PropTypes.node.isRequired,
 };

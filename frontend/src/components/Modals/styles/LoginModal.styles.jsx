@@ -1,4 +1,3 @@
-import propTypes from 'prop-types';
 import { Button } from '@mui/material';
 
 export const ModalBtn = ({ children, ...rest }) => (
@@ -24,8 +23,4 @@ export const modalBox = {
   borderRadius: '10px',
   boxShadow: 24,
   p: 4,
-};
-
-ModalBtn.propTypes = {
-  children: propTypes.node.isRequired,
 };

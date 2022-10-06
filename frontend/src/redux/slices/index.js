@@ -1,2 +1,2 @@
-export { darkModeSlice } from './darkMode.slice';
-export { setDarkMode } from './darkMode.slice';
+export { darkModeSlice, setDarkMode } from './darkMode.slice';
+export { userInfoSlice, setUserInfo } from './userInfo.slice';
