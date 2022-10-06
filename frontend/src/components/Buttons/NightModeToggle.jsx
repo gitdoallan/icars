@@ -13,7 +13,7 @@ export function NightModeToggle() {
       aria-label="Dark mode toggler"
       color={!darkMode.active ? 'primary' : 'secondary'}
     >
-      {!darkMode.active ? <MoonToggle /> : <SunToggle />}
+      {!darkMode.active ? <SunToggle /> : <MoonToggle />}
     </IconButton>
   );
 }
