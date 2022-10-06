@@ -1,5 +1,5 @@
 import {
-  Box, Grid, Typography, TextField as MUITextField,
+  Box, Grid, Typography, TextField as MUITextField, Link as MUILink,
 } from '@mui/material';
 import MUILoadingButton from '@mui/lab/LoadingButton';
 import SendIcon from '@mui/icons-material/Send';
@@ -45,6 +45,12 @@ export const Input = ({ children }) => (
   </Grid>
 );
 
+export const InputGrid = ({ children }) => (
+  <Grid item xs={12} md={6}>
+    {children}
+  </Grid>
+);
+
 export const LabelText = ({ children }) => (
   <Typography variant="subtitle2" sx={{ marginBottom: 2 }}>
     {children}
@@ -59,6 +65,40 @@ export const TextField = ({ children, ...rest }) => (
   >
     {children}
   </MUITextField>
+);
+
+export const SignUp = ({ children }) => (
+  <Grid item container xs={12}>
+    <Box
+      display="flex"
+      flexDirection={{ xs: 'column', sm: 'row' }}
+      alignItems={{ xs: 'stretched', sm: 'center' }}
+      justifyContent="space-between"
+      width="100%"
+      maxWidth={600}
+      margin="0 auto"
+    >
+      {children}
+    </Box>
+  </Grid>
+);
+
+export const Agreement = ({ children }) => (
+  <Box marginBottom={{ xs: 1, sm: 0 }}>
+    <Typography variant="subtitle2">
+      {children}
+    </Typography>
+  </Box>
+);
+
+export const Link = ({ children, ...rest }) => (
+  <MUILink
+    color="primary"
+    underline="none"
+    {...rest}
+  >
+    {children}
+  </MUILink>
 );
 
 export const LoadingButton = ({ children, ...rest }) => (

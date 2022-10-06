@@ -1,6 +1,5 @@
 import { useFormik } from 'formik';
-import { TextField } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { loginFormValidation } from 'utils';
 import { loginUser } from 'services';
 import { StatusMessages } from 'components/StatusMessages';
@@ -53,11 +52,9 @@ export function SignUpForm() {
       <S.FormContainer>
         <S.Input>
           <S.LabelText>Enter your name</S.LabelText>
-          <TextField
+          <S.TextField
             label="Name *"
-            variant="outlined"
             name="name"
-            fullWidth
             value={formik.values.name}
             onChange={formik.handleChange}
             error={formik.touched.name && Boolean(formik.errors.name)}
@@ -66,48 +63,54 @@ export function SignUpForm() {
         </S.Input>
         <S.Input>
           <S.LabelText>Enter your email</S.LabelText>
-          <TextField
+          <S.TextField
             label="Email *"
-            variant="outlined"
             name="email"
-            fullWidth
             value={formik.values.email}
             onChange={formik.handleChange}
             error={formik.touched.email && Boolean(formik.errors.email)}
             helperText={formik.touched.email && formik.errors.email}
           />
         </S.Input>
-        <S.Input>
+        <S.InputGrid>
           <S.LabelText>Enter your password</S.LabelText>
-          <TextField
+          <S.TextField
             label="Password *"
-            variant="outlined"
             name="password"
             type="password"
-            fullWidth
             value={formik.values.password}
             onChange={formik.handleChange}
             error={formik.touched.password && Boolean(formik.errors.password)}
             helperText={formik.touched.password && formik.errors.password}
           />
-        </S.Input>
-        <S.Input>
+        </S.InputGrid>
+        <S.InputGrid>
           <S.LabelText>Confirm your password</S.LabelText>
-          <TextField
+          <S.TextField
             label="Confirm your password *"
-            variant="outlined"
             name="confirmPassword"
             type="password"
-            fullWidth
             value={formik.values.confirmPassword}
             onChange={formik.handleChange}
             error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
             helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
           />
-        </S.Input>
-        <S.LoadingButton type="submit" loading={isSubmitting}>
-          Sign Up
-        </S.LoadingButton>
+        </S.InputGrid>
+        <S.SignUp>
+          <S.Agreement>
+            By clicking Sign up button you agree with our
+            {' '}
+            <S.Link
+              component={Link}
+              to="/privacy-policy"
+            >
+              Privacy policy.
+            </S.Link>
+          </S.Agreement>
+          <S.LoadingButton type="submit" loading={isSubmitting}>
+            Sign Up
+          </S.LoadingButton>
+        </S.SignUp>
       </S.FormContainer>
     </S.Form>
   );

@@ -51,9 +51,7 @@ export function LoginForm() {
           <S.LabelText>Enter your email</S.LabelText>
           <S.TextField
             label="Email *"
-            variant="outlined"
             name="email"
-            fullWidth
             value={formik.values.email}
             onChange={formik.handleChange}
             error={formik.touched.email && Boolean(formik.errors.email)}
