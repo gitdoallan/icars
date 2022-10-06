@@ -83,14 +83,6 @@ export const SignUp = ({ children }) => (
   </Grid>
 );
 
-export const Agreement = ({ children }) => (
-  <Box marginBottom={{ xs: 1, sm: 0 }}>
-    <Typography variant="subtitle2">
-      {children}
-    </Typography>
-  </Box>
-);
-
 export const Link = ({ children, ...rest }) => (
   <MUILink
     color="primary"
@@ -101,9 +93,29 @@ export const Link = ({ children, ...rest }) => (
   </MUILink>
 );
 
+export const Agreement = ({ children }) => (
+  <Grid item container xs={12}>
+    <Box
+      display="flex"
+      flexDirection={{ xs: 'column', sm: 'row' }}
+      alignItems={{ xs: 'stretched', sm: 'center' }}
+      justifyContent="space-between"
+      width="100%"
+      maxWidth={600}
+      margin="0 auto"
+    >
+      <Box>
+        <Typography variant="subtitle2">
+          {children}
+        </Typography>
+      </Box>
+    </Box>
+  </Grid>
+);
+
 export const LoadingButton = ({ children, ...rest }) => (
   <Grid item xs={12}>
-    <Box display="flex" justifyContent="center">
+    <Box display="flex">
       <MUILoadingButton
         size="large"
         endIcon={<SendIcon />}

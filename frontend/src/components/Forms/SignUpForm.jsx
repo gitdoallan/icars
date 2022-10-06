@@ -96,21 +96,16 @@ export function SignUpForm() {
             helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
           />
         </S.InputGrid>
-        <S.SignUp>
-          <S.Agreement>
-            By clicking Sign up button you agree with our
-            {' '}
-            <S.Link
-              component={Link}
-              to="/privacy-policy"
-            >
-              Privacy policy.
-            </S.Link>
-          </S.Agreement>
-          <S.LoadingButton type="submit" loading={isSubmitting}>
-            Sign Up
-          </S.LoadingButton>
-        </S.SignUp>
+        <S.Agreement>
+          By clicking Sign up button you agree with our
+          {' '}
+          <S.Link component={Link} to="/privacy-policy">
+            Privacy policy.
+          </S.Link>
+        </S.Agreement>
+        <S.LoadingButton type="submit" loading={isSubmitting}>
+          Sign Up
+        </S.LoadingButton>
       </S.FormContainer>
     </S.Form>
   );

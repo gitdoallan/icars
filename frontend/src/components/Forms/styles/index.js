@@ -9,5 +9,6 @@ export {
   TextField,
   SignUp,
   Agreement,
+  Link,
   LoadingButton,
 } from './Forms.styles';
