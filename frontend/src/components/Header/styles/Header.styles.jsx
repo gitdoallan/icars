@@ -1,4 +1,6 @@
-import { Box, AppBar, Divider } from '@mui/material';
+import {
+  Box, AppBar, Divider,
+} from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { Container } from 'themes/styles';
 

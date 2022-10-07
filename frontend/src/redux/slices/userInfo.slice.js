@@ -1,9 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { defineState } from 'redux-localstore';
 
-const initialState = defineState({
-  id: 0, email: '', name: '', role: '',
-})('userInfo');
+const initialState = defineState({ isLogged: false })('userInfo');
 
 export const userInfoSlice = createSlice({
   name: 'userInfo',
