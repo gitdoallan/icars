@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const { ErrorHandler } = require('../utils/ErrorHandler');
+const { ErrorHandler } = require('../utils/errorHandler');
 
 const loginUserMiddleware = (req, _res, next) => {
   const { email, password } = req.body;
