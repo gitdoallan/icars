@@ -1,9 +1,11 @@
 const express = require('express');
 const usersController = require('../controllers/users.controller');
+const { createUserMiddleware } = require('../middlewares/createUser.middleware');
+const { loginUserMiddleware } = require('../middlewares/loginUser.middleware');
 
 const router = express.Router();
 
-router.post('/create', usersController.createUser);
-router.post('/login', usersController.loginUser);
+router.post('/create', createUserMiddleware, usersController.createUser);
+router.post('/login', loginUserMiddleware, usersController.loginUser);
 
 module.exports = router;

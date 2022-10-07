@@ -3,4 +3,4 @@ const errorMiddleware = async (err, _req, res) => {
   return res.status(status || 500).json({ message });
 };
 
-module.exports = errorMiddleware;
+module.exports = { errorMiddleware };
