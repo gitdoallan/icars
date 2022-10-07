@@ -1,3 +1,3 @@
-export { createUser } from './createUser';
-export { loginUser } from './loginUser';
-export { logoutUser } from './logoutUser';
+export { createUser } from './create.user';
+export { loginUser } from './login.user';
+export { logoutUser } from './logout.user';
