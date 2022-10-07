@@ -1,7 +1,7 @@
 import { useFormik } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
 import { loginFormValidation } from 'utils';
-import { loginUser } from 'services';
+import { createUser } from 'api';
 import { StatusMessages } from 'components/StatusMessages';
 import { useState } from 'react';
 import { setUserInfo } from 'redux/slices';
@@ -21,12 +21,14 @@ export function SignUpForm() {
     confirmPassword: '',
   };
 
-  const onSubmit = async ({ email, password }) => {
+  const onSubmit = async ({ name, email, password }) => {
     setIsSubmitting(true);
     try {
-      const result = await loginUser({ email, password });
+      const result = await createUser({ name, email, password });
+      console.log(result);
       dispatch(setUserInfo(result));
-      navigate(`/${result.role}`);
+      const redirectPath = result.role === 'admin' ? '/admin' : '/store';
+      navigate(redirectPath);
     } catch (err) {
       setError({ status: true, message: err.message });
     } finally {

@@ -1,5 +1,5 @@
 const { users: userModel } = require('../database/models');
-const { hashPassword } = require('../utils/bcrypt');
+const { hashPassword, comparePassword } = require('../utils/bcrypt');
 const { createToken } = require('../utils/jwt');
 const { ErrorHandler } = require('../utils/errorHandler');
 
@@ -9,18 +9,17 @@ const createUser = async ({ name, email, password }) => {
   const hash = await hashPassword(password);
   const { dataValues } = await userModel.create({ name, email, password: hash });
   const { password: _, ...userInfo } = dataValues;
-  createToken(userInfo);
-  return userInfo;
+  const token = createToken(userInfo);
+  return { token, ...userInfo, role: 'user' };
 };
 
-const loginUser = async (user) => {
-  const result = await userModel.findOne({
-    where: {
-      email: user.email,
-      password: user.password,
-    },
-  });
-  return result;
+const loginUser = async ({ email, password }) => {
+  const { dataValues } = await userModel.findOne({ where: { email } });
+  if (!dataValues) throw new ErrorHandler(401, 'Invalid email or password');
+  const { password: hash, ...userInfo } = dataValues;
+  await comparePassword(password, hash);
+  const token = createToken(userInfo);
+  return { token, ...userInfo };
 };
 
 module.exports = {
