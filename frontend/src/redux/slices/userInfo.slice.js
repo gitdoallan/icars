@@ -11,7 +11,11 @@ export const userInfoSlice = createSlice({
       state = payload;
       return state;
     },
+    clearUserInfo: (state) => {
+      state = { isLogged: false };
+      return state;
+    },
   },
 });
 
-export const { setUserInfo } = userInfoSlice.actions;
+export const { setUserInfo, clearUserInfo } = userInfoSlice.actions;

@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Divider } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import gravatarUrl from 'gravatar-url';
 import * as S from './styles';
 
 export function ProfileMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
   const { userInfo } = useSelector((state) => state);
+  const navigate = useNavigate();
 
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -35,7 +37,7 @@ export function ProfileMenu() {
         <S.MyAccount>My account</S.MyAccount>
         <Divider />
         <S.MyOrders>My Orders</S.MyOrders>
-        <S.Logout>Logout</S.Logout>
+        <S.Logout onClick={() => navigate('/logout')}>Logout</S.Logout>
       </S.ProfileMenu>
     </>
   );

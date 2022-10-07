@@ -76,8 +76,8 @@ export const MyOrders = ({ children }) => (
   </MenuItem>
 );
 
-export const Logout = ({ children }) => (
-  <MenuItem>
+export const Logout = ({ children, ...rest }) => (
+  <MenuItem {...rest}>
     <ListItemIcon>
       <MUILogout fontSize="small" />
     </ListItemIcon>
