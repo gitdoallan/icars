@@ -23,7 +23,6 @@ export function LoginForm() {
     setIsSubmitting(true);
     try {
       const result = await loginUser({ email, password });
-      console.log(result);
       dispatch(setUserInfo(result));
       const redirectPath = result.role === 'admin' ? '/admin' : '/store';
       navigate(redirectPath);

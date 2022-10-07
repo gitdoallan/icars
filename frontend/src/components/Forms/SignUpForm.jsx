@@ -25,7 +25,6 @@ export function SignUpForm() {
     setIsSubmitting(true);
     try {
       const result = await createUser({ name, email, password });
-      console.log(result);
       dispatch(setUserInfo(result));
       const redirectPath = result.role === 'admin' ? '/admin' : '/store';
       navigate(redirectPath);

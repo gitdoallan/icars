@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { defineState } from 'redux-localstore';
 
 const initialState = defineState({
-  id: 0, email: '', name: '', role: '', token: '',
+  id: 0, email: '', name: '', role: '',
 })('userInfo');
 
 export const userInfoSlice = createSlice({
