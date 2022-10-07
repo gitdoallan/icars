@@ -1,1 +1,1 @@
-export { NightModeToggle } from './NightModeToggle';
+export { NightModeToggle } from './NightModeToggle.button';
