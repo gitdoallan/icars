@@ -15,14 +15,14 @@ export function BikesCard({
         <CardContent>
           <S.CardHeader>
             <S.CardTitle>{model}</S.CardTitle>
-            <S.Location>{location}</S.Location>
+            <S.CardLocation>{location}</S.CardLocation>
           </S.CardHeader>
           <S.CardBody>
-            <S.Rating>{rating}</S.Rating>
-            <S.Price>
+            <S.CardRating>{rating}</S.CardRating>
+            <S.CardPrice>
               $
               {price}
-            </S.Price>
+            </S.CardPrice>
           </S.CardBody>
         </CardContent>
       </CardActionArea>

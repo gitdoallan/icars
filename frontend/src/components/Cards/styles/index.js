@@ -1,3 +1,3 @@
 export {
-  CardContainer, CardImage, CardTitle, CardBody, Location, CardHeader, Rating, Price,
+  CardContainer, CardImage, CardTitle, CardBody, CardLocation, CardHeader, CardRating, CardPrice,
 } from './Bikes.card.styles';

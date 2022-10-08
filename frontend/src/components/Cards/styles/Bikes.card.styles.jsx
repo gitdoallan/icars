@@ -31,7 +31,7 @@ export const CardTitle = ({ children }) => (
   </Typography>
 );
 
-export const Location = ({ children }) => (
+export const CardLocation = ({ children }) => (
   <Typography variant="body2" color="text.secondary">
     { children }
   </Typography>
@@ -46,7 +46,7 @@ export const CardBody = ({ children }) => (
   </Box>
 );
 
-export const Rating = ({ children }) => (
+export const CardRating = ({ children }) => (
   <MUIRating
     name="half-rating-read"
     value={children}
@@ -56,7 +56,7 @@ export const Rating = ({ children }) => (
   />
 );
 
-export const Price = ({ children }) => (
+export const CardPrice = ({ children }) => (
   <Box>
     { children }
   </Box>

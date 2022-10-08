@@ -3,12 +3,12 @@ import { useParams } from 'react-router-dom';
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
 import { StatusMessages } from 'components/StatusMessages';
-import { getBikeById } from 'api';
+import { getBikeById, API_URL } from 'api';
+import * as S from './styles';
 
 export function BikeDetails() {
-  const [bike, setBike] = useState(null);
+  const [bike, setBike] = useState();
   const [status, setStatus] = useState({ status: false });
-
   const { id } = useParams();
 
   useEffect(() => {
@@ -22,15 +22,18 @@ export function BikeDetails() {
   return (
     <>
       <Header />
-      {bike
-        ? (
-          <>
-            <h1>BikeDetails</h1>
-            <StatusMessages {...status} />
-          </>
-        )
-        : (<span>Loading...</span>)}
-
+      {bike && (
+      <>
+        <S.Title>{bike.model}</S.Title>
+        <StatusMessages {...status} />
+        <S.StoreContainer>
+          <S.BikeImage
+            alt={bike.model}
+            image={`${API_URL}${bike.image}`}
+          />
+        </S.StoreContainer>
+      </>
+      )}
       <Footer />
     </>
   );
