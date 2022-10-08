@@ -10,7 +10,7 @@ import * as S from './styles';
 
 export function LoginForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState({ status: false, message: '' });
+  const [status, setStatus] = useState({ status: false });
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -27,7 +27,7 @@ export function LoginForm() {
       const redirectPath = result.role === 'admin' ? '/admin' : '/store';
       navigate(redirectPath);
     } catch (err) {
-      setError({ status: true, message: err.message });
+      setStatus({ status: true, message: err.message, type: 'error' });
     } finally {
       setIsSubmitting(false);
     }
@@ -42,11 +42,7 @@ export function LoginForm() {
   return (
     <S.Form onSubmit={formik.handleSubmit}>
       <S.FormTitle>iBikes Login</S.FormTitle>
-      <StatusMessages
-        message={error.message}
-        type="error"
-        status={error.status}
-      />
+      <StatusMessages {...status} />
       <S.FormContainer>
         <S.Input>
           <S.LabelText>Enter your email</S.LabelText>
