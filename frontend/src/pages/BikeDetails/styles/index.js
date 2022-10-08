@@ -1,2 +1,2 @@
-export { Title, StoreContainer } from 'pages/Store/styles';
-export { BikeImage } from './BikeDetails.styles';
+export { Title } from 'pages/Store/styles';
+export { BikeImage, BikeDetailsContainer } from './BikeDetails.styles';
