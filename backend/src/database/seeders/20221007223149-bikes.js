@@ -8,7 +8,7 @@ module.exports = {
         color: 'red',
         location: 'Location 1',
         rating: 4.5,
-        image: '/images/1/main.jpeg',
+        image: '/images/bikes/1/main.jpeg',
         price: 10.00,
       },
       {
@@ -17,7 +17,7 @@ module.exports = {
         color: 'blue',
         location: 'Location 2',
         rating: 4.5,
-        image: '/images/2/main.jpeg',
+        image: '/images/bikes/2/main.jpeg',
         price: 10.00,
       },
       {
@@ -26,7 +26,7 @@ module.exports = {
         color: 'green',
         location: 'Location 3',
         rating: 4.5,
-        image: '/images/3/main.jpeg',
+        image: '/images/bikes/3/main.jpeg',
         price: 10.00,
       },
       {
@@ -35,7 +35,7 @@ module.exports = {
         color: 'yellow',
         location: 'Location 4',
         rating: 4.5,
-        image: '/images/4/main.jpeg',
+        image: '/images/bikes/4/main.jpeg',
         price: 10.00,
       },
       {
@@ -44,7 +44,7 @@ module.exports = {
         color: 'orange',
         location: 'Location 5',
         rating: 4.5,
-        image: '/images/5/main.jpeg',
+        image: '/images/bikes/5/main.jpeg',
         price: 10.00,
       },
       {
@@ -53,7 +53,7 @@ module.exports = {
         color: 'purple',
         location: 'Location 6',
         rating: 4.5,
-        image: '/images/6/main.jpeg',
+        image: '/images/bikes/6/main.jpeg',
         price: 10.00,
       },
     ],
