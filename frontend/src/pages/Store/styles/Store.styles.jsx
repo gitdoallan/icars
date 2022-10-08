@@ -13,14 +13,16 @@ export const Title = ({ children }) => (
   </Typography>
 );
 
-export const StoreContainer = ({ children, ...rest }) => (
+export const StoreContainer = ({ children }) => (
   <Box
     maxWidth={{ sm: 720, md: 1236 }}
     width="100%"
     margin="0 auto"
     paddingX={2}
     paddingY={{ xs: 2, sm: 3, md: 4 }}
-    {...rest}
+    display="flex"
+    flexWrap="wrap"
+    justifyContent="space-around"
   >
     {children}
   </Box>
