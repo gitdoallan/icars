@@ -1,52 +1,32 @@
 import propTypes from 'prop-types';
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import { CardActionArea, CardContent } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import { API_URL } from 'api/apiUrl';
+import * as S from './styles';
 
 export function BikesCard({
-  id, model, color, location, price, image, rating,
+  id, model, location, price, image, rating,
 }) {
+  const navigate = useNavigate();
   return (
-    <Card sx={{ maxWidth: 345, marginBottom: 5 }}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="250"
-          image={`${API_URL}${image}`}
-          alt="green iguana"
-        />
+    <S.CardContainer>
+      <CardActionArea onClick={() => navigate(`/store/bike/${id}`)}>
+        <S.CardImage image={`${API_URL}${image}`} alt={model} />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            { model }
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Color:
-            {' '}
-            { color }
-            Location:
-            {' '}
-            { location }
-            Price:
-            {' '}
-            { price }
-            Rating:
-            {' '}
-            { rating }
-          </Typography>
+          <S.CardHeader>
+            <S.CardTitle>{ model }</S.CardTitle>
+            <S.Location>{location}</S.Location>
+          </S.CardHeader>
+          <S.CardBody>
+            <S.Rating>{rating}</S.Rating>
+            <S.Price>
+              $
+              {price}
+            </S.Price>
+          </S.CardBody>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Reserve:
-          {' '}
-          { id }
-        </Button>
-      </CardActions>
-    </Card>
+    </S.CardContainer>
   );
 }
 
@@ -54,7 +34,6 @@ BikesCard.propTypes = {
   image: propTypes.string.isRequired,
   id: propTypes.number.isRequired,
   model: propTypes.string.isRequired,
-  color: propTypes.string.isRequired,
   location: propTypes.string.isRequired,
   price: propTypes.number.isRequired,
   rating: propTypes.number.isRequired,
