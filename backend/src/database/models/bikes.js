@@ -11,10 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     rating: DataTypes.FLOAT,
     image: DataTypes.STRING,
     price: DataTypes.FLOAT,
-    reserved: DataTypes.BOOLEAN,
-    userId: DataTypes.INTEGER,
-    rentDueDate: DataTypes.DATE,
-  });
+  }, { timestamps: false });
 
   return bikesModel;
 };
