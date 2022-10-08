@@ -8,7 +8,7 @@ import { getAllBikes } from 'api';
 import * as S from './styles';
 
 export function Store() {
-  const [bikesList, setBikesList] = useState(false);
+  const [bikesList, setBikesList] = useState(null);
   const [status, setStatus] = useState({ status: false });
   const skeletonArray = Array.from(Array(6).keys());
   useEffect(() => {
