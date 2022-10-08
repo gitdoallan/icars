@@ -14,7 +14,7 @@ export function BikesCard({
         <S.CardImage image={`${API_URL}${image}`} alt={model} />
         <CardContent>
           <S.CardHeader>
-            <S.CardTitle>{ model }</S.CardTitle>
+            <S.CardTitle>{model}</S.CardTitle>
             <S.Location>{location}</S.Location>
           </S.CardHeader>
           <S.CardBody>
