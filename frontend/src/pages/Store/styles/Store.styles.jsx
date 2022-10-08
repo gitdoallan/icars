@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 
 export const Title = ({ children }) => (
   <Typography
@@ -11,4 +11,17 @@ export const Title = ({ children }) => (
   >
     {children}
   </Typography>
+);
+
+export const StoreContainer = ({ children, ...rest }) => (
+  <Box
+    maxWidth={{ sm: 720, md: 1236 }}
+    width="100%"
+    margin="0 auto"
+    paddingX={2}
+    paddingY={{ xs: 2, sm: 3, md: 4 }}
+    {...rest}
+  >
+    {children}
+  </Box>
 );

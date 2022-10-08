@@ -1,1 +1,1 @@
-export { Title } from './Store.styles';
+export { Title, StoreContainer } from './Store.styles';

@@ -21,7 +21,12 @@ export function StatusMessages({ message, type, status }) {
 }
 
 StatusMessages.propTypes = {
-  message: propTypes.string.isRequired,
-  type: propTypes.string.isRequired,
+  message: propTypes.string,
+  type: propTypes.string,
   status: propTypes.bool.isRequired,
+};
+
+StatusMessages.defaultProps = {
+  message: '',
+  type: 'error',
 };
