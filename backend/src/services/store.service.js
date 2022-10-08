@@ -1,7 +1,19 @@
+const { Op } = require('sequelize');
 const { bikes: bikesModel } = require('../database/models');
 
 const getAllBikes = async () => {
   const result = await bikesModel.findAll();
+  return result;
+};
+
+const findBike = async ({ filter, type }) => {
+  const cases = {
+    model: { model: filter },
+    color: { color: filter },
+    location: { location: filter },
+    rating: { rating: { [Op.gte]: filter } },
+  };
+  const result = await bikesModel.findAll({ where: cases[type] });
   return result;
 };
 
@@ -27,6 +39,7 @@ const deleteBike = async (id) => {
 
 module.exports = {
   getAllBikes,
+  findBike,
   getBikeById,
   createBike,
   updateBike,

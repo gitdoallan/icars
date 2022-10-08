@@ -4,6 +4,7 @@ const storeController = require('../controllers/store.controller');
 const router = express.Router();
 
 router.get('/bikes', storeController.getAllBikes);
+router.post('/bikes/find', storeController.findBike);
 router.get('/bikes/:id', storeController.getBikeById);
 router.post('/', storeController.createBike);
 router.put('/:id', storeController.updateBike);
