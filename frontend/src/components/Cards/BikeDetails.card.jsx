@@ -2,10 +2,10 @@ import propTypes from 'prop-types';
 import * as S from './styles';
 
 export function BikeDetailsCard({
-  id, storeLocation, bikeModel, bikeColor, price, rating,
+  storeLocation, bikeModel, bikeColor, price, rating,
 }) {
   return (
-    <S.CardDetails>
+    <>
       <S.CardDetailsText>
         Location:
         {' '}
@@ -29,13 +29,8 @@ export function BikeDetailsCard({
         {' '}
         /day
       </S.CardDetailsText>
-      <S.CardDetailsText>
-        ID:
-        {' '}
-        {id}
-      </S.CardDetailsText>
       <S.CardDetailsRating>{rating}</S.CardDetailsRating>
-    </S.CardDetails>
+    </>
   );
 }
 

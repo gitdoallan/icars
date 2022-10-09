@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
 import { BikeDetailsCard } from 'components/Cards';
+import { DatePicker } from 'components/Forms';
 import { StatusMessages } from 'components/StatusMessages';
 import { getBikeById, API_URL } from 'api';
 import * as S from './styles';
@@ -32,7 +33,11 @@ export function BikeDetails() {
             alt={bike.bikeModel.name}
             image={`${API_URL}${bike.image}`}
           />
-          <BikeDetailsCard {...bike} />
+          <S.CardDetails>
+            <BikeDetailsCard {...bike} />
+            <DatePicker />
+          </S.CardDetails>
+
         </S.BikeDetailsContainer>
       </>
       )}
