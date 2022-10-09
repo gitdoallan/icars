@@ -42,6 +42,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DECIMAL(10, 2),
       },
+      rating: {
+        allowNull: false,
+        type: Sequelize.FLOAT,
+        defaultValue: 0,
+      },
       stock: {
         allowNull: false,
         type: Sequelize.INTEGER,

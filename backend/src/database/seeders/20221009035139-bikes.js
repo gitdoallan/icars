@@ -9,6 +9,7 @@ module.exports = {
         location_id: 1,
         image: '/images/bikes/1/main.jpeg',
         price: 10,
+        rating: 0,
         stock: 1,
       },
       {
@@ -18,6 +19,7 @@ module.exports = {
         location_id: 1,
         image: '/images/bikes/2/main.jpeg',
         price: 10,
+        rating: 5,
         stock: 1,
       },
       {
@@ -27,6 +29,7 @@ module.exports = {
         location_id: 1,
         image: '/images/bikes/3/main.jpeg',
         price: 10,
+        rating: 4.5,
         stock: 1,
       },
       {
@@ -36,6 +39,7 @@ module.exports = {
         location_id: 1,
         image: '/images/bikes/4/main.jpeg',
         price: 10,
+        rating: 4,
         stock: 1,
       },
       {
@@ -45,6 +49,7 @@ module.exports = {
         location_id: 2,
         image: '/images/bikes/5/main.jpeg',
         price: 10,
+        rating: 3.5,
         stock: 1,
       },
       {
@@ -54,6 +59,7 @@ module.exports = {
         location_id: 2,
         image: '/images/bikes/6/main.jpeg',
         price: 10,
+        rating: 0,
         stock: 1,
       },
     ],

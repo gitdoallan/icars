@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     locationId: DataTypes.INTEGER,
     image: DataTypes.STRING,
     price: DataTypes.DECIMAL,
+    rating: DataTypes.FLOAT,
     stock: DataTypes.INTEGER,
   }, {
     timestamps: false,

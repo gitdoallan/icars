@@ -48,6 +48,11 @@ module.exports = {
         type: Sequelize.DECIMAL(10, 2),
         field: 'order_total',
       },
+      rate: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
       orderStatus: {
         allowNull: false,
         type: Sequelize.ENUM('pending', 'confirmed', 'cancelled'),

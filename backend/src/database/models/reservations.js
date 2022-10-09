@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     colorId: DataTypes.INTEGER,
     locationId: DataTypes.INTEGER,
     orderTotal: DataTypes.DECIMAL,
+    rate: DataTypes.BOOLEAN,
     orderStatus: DataTypes.ENUM('pending', 'confirmed', 'cancelled'),
     startDate: DataTypes.DATE,
     endDate: DataTypes.DATE,
