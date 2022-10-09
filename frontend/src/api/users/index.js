@@ -1,3 +1,3 @@
-export { createUser } from './create.api.user';
-export { loginUser } from './login.api.user';
-export { logoutUser } from './logout.api.user';
+export { createUser } from './create.user.api.';
+export { loginUser } from './login.user.api';
+export { logoutUser } from './logout.user.api';
