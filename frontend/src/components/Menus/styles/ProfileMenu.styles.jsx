@@ -59,16 +59,16 @@ export const ProfileMenu = ({ children, ...rest }) => (
   </Menu>
 );
 
-export const MyAccount = ({ children }) => (
-  <MenuItem>
+export const MyAccount = ({ children, ...rest }) => (
+  <MenuItem {...rest}>
     <Avatar />
     {' '}
     {children}
   </MenuItem>
 );
 
-export const MyOrders = ({ children }) => (
-  <MenuItem>
+export const MyOrders = ({ children, ...rest }) => (
+  <MenuItem {...rest}>
     <ListItemIcon>
       <History fontSize="small" />
     </ListItemIcon>

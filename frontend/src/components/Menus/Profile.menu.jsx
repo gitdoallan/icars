@@ -34,9 +34,9 @@ export function ProfileMenu() {
         onClose={handleClose}
         onClick={handleClose}
       >
-        <S.MyAccount>My account</S.MyAccount>
+        <S.MyAccount onClick={() => navigate('/account')}>My account</S.MyAccount>
         <Divider />
-        <S.MyOrders>My Orders</S.MyOrders>
+        <S.MyOrders onClick={() => navigate('/reservations')}>My Orders</S.MyOrders>
         <S.Logout onClick={() => navigate('/logout')}>Logout</S.Logout>
       </S.ProfileMenu>
     </>
