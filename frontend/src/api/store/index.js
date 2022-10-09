@@ -1,3 +1,3 @@
-export { getAllBikes } from './getAllBikes.store';
-export { getBikeById } from './getBikeById.store';
-export { isBikeAvailable } from './isBikeAvailable.store';
+export { getAllBikes } from './getAllBikes.api.store';
+export { getBikeById } from './getBikeById.api.store';
+export { isBikeAvailable } from './isBikeAvailable.api.store';
