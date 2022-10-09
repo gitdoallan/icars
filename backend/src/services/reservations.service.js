@@ -26,3 +26,7 @@ const getReservationById = async ({ orderId, userId, role }) => {
   if (!result) throw new ErrorHandler(404, 'Reservation not found');
   return result;
 };
+
+module.exports = {
+  getReservationById,
+};
