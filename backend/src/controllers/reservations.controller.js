@@ -5,6 +5,13 @@ const listAllUserReservations = async (req, res) => {
   res.status(200).json(result);
 };
 
+const cancelReservation = async (req, res) => {
+  const { orderId } = req.body;
+  const { id } = req.user;
+  const result = await reservationsService.cancelReservation({ orderId, userId: id });
+  res.status(200).json(result);
+};
+
 const getReservationById = async (req, res) => {
   const { orderId } = req.params;
   const { id, role } = req.user;
@@ -17,4 +24,5 @@ const getReservationById = async (req, res) => {
 module.exports = {
   getReservationById,
   listAllUserReservations,
+  cancelReservation,
 };
