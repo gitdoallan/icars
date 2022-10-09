@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {
-  Registration, NotFound, Store, Logout, BikeDetails, ReservationDetails,
+  Registration, NotFound, Store, Logout, BikeDetails, ReservationDetails, Reservations,
 } from 'pages';
 
 export function Router() {
@@ -10,6 +10,7 @@ export function Router() {
         <Route path="/" element={<Registration />} />
         <Route path="/store" element={<Store />} />
         <Route path="/store/bike/:id" element={<BikeDetails />} />
+        <Route path="/reservations" element={<Reservations />} />
         <Route path="/reservations/:id" element={<ReservationDetails />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="*" element={<NotFound />} />
