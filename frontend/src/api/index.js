@@ -3,5 +3,5 @@ export {
   getAllBikes, getBikeById, isBikeAvailable, rentBike,
 } from './store';
 export { getReservationById, listAllUserReservations, cancelReservation } from './reservations';
-export { listAllReservations } from './admin';
+export { listAllReservations, getAllReservationsByUserId } from './admin';
 export { API_URL } from './apiUrl';
