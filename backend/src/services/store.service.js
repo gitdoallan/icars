@@ -1,4 +1,6 @@
-const { bikes, storeLocations, bikeModels } = require('../database/models');
+const {
+  bikes, storeLocations, bikeModels, bikeColors,
+} = require('../database/models');
 
 const getAllBikes = async () => {
   const result = await bikes.findAll({
@@ -28,6 +30,10 @@ const getBikeById = async (id) => {
       },
       {
         model: bikeModels,
+        attributes: ['name'],
+      },
+      {
+        model: bikeColors,
         attributes: ['name'],
       },
     ],
