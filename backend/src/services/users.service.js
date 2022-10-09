@@ -4,8 +4,6 @@ const { createToken } = require('../utils/jwt');
 const { ErrorHandler } = require('../utils/errorHandler');
 
 const createUser = async ({ name, email, password }) => {
-  const userAlreadyExists = await userModel.findOne({ where: { email } });
-  if (userAlreadyExists) throw new ErrorHandler(409, 'Email already registered');
   const hash = await hashPassword(password);
   const transaction = await userModel.sequelize.transaction();
   try {
