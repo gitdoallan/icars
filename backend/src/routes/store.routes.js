@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/bikes', storeController.getAllBikes);
 router.post('/bikes/find', storeController.findBike);
-router.get('/bikes/:id', storeController.getBikeById);
+router.get('/bike/:id', storeController.getBikeById);
 router.post('/', storeController.createBike);
 router.put('/:id', storeController.updateBike);
 router.delete('/:id', storeController.deleteBike);

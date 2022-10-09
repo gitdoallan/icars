@@ -5,13 +5,17 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    model: DataTypes.STRING,
-    color: DataTypes.STRING,
-    location: DataTypes.STRING,
-    rating: DataTypes.FLOAT,
+    modelId: DataTypes.INTEGER,
+    colorId: DataTypes.INTEGER,
+    locationId: DataTypes.INTEGER,
     image: DataTypes.STRING,
-    price: DataTypes.FLOAT,
-  }, { timestamps: false });
+    price: DataTypes.DECIMAL,
+    stock: DataTypes.INTEGER,
+  }, {
+    timestamps: false,
+    tableName: 'bikes',
+    underscored: true,
+  });
 
   return bikesModel;
 };
