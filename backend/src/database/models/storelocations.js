@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
 
   storeLocationsModel.associate = (models) => {
     storeLocationsModel.hasMany(models.bikes, {
-      foreignKey: 'location_id',
+      foreignKey: 'locationId',
     });
   };
 

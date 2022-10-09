@@ -5,9 +5,6 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    modelId: DataTypes.INTEGER,
-    colorId: DataTypes.INTEGER,
-    locationId: DataTypes.INTEGER,
     image: DataTypes.STRING,
     price: DataTypes.DECIMAL,
     rating: DataTypes.FLOAT,
@@ -20,16 +17,16 @@ module.exports = (sequelize, DataTypes) => {
 
   bikesModel.associate = (models) => {
     bikesModel.belongsTo(models.bikeModels, {
-      foreignKey: 'model_id',
+      foreignKey: 'modelId',
     });
     bikesModel.belongsTo(models.bikeColors, {
-      foreignKey: 'color_id',
+      foreignKey: 'colorId',
     });
     bikesModel.belongsTo(models.storeLocations, {
-      foreignKey: 'location_id',
+      foreignKey: 'locationId',
     });
     bikesModel.hasMany(models.reservations, {
-      foreignKey: 'bike_id',
+      foreignKey: 'bikeId',
     });
   };
 
