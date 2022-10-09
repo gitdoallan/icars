@@ -4,4 +4,5 @@ export { Store } from './Store';
 export { BikeDetails } from './Store/BikeDetails';
 export { Reservations } from './Reservations';
 export { ReservationDetails } from './Reservations/ReservationDetails';
+export { Admin } from './Admin';
 export { Logout } from './Logout';

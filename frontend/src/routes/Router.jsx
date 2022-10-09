@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {
-  Registration, NotFound, Store, Logout, BikeDetails, ReservationDetails, Reservations,
+  Registration, NotFound, Store, Logout,
+  BikeDetails, ReservationDetails, Reservations, Admin,
 } from 'pages';
 
 export function Router() {
@@ -12,6 +13,7 @@ export function Router() {
         <Route path="/store/bike/:id" element={<BikeDetails />} />
         <Route path="/reservations" element={<Reservations />} />
         <Route path="/reservations/:id" element={<ReservationDetails />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
