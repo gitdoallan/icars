@@ -12,7 +12,7 @@ const createUser = async ({ name, email, password }) => {
     const { dataValues } = await userModel.create({ name, email, password: hash }, { transaction });
     await transaction.commit();
     const { password: _, ...userInfo } = dataValues;
-    const token = createToken(userInfo);
+    const token = createToken({ userInfo, role: 'user' });
     return {
       token, ...userInfo, role: 'user', isLogged: true,
     };
