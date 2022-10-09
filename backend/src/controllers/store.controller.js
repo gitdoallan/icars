@@ -12,8 +12,7 @@ const getBikeById = async (req, res) => {
 };
 
 const isBikeAvailable = async (req, res) => {
-  const { id } = req.params;
-  const { startDate, endDate } = req.body;
+  const { id, startDate, endDate } = req.body;
   const result = await storeService.isBikeAvailable({ id, startDate, endDate });
   res.status(200).json(result);
 };
