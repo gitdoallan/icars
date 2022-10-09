@@ -5,17 +5,17 @@ import { API_URL } from 'api/apiUrl';
 import * as S from './styles';
 
 export function BikesCard({
-  id, model, location, price, image, rating,
+  id, bikeModel, storeLocation, price, image, rating,
 }) {
   const navigate = useNavigate();
   return (
     <S.CardContainer>
       <CardActionArea onClick={() => navigate(`/store/bike/${id}`)}>
-        <S.CardImage image={`${API_URL}${image}`} alt={model} />
+        <S.CardImage image={`${API_URL}${image}`} alt={bikeModel.name} />
         <CardContent>
           <S.CardHeader>
-            <S.CardTitle>{model}</S.CardTitle>
-            <S.CardLocation>{location}</S.CardLocation>
+            <S.CardTitle>{bikeModel.name}</S.CardTitle>
+            <S.CardLocation>{storeLocation.name}</S.CardLocation>
           </S.CardHeader>
           <S.CardBody>
             <S.CardRating>{rating}</S.CardRating>
@@ -31,10 +31,14 @@ export function BikesCard({
 }
 
 BikesCard.propTypes = {
-  image: propTypes.string.isRequired,
-  id: propTypes.number.isRequired,
-  model: propTypes.string.isRequired,
-  location: propTypes.string.isRequired,
-  price: propTypes.number.isRequired,
-  rating: propTypes.number.isRequired,
-};
+  image: propTypes.string,
+  id: propTypes.number,
+  price: propTypes.string,
+  rating: propTypes.number,
+  bikeModel: propTypes.shape({
+    name: propTypes.string.isRequired,
+  }).isRequired,
+  storeLocation: propTypes.shape({
+    name: propTypes.string.isRequired,
+  }).isRequired,
+}.isRequired;
