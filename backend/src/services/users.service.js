@@ -11,9 +11,10 @@ const createUser = async ({ name, email, password }) => {
       .create({ name, email, password: hash }, { transaction });
     await transaction.commit();
     const { password: _, ...userInfo } = dataValues;
-    const token = createToken({ userInfo, role: 'user' });
+    userInfo.role = 'user';
+    const token = createToken(userInfo);
     return {
-      token, ...userInfo, role: 'user', isLogged: true,
+      token, ...userInfo, isLogged: true,
     };
   } catch (error) {
     await transaction.rollback();
