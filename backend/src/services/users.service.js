@@ -1,13 +1,14 @@
-const { users: userModel } = require('../database/models');
+const Model = require('../database/models');
 const { hashPassword, comparePassword } = require('../utils/bcrypt');
 const { createToken } = require('../utils/jwt');
 const { ErrorHandler } = require('../utils/errorHandler');
 
 const createUser = async ({ name, email, password }) => {
   const hash = await hashPassword(password);
-  const transaction = await userModel.sequelize.transaction();
+  const transaction = await Model.users.sequelize.transaction();
   try {
-    const { dataValues } = await userModel.create({ name, email, password: hash }, { transaction });
+    const { dataValues } = await Model.users
+      .create({ name, email, password: hash }, { transaction });
     await transaction.commit();
     const { password: _, ...userInfo } = dataValues;
     const token = createToken({ userInfo, role: 'user' });
@@ -21,7 +22,7 @@ const createUser = async ({ name, email, password }) => {
 };
 
 const loginUser = async ({ email, password }) => {
-  const { dataValues } = await userModel.findOne({ where: { email } });
+  const { dataValues } = await Model.users.findOne({ where: { email } });
   if (!dataValues) throw new ErrorHandler(401, 'Invalid email or password');
   const { password: hash, ...userInfo } = dataValues;
   await comparePassword(password, hash);
