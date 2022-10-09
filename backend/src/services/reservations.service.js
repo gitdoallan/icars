@@ -14,6 +14,10 @@ const listAllUserReservations = async ({ userId }) => {
             model: Model.storeLocations,
             attributes: ['id', 'name'],
           },
+          {
+            model: Model.bikeModels,
+            attributes: ['name'],
+          },
         ],
       },
     ],
