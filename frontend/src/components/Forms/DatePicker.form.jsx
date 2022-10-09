@@ -16,26 +16,27 @@ export function DatePicker({ id }) {
   const [available, setAvailable] = useState(false);
 
   const navigate = useNavigate();
-  const formattedStartDate = dayjs(startDate).format('YYYY-MM-DD');
-  const formattedEndDate = dayjs(endDate).format('YYYY-MM-DD');
+  const formattedDate = (date) => dayjs(date).format('YYYY-MM-DD');
 
   const handleStartDateChange = (newValue) => {
-    setStartDate(newValue);
-    if (newValue >= endDate) {
-      setEndDate(dayjs(newValue).add(1, 'day').toDate());
+    const formattedValueDate = formattedDate(newValue);
+    setStartDate(formattedValueDate);
+    if (formattedValueDate >= endDate) {
+      setEndDate(dayjs(formattedValueDate).add(1, 'day').toDate());
     }
   };
 
   const handleEndDateChange = (newValue) => {
-    setEndDate(newValue);
-    if (newValue <= startDate) {
-      setStartDate(dayjs(newValue).subtract(1, 'day').toDate());
+    const formattedValueDate = formattedDate(newValue);
+    setEndDate(formattedValueDate);
+    if (formattedValueDate <= startDate) {
+      setStartDate(dayjs(formattedValueDate).subtract(1, 'day').toDate());
     }
   };
 
   const handleRentBike = async () => {
     try {
-      const { orderId } = await rentBike({ id, formattedStartDate, formattedEndDate });
+      const { orderId } = await rentBike({ id, startDate, endDate });
       navigate(`/reservations/${orderId}`);
     } catch (err) {
       setAvailable(false);
@@ -43,7 +44,7 @@ export function DatePicker({ id }) {
   };
 
   useEffect(() => {
-    isBikeAvailable({ id, formattedStartDate, formattedEndDate })
+    isBikeAvailable({ id, startDate, endDate })
       .then((response) => available !== response && setAvailable(response))
       .catch(() => setAvailable(false));
   }, [startDate, endDate]);

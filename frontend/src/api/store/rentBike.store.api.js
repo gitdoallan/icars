@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { API_URL } from '../apiUrl';
 
-export const rentBike = async ({ id, formattedStartDate, formattedEndDate }) => {
+export const rentBike = async ({ id, startDate, endDate }) => {
   const orderTotal = 1000;
   const { data } = await axios.post(
     `${API_URL}/store/bike/rent`,
     {
-      id, orderTotal, startDate: formattedStartDate, endDate: formattedEndDate,
+      id, orderTotal, startDate, endDate,
     },
     { withCredentials: true },
   );

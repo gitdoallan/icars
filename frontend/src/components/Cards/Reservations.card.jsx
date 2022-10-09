@@ -1,7 +1,7 @@
 import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-export function ReservationsCard({ id, bike }) {
+export function ReservationsCard({ id, bike, orderStatus }) {
   return (
     <div>
       <span>
@@ -14,6 +14,12 @@ export function ReservationsCard({ id, bike }) {
         Model:
         {' '}
         {bike.bikeModel.name}
+        {' '}
+      </span>
+      <span>
+        Status:
+        {' '}
+        {orderStatus}
         {' '}
       </span>
       <Link to={`/reservations/${id}`}>Details</Link>
