@@ -1,6 +1,7 @@
 const { Op } = require('sequelize');
 const { ErrorHandler } = require('../utils/errorHandler');
 const Model = require('../database/models');
+const { ONE_DAY } = require('../utils/magicNumbers');
 
 const getAllBikes = async () => {
   const result = await Model.bikes.findAll({
@@ -22,7 +23,7 @@ const getAllBikes = async () => {
 const isBikeAvailable = async ({ id, startDate, endDate }) => {
   const result = await Model.bikes.findOne({
     where: { id },
-    attributes: ['id'],
+    attributes: ['id', 'price'],
     include: [
       {
         model: Model.reservations,
@@ -52,9 +53,10 @@ const isBikeAvailable = async ({ id, startDate, endDate }) => {
 };
 
 const rentBike = async ({
-  bikeId, userId, orderTotal, startDate, endDate,
+  bikeId, userId, startDate, endDate,
 }) => {
-  await isBikeAvailable({ id: bikeId, startDate, endDate });
+  const { price } = await isBikeAvailable({ id: bikeId, startDate, endDate });
+  const orderTotal = (new Date(endDate) - (new Date(startDate)) / ONE_DAY) * price;
   const transaction = await Model.reservations.sequelize.transaction();
   try {
     const result = await Model.reservations.create({
