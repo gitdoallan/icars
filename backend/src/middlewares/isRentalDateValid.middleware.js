@@ -1,6 +1,6 @@
 const { ErrorHandler } = require('../utils/errorHandler');
 
-export const isRentalDateValid = async (req, _res, next) => {
+const isRentalDateValid = async (req, _res, next) => {
   const { startDate, endDate } = req.body;
   const startDateObj = new Date(startDate);
   const endDateObj = new Date(endDate);
@@ -12,3 +12,5 @@ export const isRentalDateValid = async (req, _res, next) => {
   }
   next();
 };
+
+module.exports = { isRentalDateValid };
