@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.use(verifyToken);
 
+router.get('/', reservationsController.listAllUserReservations);
 router.get('/:orderId', reservationsController.getReservationById);
 
 module.exports = router;
