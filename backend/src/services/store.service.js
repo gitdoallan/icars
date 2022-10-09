@@ -51,6 +51,7 @@ const isBikeAvailable = async ({ id, startDate, endDate }) => {
 const rentBike = async ({
   bikeId, userId, orderTotal, startDate, endDate,
 }) => {
+  console.log(bikeId, userId, orderTotal, startDate, endDate);
   await isBikeAvailable({ id: bikeId, startDate, endDate });
   const transaction = await Model.reservations.sequelize.transaction();
   try {
