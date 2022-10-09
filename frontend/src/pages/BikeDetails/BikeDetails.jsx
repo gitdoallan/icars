@@ -18,16 +18,18 @@ export function BikeDetails() {
       .catch(({ message }) => setStatus({ status: true, message, type: 'error' }));
   }, [id]);
 
+  console.log(bike);
+
   return (
     <>
       <Header />
       {bike && (
       <>
-        <S.Title>{bike.model}</S.Title>
+        <S.Title>{bike.bikeModel.name}</S.Title>
         <StatusMessages {...status} />
         <S.BikeDetailsContainer>
           <S.BikeImage
-            alt={bike.model}
+            alt={bike.bikeModel.name}
             image={`${API_URL}${bike.image}`}
           />
           <BikeDetailsCard {...bike} />

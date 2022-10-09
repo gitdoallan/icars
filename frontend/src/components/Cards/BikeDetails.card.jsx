@@ -2,24 +2,24 @@ import propTypes from 'prop-types';
 import * as S from './styles';
 
 export function BikeDetailsCard({
-  color, id, location, model, price, rating,
+  id, storeLocation, bikeModel, bikeColor, price, rating,
 }) {
   return (
     <S.CardDetails>
       <S.CardDetailsText>
         Location:
         {' '}
-        {location}
+        {storeLocation.name}
       </S.CardDetailsText>
       <S.CardDetailsText>
         Color:
         {' '}
-        {color}
+        {bikeColor.name}
       </S.CardDetailsText>
       <S.CardDetailsText>
         Model:
         {' '}
-        {model}
+        {bikeModel.name}
       </S.CardDetailsText>
       <S.CardDetailsText>
         Price:
@@ -40,10 +40,16 @@ export function BikeDetailsCard({
 }
 
 BikeDetailsCard.propTypes = {
-  color: propTypes.string,
   id: propTypes.number,
-  location: propTypes.string,
-  model: propTypes.string,
   price: propTypes.number,
   rating: propTypes.number,
+  storeLocation: propTypes.shape({
+    name: propTypes.string,
+  }),
+  bikeModel: propTypes.shape({
+    name: propTypes.string,
+  }),
+  bikeColor: propTypes.shape({
+    name: propTypes.string,
+  }),
 }.isRequired;
