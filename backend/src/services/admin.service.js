@@ -7,7 +7,7 @@ const listAllReservations = async () => {
     include: [
       {
         model: Model.users,
-        attributes: ['name', 'email'],
+        attributes: ['id', 'name', 'email'],
       },
       {
         model: Model.bikes,
