@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     orderTotal: DataTypes.DECIMAL,
     rate: DataTypes.BOOLEAN,
-    orderStatus: DataTypes.ENUM('pending', 'confirmed', 'cancelled'),
+    orderStatus: DataTypes.ENUM('pending', 'confirmed', 'cancelled', 'completed'),
     startDate: DataTypes.DATE,
     endDate: DataTypes.DATE,
   }, {
