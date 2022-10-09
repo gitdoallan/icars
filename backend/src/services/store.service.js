@@ -23,7 +23,7 @@ const getAllBikes = async () => {
 const isBikeAvailable = async ({ id, startDate, endDate }) => {
   const result = await Model.bikes.findOne({
     where: { id },
-    attributes: ['id', 'price'],
+    attributes: ['id'],
     include: [
       {
         model: Model.reservations,
@@ -52,24 +52,6 @@ const isBikeAvailable = async ({ id, startDate, endDate }) => {
   return true;
 };
 
-const rentBike = async ({
-  bikeId, userId, startDate, endDate,
-}) => {
-  const { price } = await isBikeAvailable({ id: bikeId, startDate, endDate });
-  const orderTotal = (new Date(endDate) - (new Date(startDate)) / ONE_DAY) * price;
-  const transaction = await Model.reservations.sequelize.transaction();
-  try {
-    const result = await Model.reservations.create({
-      bikeId, userId, orderTotal, startDate, endDate,
-    }, { transaction });
-    await transaction.commit();
-    return { orderId: result.id };
-  } catch (error) {
-    await transaction.rollback();
-    throw new ErrorHandler(400, 'Error while renting bike');
-  }
-};
-
 const getBikeById = async (id) => {
   const result = await Model.bikes.findOne({
     where: { id },
@@ -90,6 +72,27 @@ const getBikeById = async (id) => {
     ],
   });
   return result;
+};
+
+const rentBike = async ({
+  bikeId, userId, startDate, endDate,
+}) => {
+  await isBikeAvailable({ id: bikeId, startDate, endDate });
+  const { price } = await getBikeById(bikeId);
+  const calcEndDate = new Date(endDate).getTime();
+  const calcStartDate = new Date(startDate).getTime();
+  const orderTotal = ((calcEndDate - calcStartDate) / ONE_DAY) * +price;
+  const transaction = await Model.reservations.sequelize.transaction();
+  try {
+    const result = await Model.reservations.create({
+      bikeId, userId, orderTotal, startDate, endDate,
+    }, { transaction });
+    await transaction.commit();
+    return { orderId: result.id };
+  } catch (error) {
+    await transaction.rollback();
+    throw new ErrorHandler(400, 'Error while renting bike');
+  }
 };
 
 module.exports = {
