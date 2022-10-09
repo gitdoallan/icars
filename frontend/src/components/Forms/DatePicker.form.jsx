@@ -6,13 +6,16 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { StatusMessages } from 'components/StatusMessages';
-import { isBikeAvailable } from 'api';
+import { isBikeAvailable, rentBike } from 'api';
 import * as S from './styles';
 
 export function DatePicker({ id }) {
   const [startDate, setStartDate] = useState(dayjs().toDate());
   const [endDate, setEndDate] = useState(dayjs().add(1, 'day').toDate());
   const [available, setAvailable] = useState(false);
+
+  const formattedStartDate = dayjs(startDate).format('YYYY-MM-DD');
+  const formattedEndDate = dayjs(endDate).format('YYYY-MM-DD');
 
   const handleStartDateChange = (newValue) => {
     setStartDate(newValue);
@@ -28,13 +31,20 @@ export function DatePicker({ id }) {
     }
   };
 
+  const handleRentBike = async () => {
+    try {
+      const result = await rentBike({ id, formattedStartDate, formattedEndDate });
+      console.log('Bike rented!', result);
+    } catch (err) {
+      setAvailable(false);
+    }
+  };
+
   useEffect(() => {
-    const formattedStartDate = dayjs(startDate).format('YYYY-MM-DD');
-    const formattedEndDate = dayjs(endDate).format('YYYY-MM-DD');
     isBikeAvailable({ id, formattedStartDate, formattedEndDate })
       .then((response) => available !== response && setAvailable(response))
       .catch(() => setAvailable(false));
-  }, [endDate]);
+  }, [startDate, endDate]);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -57,6 +67,7 @@ export function DatePicker({ id }) {
       <S.BookNowButton
         type="button"
         disabled={!available}
+        onClick={handleRentBike}
       >
         Book now
       </S.BookNowButton>
