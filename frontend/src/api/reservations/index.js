@@ -1,2 +1,2 @@
-export { getReservationById } from './getReservationById.api.reservation';
-export { listAllUserReservations } from './listAllUserReservations.api.reservation';
+export { getReservationById } from './getById.api.reservation';
+export { listAllUserReservations } from './listAll.api.reservation';
