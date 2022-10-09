@@ -40,6 +40,9 @@ const isBikeAvailable = async ({ id, startDate, endDate }) => {
               },
             },
           ],
+          orderStatus: {
+            [Op.not]: 'cancelled',
+          },
         },
       },
     ],
