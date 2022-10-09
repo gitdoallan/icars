@@ -36,7 +36,7 @@ export function DatePicker({ id }) {
   const handleRentBike = async () => {
     try {
       const { orderId } = await rentBike({ id, formattedStartDate, formattedEndDate });
-      navigate(`/store/order/${orderId}`);
+      navigate(`/reservations/${orderId}`);
     } catch (err) {
       setAvailable(false);
     }
