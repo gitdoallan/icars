@@ -21,7 +21,7 @@ export function DatePicker({ id }) {
   const handleStartDateChange = (newValue) => {
     const formattedValueDate = formattedDate(newValue);
     setStartDate(formattedValueDate);
-    if (formattedValueDate >= endDate) {
+    if (dayjs(formattedValueDate).toDate() >= dayjs(endDate).toDate()) {
       setEndDate(dayjs(formattedValueDate).add(1, 'day').toDate());
     }
   };
@@ -29,7 +29,7 @@ export function DatePicker({ id }) {
   const handleEndDateChange = (newValue) => {
     const formattedValueDate = formattedDate(newValue);
     setEndDate(formattedValueDate);
-    if (formattedValueDate <= startDate) {
+    if (dayjs(formattedValueDate).toDate() <= dayjs(startDate).toDate()) {
       setStartDate(dayjs(formattedValueDate).subtract(1, 'day').toDate());
     }
   };
