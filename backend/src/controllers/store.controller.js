@@ -15,7 +15,6 @@ const rentBike = async (req, res) => {
   const {
     id, orderTotal, startDate, endDate,
   } = req.body;
-  console.log(req.user);
   const result = await storeService.rentBike({
     bikeId: id, userId: req.user.id, orderTotal, startDate, endDate,
   });
