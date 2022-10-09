@@ -1,5 +1,6 @@
+const { Op } = require('sequelize');
 const {
-  bikes, storeLocations, bikeModels, bikeColors,
+  bikes, storeLocations, bikeModels, bikeColors, reservations,
 } = require('../database/models');
 
 const getAllBikes = async () => {
@@ -41,7 +42,36 @@ const getBikeById = async (id) => {
   return result;
 };
 
+const isBikeAvailable = async ({ id, startDate, endDate }) => {
+  const result = await bikes.findOne({
+    where: { id },
+    attributes: ['id'],
+    include: [
+      {
+        model: reservations,
+        attributes: ['id'],
+        where: {
+          [Op.or]: [
+            {
+              startDate: {
+                [Op.between]: [startDate, endDate],
+              },
+            },
+            {
+              endDate: {
+                [Op.between]: [startDate, endDate],
+              },
+            },
+          ],
+        },
+      },
+    ],
+  });
+  return result === null;
+};
+
 module.exports = {
   getAllBikes,
   getBikeById,
+  isBikeAvailable,
 };

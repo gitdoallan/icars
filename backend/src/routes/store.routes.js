@@ -8,5 +8,6 @@ router.use(verifyToken);
 
 router.get('/bikes', storeController.getAllBikes);
 router.get('/bike/:id', storeController.getBikeById);
+router.post('/bike/:id/available', storeController.isBikeAvailable);
 
 module.exports = router;

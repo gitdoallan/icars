@@ -19,8 +19,6 @@ export function BikeDetails() {
       .catch(({ message }) => setStatus({ status: true, message, type: 'error' }));
   }, [id]);
 
-  console.log(bike);
-
   return (
     <>
       <Header />
@@ -35,9 +33,8 @@ export function BikeDetails() {
           />
           <S.CardDetails>
             <BikeDetailsCard {...bike} />
-            <DatePicker />
+            <DatePicker {...bike} />
           </S.CardDetails>
-
         </S.BikeDetailsContainer>
       </>
       )}
