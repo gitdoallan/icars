@@ -3,6 +3,7 @@ import { Box, Typography, Rating } from '@mui/material';
 export const CardDetails = ({ children }) => (
   <Box
     marginTop={{ xs: 3, md: 0 }}
+    sx={{ maxWidth: { sm: 500, md: 300 }, width: '100%' }}
   >
     {children}
   </Box>

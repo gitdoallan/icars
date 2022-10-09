@@ -16,7 +16,7 @@ export const BikeImage = ({ children, ...rest }) => (
 
 export const BikeDetailsContainer = ({ children }) => (
   <Box
-    maxWidth={{ sm: 600, md: 800 }}
+    maxWidth={{ sm: 600, md: 900 }}
     width="100%"
     margin="0 auto"
     paddingX={2}

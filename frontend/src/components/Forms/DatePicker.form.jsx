@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import propTypes from 'prop-types';
 import dayjs from 'dayjs';
 import { TextField } from '@mui/material';
@@ -14,6 +15,7 @@ export function DatePicker({ id }) {
   const [endDate, setEndDate] = useState(dayjs().add(1, 'day').toDate());
   const [available, setAvailable] = useState(false);
 
+  const navigate = useNavigate();
   const formattedStartDate = dayjs(startDate).format('YYYY-MM-DD');
   const formattedEndDate = dayjs(endDate).format('YYYY-MM-DD');
 
@@ -33,8 +35,8 @@ export function DatePicker({ id }) {
 
   const handleRentBike = async () => {
     try {
-      const result = await rentBike({ id, formattedStartDate, formattedEndDate });
-      console.log('Bike rented!', result);
+      const { orderId } = await rentBike({ id, formattedStartDate, formattedEndDate });
+      navigate(`/store/order/${orderId}`);
     } catch (err) {
       setAvailable(false);
     }
@@ -54,14 +56,14 @@ export function DatePicker({ id }) {
           inputFormat="MM/DD/YYYY"
           value={startDate}
           onChange={handleStartDateChange}
-          renderInput={(params) => <TextField sx={{ width: 110 }} {...params} />}
+          renderInput={(params) => <TextField sx={{ width: { sm: '50%', md: '50%' } }} {...params} />}
         />
         <MobileDatePicker
           label="Drop off date"
           inputFormat="MM/DD/YYYY"
           value={endDate}
           onChange={handleEndDateChange}
-          renderInput={(params) => <TextField sx={{ width: 110, marginLeft: 0.5 }} {...params} />}
+          renderInput={(params) => <TextField sx={{ width: { sm: '50%', md: '50%' }, marginLeft: 0.5 }} {...params} />}
         />
       </S.Stack>
       <S.BookNowButton
