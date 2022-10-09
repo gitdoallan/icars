@@ -7,7 +7,8 @@ const router = express.Router();
 router.use(verifyToken);
 
 router.get('/bikes', storeController.getAllBikes);
+router.post('/bike/reserve/:id', storeController.isBikeAvailable);
+router.post('/bike/available/:id', storeController.isBikeAvailable);
 router.get('/bike/:id', storeController.getBikeById);
-router.post('/bike/:id/available', storeController.isBikeAvailable);
 
 module.exports = router;
