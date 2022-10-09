@@ -7,5 +7,6 @@ const router = express.Router();
 router.use(verifyToken);
 
 router.get('/bikes', storeController.getAllBikes);
+router.get('/bike/:id', storeController.getBikeById);
 
 module.exports = router;
