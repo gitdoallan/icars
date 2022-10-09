@@ -6,9 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
     },
     userId: DataTypes.INTEGER,
-    modelId: DataTypes.INTEGER,
-    colorId: DataTypes.INTEGER,
-    locationId: DataTypes.INTEGER,
+    bikeId: DataTypes.INTEGER,
     orderTotal: DataTypes.DECIMAL,
     rate: DataTypes.BOOLEAN,
     orderStatus: DataTypes.ENUM('pending', 'confirmed', 'cancelled'),
@@ -19,6 +17,15 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'reservations',
     underscored: true,
   });
+
+  reservationsModel.associate = (models) => {
+    reservationsModel.belongsTo(models.users, {
+      foreignKey: 'user_id',
+    });
+    reservationsModel.belongsTo(models.bikes, {
+      foreignKey: 'bike_id',
+    });
+  };
 
   return reservationsModel;
 };

@@ -18,5 +18,20 @@ module.exports = (sequelize, DataTypes) => {
     underscored: true,
   });
 
+  bikesModel.associate = (models) => {
+    bikesModel.belongsTo(models.bikeModels, {
+      foreignKey: 'model_id',
+    });
+    bikesModel.belongsTo(models.bikeColors, {
+      foreignKey: 'color_id',
+    });
+    bikesModel.belongsTo(models.storeLocations, {
+      foreignKey: 'location_id',
+    });
+    bikesModel.hasMany(models.reservations, {
+      foreignKey: 'bike_id',
+    });
+  };
+
   return bikesModel;
 };

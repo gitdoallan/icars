@@ -15,5 +15,14 @@ module.exports = (sequelize, DataTypes) => {
     underscored: true,
   });
 
+  userModel.associate = (models) => {
+    userModel.hasMany(models.bikes, {
+      foreignKey: 'user_id',
+    });
+    userModel.hasMany(models.reservations, {
+      foreignKey: 'user_id',
+    });
+  };
+
   return userModel;
 };

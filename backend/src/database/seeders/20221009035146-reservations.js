@@ -5,9 +5,7 @@ module.exports = {
       {
         id: 1,
         user_id: 1,
-        model_id: 1,
-        color_id: 1,
-        location_id: 1,
+        bike_id: 1,
         order_total: 10,
         rate: true,
         order_status: 'confirmed',
@@ -17,9 +15,7 @@ module.exports = {
       {
         id: 2,
         user_id: 1,
-        model_id: 1,
-        color_id: 2,
-        location_id: 1,
+        bike_id: 2,
         order_total: 10,
         rate: true,
         order_status: 'confirmed',
@@ -29,9 +25,7 @@ module.exports = {
       {
         id: 3,
         user_id: 1,
-        model_id: 1,
-        color_id: 3,
-        location_id: 1,
+        bike_id: 3,
         order_total: 10,
         rate: false,
         order_status: 'cancelled',

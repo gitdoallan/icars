@@ -16,32 +16,14 @@ module.exports = {
         },
         field: 'user_id',
       },
-      modelId: {
+      bikeId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'bike_models',
+          model: 'bikes',
           key: 'id',
         },
-        field: 'model_id',
-      },
-      colorId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'bike_colors',
-          key: 'id',
-        },
-        field: 'color_id',
-      },
-      locationId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'store_locations',
-          key: 'id',
-        },
-        field: 'location_id',
+        field: 'bike_id',
       },
       orderTotal: {
         allowNull: false,
