@@ -95,9 +95,40 @@ const rentBike = async ({
   }
 };
 
+const getAllFilteredBikes = async (filter) => {
+  const result = await Model.bikes.findAll({
+    attributes: ['id', 'image', 'price', 'rating'],
+    include: [
+      {
+        model: Model.storeLocations,
+        attributes: ['name'],
+        where: filter.location ? { id: filter.location } : {},
+      },
+      {
+        model: Model.bikeModels,
+        attributes: ['name'],
+        where: filter.model ? { id: filter.model } : {},
+      },
+      {
+        model: Model.bikeColors,
+        attributes: ['name'],
+        where: filter.color ? { id: filter.color } : {},
+      },
+    ],
+    where: {
+      rating: {
+        [Op.gte]: filter.rating,
+      },
+    },
+  });
+  if (!result.length) throw new ErrorHandler(400, 'No bikes found');
+  return result;
+};
+
 module.exports = {
   getAllBikes,
   getBikeById,
   isBikeAvailable,
   rentBike,
+  getAllFilteredBikes,
 };
