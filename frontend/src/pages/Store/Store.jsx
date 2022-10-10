@@ -8,16 +8,18 @@ import { getAllFilteredBikes } from 'api';
 import * as S from './styles';
 
 export function Store() {
-  const [bikesList, setBikesList] = useState();
+  const [bikesList, setBikesList] = useState([]);
   const [status, setStatus] = useState({ status: false });
   const [filter, setFilter] = useState({ rating: 0 });
   const skeletonArray = Array.from(Array(6).keys());
 
   useEffect(() => {
     getAllFilteredBikes(filter)
-      .then((response) => (setBikesList(response)))
+      .then((res) => setBikesList(res))
       .catch((error) => setStatus({ status: true, message: error.message, type: 'error' }));
   }, [filter]);
+
+  console.log(bikesList);
 
   return (
     <>
@@ -61,6 +63,13 @@ export function Store() {
         <button type="button" onClick={() => setFilter((prev) => ({ ...prev, color: 3 }))}>Color 3</button>
         <button type="button" onClick={() => setFilter((prev) => ({ ...prev, color: 4 }))}>Color 4</button>
         <button type="button" onClick={() => setFilter((prev) => ({ ...prev, color: 5 }))}>Color 5</button>
+      </div>
+
+      <div>
+        <h2>Filter by Date</h2>
+        <button type="button" onClick={() => setFilter((prev) => ({ ...prev, startDate: undefined }))}>All</button>
+        <button type="button" onClick={() => setFilter((prev) => ({ ...prev, startDate: new Date('2022-10-10'), endDate: new Date('2023-01-02') }))}>Date 1</button>
+        <button type="button" onClick={() => setFilter((prev) => ({ ...prev, startDate: new Date('2023-02-01'), endDate: new Date('2023-02-02') }))}>Date 2</button>
       </div>
 
       <StatusMessages {...status} />

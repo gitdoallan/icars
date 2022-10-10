@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {
   Registration, NotFound, Store, Logout,
   BikeDetails, ReservationDetails, Reservations,
-  Admin, AdminUserManager,
+  Admin, AdminUserManager, CreateNewBike,
 } from 'pages';
 
 export function Router() {
@@ -16,6 +16,7 @@ export function Router() {
         <Route path="/reservations/:id" element={<ReservationDetails />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/user/:id" element={<AdminUserManager />} />
+        <Route path="/admin/bike/new" element={<CreateNewBike />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

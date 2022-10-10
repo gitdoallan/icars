@@ -3,5 +3,5 @@ export { Registration } from './Registration';
 export { Store } from './Store';
 export { BikeDetails } from './Store/BikeDetails';
 export { Reservations, ReservationDetails } from './Reservations';
-export { Admin, AdminUserManager } from './Admin';
+export { Admin, AdminUserManager, CreateNewBike } from './Admin';
 export { Logout } from './Logout';
