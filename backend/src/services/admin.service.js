@@ -1,4 +1,3 @@
-const fs = require('fs');
 const { ErrorHandler } = require('../utils/errorHandler');
 const Model = require('../database/models');
 
@@ -71,26 +70,8 @@ const deleteUserById = async (id) => {
   return result;
 };
 
-const uploadImage = async ({ id, image }) => {
-  const { filename, mimetype, createReadStream } = await image;
-  if (mimetype !== 'image/png' && mimetype !== 'image/jpeg') {
-    throw new ErrorHandler(400, 'Image must be png or jpeg');
-  }
-  const stream = createReadStream();
-  const path = `./images/bikes/${id}/${filename}`;
-  await new Promise((resolve, reject) => {
-    stream
-      .pipe(fs.createWriteStream(path))
-      .on('finish', () => resolve())
-      .on('error', (e) => reject(e));
-  });
-  return path;
-};
-
 const createNewBike = async (bike) => {
   const result = await Model.bikes.create(bike);
-  fs.mkdirSync(`./images/bikes/${result.id}`, { recursive: true });
-  await uploadImage({ id: result.id, image: bike.image });
   if (!result) throw new ErrorHandler(400, 'Bike could not be created');
   return result;
 };

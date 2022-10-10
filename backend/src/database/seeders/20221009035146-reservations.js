@@ -9,8 +9,8 @@ module.exports = {
         order_total: 10,
         rate: true,
         order_status: 'confirmed',
-        start_date: '2021-10-09 03:51:46',
-        end_date: '2021-10-11 03:51:46',
+        start_date: '2021-10-12',
+        end_date: '2021-10-15',
       },
       {
         id: 2,
@@ -19,8 +19,8 @@ module.exports = {
         order_total: 10,
         rate: true,
         order_status: 'confirmed',
-        start_date: '2021-10-09 03:51:46',
-        end_date: '2021-10-12 03:51:46',
+        start_date: '2021-10-12',
+        end_date: '2021-10-13',
       },
       {
         id: 3,
@@ -29,8 +29,8 @@ module.exports = {
         order_total: 10,
         rate: false,
         order_status: 'cancelled',
-        start_date: '2021-10-09 03:51:46',
-        end_date: '2021-10-13 03:51:46',
+        start_date: '2021-10-12',
+        end_date: '2021-10-13',
       },
     ],
 
