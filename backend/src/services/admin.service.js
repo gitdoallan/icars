@@ -71,9 +71,15 @@ const deleteUserById = async (id) => {
 };
 
 const createNewBike = async (bike) => {
-  const result = await Model.bikes.create(bike);
-  if (!result) throw new ErrorHandler(400, 'Bike could not be created');
-  return result;
+  const transaction = await Model.sequelize.transaction();
+  try {
+    const result = await Model.bikes.create(bike, { transaction });
+    await transaction.commit();
+    return result;
+  } catch (err) {
+    await transaction.rollback();
+    throw new ErrorHandler(500, err.message);
+  }
 };
 
 module.exports = {
