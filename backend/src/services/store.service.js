@@ -2,6 +2,7 @@ const { Op } = require('sequelize');
 const { ErrorHandler } = require('../utils/errorHandler');
 const Model = require('../database/models');
 const { ONE_DAY } = require('../utils/magicNumbers');
+require('express-async-errors');
 
 const getAllBikes = async () => {
   const result = await Model.bikes.findAll({
@@ -115,13 +116,31 @@ const getAllFilteredBikes = async (filter) => {
         where: filter.color ? { id: filter.color } : {},
       },
     ],
-    where: {
-      rating: {
-        [Op.gte]: filter.rating,
+    excludes: [
+      {
+        model: Model.reservations,
+        attributes: ['id'],
+        where: {
+          [Op.or]: [
+            {
+              startDate: {
+                [Op.between]: [filter.startDate, filter.endDate],
+              },
+            },
+            {
+              endDate: {
+                [Op.between]: [filter.startDate, filter.endDate],
+              },
+            },
+          ],
+          orderStatus: {
+            [Op.not]: 'cancelled',
+          },
+        },
       },
-    },
+    ],
+    having: { rating: { [Op.gte]: filter.rating } },
   });
-  if (!result.length) throw new ErrorHandler(400, 'No bikes found');
   return result;
 };
 

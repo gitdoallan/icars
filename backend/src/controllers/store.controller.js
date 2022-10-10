@@ -29,10 +29,10 @@ const getBikeById = async (req, res) => {
 
 const getAllFilteredBikes = async (req, res) => {
   const {
-    location, model, color, rating,
+    location, model, color, rating, startDate, endDate,
   } = req.body;
   const result = await storeService.getAllFilteredBikes({
-    location, model, color, rating,
+    location, model, color, rating, startDate, endDate,
   });
   res.status(200).json(result);
 };

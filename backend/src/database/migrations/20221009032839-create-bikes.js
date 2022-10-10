@@ -53,10 +53,6 @@ module.exports = {
         type: Sequelize.FLOAT,
         defaultValue: 0,
       },
-      stock: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-      },
     });
   },
   down: async (queryInterface) => {

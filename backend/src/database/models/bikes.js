@@ -8,7 +8,6 @@ module.exports = (sequelize, DataTypes) => {
     image: DataTypes.STRING,
     price: DataTypes.DECIMAL,
     rating: DataTypes.FLOAT,
-    stock: DataTypes.INTEGER,
   }, {
     timestamps: false,
     tableName: 'bikes',

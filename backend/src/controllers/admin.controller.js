@@ -17,4 +17,16 @@ const deleteUserById = async (req, res) => {
   res.status(200).json({ message: 'User deleted' });
 };
 
-module.exports = { listAllReservations, getAllReservationsByUserId, deleteUserById };
+const createNewBike = async (req, res) => {
+  const {
+    modelId, colorId, locationId, image, price, imageUpload,
+  } = req.body;
+  const result = await adminService.createNewBike({
+    modelId, colorId, locationId, image, price, imageUpload,
+  });
+  res.status(200).json(result);
+};
+
+module.exports = {
+  listAllReservations, getAllReservationsByUserId, deleteUserById, createNewBike,
+};
