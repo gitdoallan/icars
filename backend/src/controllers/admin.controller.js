@@ -42,7 +42,7 @@ const bikeImageUploader = async (req, res) => {
         cb(new Error('Invalid file type'));
       }
       file.ext = path.extname(originalname);
-      cb(null, `${file.name}.${file.ext}`);
+      cb(null, `${file.name}${file.ext}`);
     },
   });
   const upload = multer({ storage });
