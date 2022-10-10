@@ -21,6 +21,8 @@ const getAllBikes = async () => {
 };
 
 const isBikeAvailable = async ({ id, startDate, endDate }) => {
+  console.log('isBikeAvailable');
+  console.log(startDate);
   const result = await Model.bikes.findOne({
     where: { id },
     attributes: ['id'],
@@ -79,8 +81,8 @@ const rentBike = async ({
 }) => {
   await isBikeAvailable({ id: bikeId, startDate, endDate });
   const { price } = await getBikeById(bikeId);
-  const calcEndDate = new Date(endDate).getTime();
-  const calcStartDate = new Date(startDate).getTime();
+  const calcEndDate = new Date(endDate.split('T')[0]).getTime();
+  const calcStartDate = new Date(startDate.split('T')[0]).getTime();
   const orderTotal = ((calcEndDate - calcStartDate) / ONE_DAY) * +price;
   const transaction = await Model.reservations.sequelize.transaction();
   try {

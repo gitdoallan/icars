@@ -6,8 +6,8 @@ export const rentBike = async ({ id, startDate, endDate }) => {
     `${API_URL}/store/bike/rent`,
     {
       id,
-      startDate: new Date(startDate).setHours(0, 0, 0, 0),
-      endDate: new Date(endDate).setHours(0, 0, 0, 0),
+      startDate,
+      endDate,
     },
     { withCredentials: true },
   );
