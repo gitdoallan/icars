@@ -15,6 +15,8 @@ module.exports = {
           key: 'id',
         },
         field: 'user_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
       },
       bikeId: {
         allowNull: false,
@@ -24,6 +26,8 @@ module.exports = {
           key: 'id',
         },
         field: 'bike_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
       },
       orderTotal: {
         allowNull: false,

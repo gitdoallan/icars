@@ -8,5 +8,6 @@ router.use(verifyAdminToken);
 
 router.get('/', adminController.listAllReservations);
 router.get('/user/:id', adminController.getAllReservationsByUserId);
+router.delete('/user/:id', adminController.deleteUserById);
 
 module.exports = router;

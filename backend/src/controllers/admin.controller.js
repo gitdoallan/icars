@@ -11,4 +11,10 @@ const getAllReservationsByUserId = async (req, res) => {
   res.status(200).json(result);
 };
 
-module.exports = { listAllReservations, getAllReservationsByUserId };
+const deleteUserById = async (req, res) => {
+  const { id } = req.params;
+  await adminService.deleteUserById(id);
+  res.status(200).json({ message: 'User deleted' });
+};
+
+module.exports = { listAllReservations, getAllReservationsByUserId, deleteUserById };

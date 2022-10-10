@@ -60,4 +60,16 @@ const getAllReservationsByUserId = async (id) => {
   return result;
 };
 
-module.exports = { listAllReservations, getAllReservationsByUserId };
+const deleteUserById = async (id) => {
+  console.log('deleteUserById', id);
+  const result = await Model.users.destroy({
+    where: {
+      id,
+    },
+  });
+  console.log(result);
+  if (!result) throw new ErrorHandler(404, 'No user found');
+  return result;
+};
+
+module.exports = { listAllReservations, getAllReservationsByUserId, deleteUserById };
