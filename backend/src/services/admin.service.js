@@ -29,6 +29,21 @@ const listAllReservations = async () => {
   return result;
 };
 
+const updateUserById = async (id, user) => {
+  const transaction = await Model.sequelize.transaction();
+  try {
+    const result = await Model.users.update(user, {
+      where: { id },
+      transaction,
+    });
+    if (!result) throw new ErrorHandler(404, 'User not found');
+    await transaction.commit();
+  } catch (err) {
+    await transaction.rollback();
+    throw new ErrorHandler(500, err.message);
+  }
+};
+
 const getAllReservationsByUserId = async (id) => {
   const result = await Model.reservations.findAll({
     attributes: ['id', 'orderTotal', 'startDate', 'endDate', 'orderStatus'],
@@ -119,6 +134,7 @@ const updateBikeById = async (id, bike) => {
 module.exports = {
   listAllReservations,
   getAllReservationsByUserId,
+  updateUserById,
   deleteUserById,
   createNewBike,
   deleteBikeById,

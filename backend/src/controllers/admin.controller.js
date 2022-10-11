@@ -8,6 +8,14 @@ const listAllReservations = async (_req, res) => {
   res.status(200).json(result);
 };
 
+const updateUserById = async (req, res) => {
+  const { id } = req.params;
+  const { name, email } = req.body;
+  const user = { name, email };
+  await adminService.updateUserById(id, user);
+  res.status(200).json({ message: 'User updated successfully' });
+};
+
 const getAllReservationsByUserId = async (req, res) => {
   const { id } = req.params;
   const result = await adminService.getAllReservationsByUserId(id);
@@ -72,6 +80,7 @@ const bikeImageUploader = async (req, res) => {
 module.exports = {
   listAllReservations,
   getAllReservationsByUserId,
+  updateUserById,
   deleteUserById,
   bikeImageUploader,
   createNewBike,
