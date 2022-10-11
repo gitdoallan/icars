@@ -30,6 +30,12 @@ const createNewBike = async (req, res) => {
   res.status(200).json(result);
 };
 
+const deleteBikeById = async (req, res) => {
+  const { id } = req.params;
+  await adminService.deleteBikeById(id);
+  res.status(200).json({ message: 'Bike deleted' });
+};
+
 const bikeImageUploader = async (req, res) => {
   const allowedMimeTypes = ['image/jpeg', 'image/jpg'];
   const file = { name: uuid.v4() };
@@ -53,5 +59,10 @@ const bikeImageUploader = async (req, res) => {
 };
 
 module.exports = {
-  listAllReservations, getAllReservationsByUserId, deleteUserById, bikeImageUploader, createNewBike,
+  listAllReservations,
+  getAllReservationsByUserId,
+  deleteUserById,
+  bikeImageUploader,
+  createNewBike,
+  deleteBikeById,
 };

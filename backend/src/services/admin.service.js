@@ -66,7 +66,7 @@ const deleteUserById = async (id) => {
       id,
     },
   });
-  if (!result) throw new ErrorHandler(404, 'No user found');
+  if (!result) throw new ErrorHandler(404, 'User not found');
   return result;
 };
 
@@ -82,6 +82,27 @@ const createNewBike = async (bike) => {
   }
 };
 
+const deleteBikeById = async (id) => {
+  const transaction = await Model.sequelize.transaction();
+  try {
+    const result = await Model.bikes.destroy({
+      where: {
+        id,
+      },
+      transaction,
+    });
+    await transaction.commit();
+    return result;
+  } catch (err) {
+    await transaction.rollback();
+    throw new ErrorHandler(500, err.message);
+  }
+};
+
 module.exports = {
-  listAllReservations, getAllReservationsByUserId, deleteUserById, createNewBike,
+  listAllReservations,
+  getAllReservationsByUserId,
+  deleteUserById,
+  createNewBike,
+  deleteBikeById,
 };
