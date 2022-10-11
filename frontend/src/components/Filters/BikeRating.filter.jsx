@@ -1,6 +1,7 @@
-import { TextField, Autocomplete, Stack } from '@mui/material';
+import { TextField, Autocomplete } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { setRating } from 'redux/slices';
+import * as S from './styles';
 
 export function BikeRatingFilter() {
   const dispatch = useDispatch();
@@ -21,17 +22,16 @@ export function BikeRatingFilter() {
   };
 
   return (
-    <Stack spacing={1} sx={{ width: 300 }}>
+    <S.Filter>
       <Autocomplete
         {...defaultProps}
-        includeInputInList
-        disableClearable
         defaultValue="Show All"
+        disableClearable
         onChange={(_e, newValue) => handleChange(newValue)}
         renderInput={(params) => (
           <TextField {...params} label="Filter by Rating" variant="standard" />
         )}
       />
-    </Stack>
+    </S.Filter>
   );
 }
