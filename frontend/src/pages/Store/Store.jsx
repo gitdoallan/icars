@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
 import { StatusMessages } from 'components/StatusMessages';
 import { BikesCard } from 'components/Cards';
 import { BikesCardSkeleton } from 'components/Skeletons';
+import { DatePicker } from 'components/Forms';
 import { getAllFilteredBikes } from 'api';
 import * as S from './styles';
 
@@ -11,13 +13,16 @@ export function Store() {
   const [bikesList, setBikesList] = useState([]);
   const [status, setStatus] = useState({ status: false });
   const [filter, setFilter] = useState({ rating: 0 });
+  const { selectedDates } = useSelector((state) => state);
   const skeletonArray = Array.from(Array(6).keys());
 
+  const allFilters = { ...filter, ...selectedDates };
+
   useEffect(() => {
-    getAllFilteredBikes(filter)
+    getAllFilteredBikes(allFilters)
       .then((res) => setBikesList(res))
       .catch((error) => setStatus({ status: true, message: error.message, type: 'error' }));
-  }, [filter]);
+  }, [filter, selectedDates]);
 
   console.log(bikesList);
 
@@ -67,9 +72,7 @@ export function Store() {
 
       <div>
         <h2>Filter by Date</h2>
-        <button type="button" onClick={() => setFilter((prev) => ({ ...prev, startDate: undefined }))}>All</button>
-        <button type="button" onClick={() => setFilter((prev) => ({ ...prev, startDate: new Date('2022-10-10'), endDate: new Date('2023-01-02') }))}>Date 1</button>
-        <button type="button" onClick={() => setFilter((prev) => ({ ...prev, startDate: new Date('2023-02-01'), endDate: new Date('2023-02-02') }))}>Date 2</button>
+        <DatePicker />
       </div>
 
       <StatusMessages {...status} />
