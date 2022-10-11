@@ -9,7 +9,7 @@ export function BikeRatingFilter() {
     const value = `${curr + 1}+ stars`;
     acc = [...acc, value];
     return acc;
-  }, ['Show All']);
+  });
 
   const defaultProps = {
     options: ratingOptions,
@@ -17,7 +17,7 @@ export function BikeRatingFilter() {
   };
 
   const handleChange = (value) => {
-    const rating = Number(value.split('+')[0]) || 0;
+    const rating = value ? Number(value.split('+')[0]) : 0;
     dispatch(setRating(rating));
   };
 
@@ -25,11 +25,9 @@ export function BikeRatingFilter() {
     <S.Filter>
       <Autocomplete
         {...defaultProps}
-        defaultValue="Show All"
-        disableClearable
         onChange={(_e, newValue) => handleChange(newValue)}
         renderInput={(params) => (
-          <TextField {...params} label="Filter by Rating" variant="standard" />
+          <TextField {...params} label="Rating" variant="standard" />
         )}
       />
     </S.Filter>

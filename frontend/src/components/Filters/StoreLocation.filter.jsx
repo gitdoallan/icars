@@ -4,11 +4,11 @@ import { TextField, Autocomplete } from '@mui/material';
 // import { setRating } from 'redux/slices';
 import * as S from './styles';
 
-export function BikeColorFilter({ bikeColors }) {
+export function StoreLocationFilter({ storeLocation }) {
   // const dispatch = useDispatch();
   const defaultValue = [{ id: 0, name: 'Show All' }];
   const defaultProps = {
-    options: bikeColors || defaultValue,
+    options: storeLocation || defaultValue,
     getOptionLabel: (option) => option.name,
   };
 
@@ -22,20 +22,20 @@ export function BikeColorFilter({ bikeColors }) {
         {...defaultProps}
         onChange={(_e, newValue) => handleChange(newValue)}
         renderInput={(params) => (
-          <TextField {...params} label="Color" variant="standard" />
+          <TextField {...params} label="Location" variant="standard" />
         )}
       />
     </S.Filter>
   );
 }
 
-BikeColorFilter.propTypes = {
-  bikeColors: propTypes.arrayOf(propTypes.shape({
+StoreLocationFilter.propTypes = {
+  storeLocation: propTypes.arrayOf(propTypes.shape({
     id: propTypes.number,
     name: propTypes.string,
   })),
 };
 
-BikeColorFilter.defaultProps = {
-  bikeColors: [],
+StoreLocationFilter.defaultProps = {
+  storeLocation: [],
 };
