@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
 import { BikeDetailsCard } from 'components/Cards';
-import { DatePicker } from 'components/Forms';
+import { DatePicker, RentNowForm } from 'components/Forms';
 import { StatusMessages } from 'components/StatusMessages';
 import { getBikeById, API_URL } from 'api';
 import * as S from './styles';
@@ -33,7 +33,8 @@ export function BikeDetails() {
           />
           <S.CardDetails>
             <BikeDetailsCard {...bike} />
-            <DatePicker {...bike} />
+            <DatePicker />
+            <RentNowForm id={bike.id} />
           </S.CardDetails>
         </S.BikeDetailsContainer>
       </>

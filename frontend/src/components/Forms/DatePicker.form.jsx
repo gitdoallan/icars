@@ -1,53 +1,32 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import propTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { setStartDate, setEndDate } from 'redux/slices';
 import dayjs from 'dayjs';
 import { TextField } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
-import { StatusMessages } from 'components/StatusMessages';
-import { isBikeAvailable, rentBike } from 'api';
 import * as S from './styles';
 
-export function DatePicker({ id }) {
-  const [startDate, setStartDate] = useState(dayjs().toDate());
-  const [endDate, setEndDate] = useState(dayjs().add(1, 'day').toDate());
-  const [available, setAvailable] = useState(false);
-
-  const navigate = useNavigate();
+export function DatePicker() {
+  const dispatch = useDispatch();
+  const { startDate, endDate } = useSelector((state) => state.selectedDates);
   const formattedDate = (date) => dayjs(date).format('YYYY-MM-DD');
 
   const handleStartDateChange = (newValue) => {
     const formattedValueDate = formattedDate(newValue);
-    setStartDate(formattedValueDate);
+    dispatch(setStartDate(formattedValueDate));
     if (dayjs(formattedValueDate).toDate() >= dayjs(endDate).toDate()) {
-      setEndDate(dayjs(formattedValueDate).add(1, 'day').toDate());
+      dispatch(setEndDate(dayjs(formattedValueDate).add(1, 'day').toDate()));
     }
   };
 
   const handleEndDateChange = (newValue) => {
     const formattedValueDate = formattedDate(newValue);
-    setEndDate(formattedValueDate);
+    dispatch(setEndDate(formattedValueDate));
     if (dayjs(formattedValueDate).toDate() <= dayjs(startDate).toDate()) {
-      setStartDate(dayjs(formattedValueDate).subtract(1, 'day').toDate());
+      dispatch(setStartDate(dayjs(formattedValueDate).subtract(1, 'day').toDate()));
     }
   };
-
-  const handleRentBike = async () => {
-    try {
-      const { orderId } = await rentBike({ id, startDate, endDate });
-      navigate(`/reservations/${orderId}`);
-    } catch (err) {
-      setAvailable(false);
-    }
-  };
-
-  useEffect(() => {
-    isBikeAvailable({ id, startDate, endDate })
-      .then((response) => available !== response && setAvailable(response))
-      .catch(() => setAvailable(false));
-  }, [startDate, endDate]);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -67,22 +46,6 @@ export function DatePicker({ id }) {
           renderInput={(params) => <TextField sx={{ width: { sm: '50%', md: '50%' }, marginLeft: 0.5 }} {...params} />}
         />
       </S.Stack>
-      <S.BookNowButton
-        type="button"
-        disabled={!available}
-        onClick={handleRentBike}
-      >
-        Book now
-      </S.BookNowButton>
-      <StatusMessages
-        status={!available}
-        message="This bike is not available for the selected dates"
-        type="error"
-      />
     </LocalizationProvider>
   );
 }
-
-DatePicker.propTypes = {
-  id: propTypes.number.isRequired,
-};

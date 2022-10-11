@@ -7,10 +7,11 @@ export function CreateNewBike() {
   const [modelId, setModelId] = useState('');
   const [colorId, setColorId] = useState('');
   const [locationId, setLocationId] = useState('');
+  const [image, setImage] = useState('');
   const [price, setPrice] = useState('');
   const [selectedFile, setSelectedFile] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleUpload = (event) => {
     event.preventDefault();
     const formData = new FormData();
     formData.append('image', selectedFile);
@@ -24,13 +25,26 @@ export function CreateNewBike() {
       .catch((error) => console.log(error));
   };
 
-  console.log(selectedFile);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios.post('http://localhost:3011/admin/bike/create', {
+      modelId,
+      colorId,
+      locationId,
+      image,
+      price,
+    }, {
+      withCredentials: true,
+    })
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div>
       <Header />
       <h1>Create New Bike</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="modelId">
           Model Id:
           <input onChange={(e) => setModelId(e.target.value)} value={modelId} type="number" id="modelId" />
@@ -43,6 +57,10 @@ export function CreateNewBike() {
           Location Id:
           <input onChange={(e) => setLocationId(e.target.value)} value={locationId} type="number" id="locationId" />
         </label>
+        <label htmlFor="image">
+          Image:
+          <input onChange={(e) => setImage(e.target.value)} value={image} type="text" id="image" />
+        </label>
         <label htmlFor="price">
           Price:
           <input onChange={(e) => setPrice(e.target.value)} value={price} type="number" id="price" />
@@ -50,7 +68,7 @@ export function CreateNewBike() {
         <button type="submit">Submit</button>
       </form>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleUpload}>
         <label htmlFor="imageUpload">
           Image:
           <input
