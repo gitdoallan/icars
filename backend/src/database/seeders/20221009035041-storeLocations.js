@@ -66,10 +66,6 @@ module.exports = {
         id: 19,
         name: 'Apopka',
       },
-      {
-        id: 20,
-        name: 'Casselberry',
-      },
     ],
 
     {},
