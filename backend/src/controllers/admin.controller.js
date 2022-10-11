@@ -36,6 +36,17 @@ const deleteBikeById = async (req, res) => {
   res.status(200).json({ message: 'Bike deleted' });
 };
 
+const updateBikeById = async (req, res) => {
+  const { id } = req.params;
+  const {
+    modelId, colorId, locationId, image, price,
+  } = req.body;
+  await adminService.updateBikeById(id, {
+    modelId, colorId, locationId, image, price,
+  });
+  res.status(200).json({ message: 'Bike updated' });
+};
+
 const bikeImageUploader = async (req, res) => {
   const allowedMimeTypes = ['image/jpeg', 'image/jpg'];
   const file = { name: uuid.v4() };
@@ -65,4 +76,5 @@ module.exports = {
   bikeImageUploader,
   createNewBike,
   deleteBikeById,
+  updateBikeById,
 };

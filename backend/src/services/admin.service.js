@@ -99,10 +99,28 @@ const deleteBikeById = async (id) => {
   }
 };
 
+const updateBikeById = async (id, bike) => {
+  const transaction = await Model.sequelize.transaction();
+  try {
+    const result = await Model.bikes.update(bike, {
+      where: {
+        id,
+      },
+      transaction,
+    });
+    await transaction.commit();
+    return result;
+  } catch (err) {
+    await transaction.rollback();
+    throw new ErrorHandler(500, err.message);
+  }
+};
+
 module.exports = {
   listAllReservations,
   getAllReservationsByUserId,
   deleteUserById,
   createNewBike,
   deleteBikeById,
+  updateBikeById,
 };

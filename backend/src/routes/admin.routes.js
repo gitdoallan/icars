@@ -12,5 +12,6 @@ router.delete('/user/:id', adminController.deleteUserById);
 router.post('/bike/upload', adminController.bikeImageUploader);
 router.post('/bike/create', adminController.createNewBike);
 router.delete('/bike/:id', adminController.deleteBikeById);
+router.put('/bike/:id', adminController.updateBikeById);
 
 module.exports = router;
