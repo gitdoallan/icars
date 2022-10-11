@@ -156,46 +156,26 @@ const getAllFilteredBikes = async (filter) => {
 };
 
 const getAllFilters = async () => {
-  const result = await Model.bikes.findAll({
-    attributes: ['id'],
-    include: [
-      {
-        model: Model.storeLocations,
-        attributes: ['id', 'name'],
-        sort: [['name', 'ASC']],
-      },
-      {
-        model: Model.bikeModels,
-        attributes: ['id', 'name'],
-        sort: [['name', 'ASC']],
-      },
-      {
-        model: Model.bikeColors,
-        attributes: ['id', 'name'],
-        sort: [['name', 'ASC']],
-      },
-    ],
-  });
+  const result = await Promise.all([
+    Model.storeLocations.findAll({
+      attributes: ['id', 'name'],
+      order: [['name', 'ASC']],
+    }),
+    Model.bikeModels.findAll({
+      attributes: ['id', 'name'],
+      order: [['name', 'ASC']],
+    }),
+    Model.bikeColors.findAll({
+      attributes: ['id', 'name'],
+      order: [['name', 'ASC']],
+    }),
+  ]);
   if (!result) throw new ErrorHandler(400, 'Error while getting filters');
-
-  const reduceFilters = result.reduce((acc, curr) => {
-    const cases = {
-      storeLocations: [...acc.storeLocations, curr.storeLocation],
-      bikeModels: [...acc.bikeModels, curr.bikeModel],
-      bikeColors: [...acc.bikeColors, curr.bikeColor],
-    };
-    Object.keys(cases).forEach((key) => {
-      acc[key] = cases[key].reduce((casesAcc, currCase) => {
-        if (!casesAcc.some((el) => el.id === currCase.id)) {
-          casesAcc = [...casesAcc, currCase];
-        }
-        return casesAcc;
-      }, []);
-    });
-    return acc;
-  }, { storeLocations: [], bikeModels: [], bikeColors: [] });
-
-  return reduceFilters;
+  return {
+    storeLocations: result[0],
+    bikeModels: result[1],
+    bikeColors: result[2],
+  };
 };
 
 module.exports = {
