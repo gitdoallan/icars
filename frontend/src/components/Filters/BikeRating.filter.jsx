@@ -9,7 +9,7 @@ export function BikeRatingFilter() {
     const value = `${curr + 1}+ stars`;
     acc = [...acc, value];
     return acc;
-  });
+  }, []);
 
   const defaultProps = {
     options: ratingOptions,
