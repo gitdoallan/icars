@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 const initialState = defineState({
   startDate: dayjs().toDate(),
   endDate: dayjs().add(1, 'day').toDate(),
+  rating: 0,
 })('filters');
 
 export const filtersSlice = createSlice({
@@ -19,7 +20,11 @@ export const filtersSlice = createSlice({
       state.endDate = payload;
       return state;
     },
+    setRating: (state, { payload }) => {
+      state.rating = payload;
+      return state;
+    },
   },
 });
 
-export const { setStartDate, setEndDate } = filtersSlice.actions;
+export const { setStartDate, setEndDate, setRating } = filtersSlice.actions;

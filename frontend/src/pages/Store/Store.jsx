@@ -5,7 +5,7 @@ import { Footer } from 'components/Footer';
 import { StatusMessages } from 'components/StatusMessages';
 import { BikesCard } from 'components/Cards';
 import { BikesCardSkeleton } from 'components/Skeletons';
-import { DatePickerFilter } from 'components/Filters';
+import { DatePickerFilter, BikeRatingFilter } from 'components/Filters';
 import { getAllFilteredBikes } from 'api';
 import * as S from './styles';
 
@@ -30,12 +30,7 @@ export function Store() {
       <S.Title>Bike Listings</S.Title>
       <div>
         <h2>Filter by Rating</h2>
-        <button type="button" onClick={() => setFilter((prev) => ({ ...prev, rating: 0 }))}>All</button>
-        <button type="button" onClick={() => setFilter((prev) => ({ ...prev, rating: 1 }))}>1+</button>
-        <button type="button" onClick={() => setFilter((prev) => ({ ...prev, rating: 2 }))}>2+</button>
-        <button type="button" onClick={() => setFilter((prev) => ({ ...prev, rating: 3 }))}>3+</button>
-        <button type="button" onClick={() => setFilter((prev) => ({ ...prev, rating: 4 }))}>4+</button>
-        <button type="button" onClick={() => setFilter((prev) => ({ ...prev, rating: 5 }))}>5+</button>
+        <BikeRatingFilter />
       </div>
 
       <div>
