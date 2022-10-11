@@ -22,7 +22,6 @@ const getAllBikes = async () => {
 };
 
 const isBikeAvailable = async ({ id, startDate, endDate }) => {
-  console.log(id, 'START', startDate, 'END', endDate);
   const result = await Model.bikes.findOne({
     where: { id },
     attributes: ['id'],
