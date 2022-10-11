@@ -37,10 +37,16 @@ const getAllFilteredBikes = async (req, res) => {
   res.status(200).json(result);
 };
 
+const getAllFilters = async (_req, res) => {
+  const result = await storeService.getAllFilters();
+  res.status(200).json(result);
+};
+
 module.exports = {
   getAllBikes,
   isBikeAvailable,
   rentBike,
   getBikeById,
   getAllFilteredBikes,
+  getAllFilters,
 };
