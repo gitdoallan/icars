@@ -8,7 +8,7 @@ import { BikesCardSkeleton } from 'components/Skeletons';
 import { getAllFilteredBikes, getAllFilters } from 'api';
 
 import {
-  DatePickerFilter, BikeRatingFilter, BikeColorFilter, StoreLocationFilter,
+  DatePickerFilter, BikeRatingFilter, BikeColorFilter, StoreLocationFilter, BikeModelFilter,
 } from 'components/Filters';
 
 import * as S from './styles';
@@ -32,7 +32,7 @@ export function Store() {
       .catch((error) => setStatus({ status: true, message: error.message, type: 'error' }));
   }, []);
 
-  console.log(filterList);
+  console.log(bikesList);
 
   return (
     <>
@@ -42,6 +42,7 @@ export function Store() {
         <BikeRatingFilter />
         <BikeColorFilter bikeColors={filterList.bikeColors} />
         <StoreLocationFilter storeLocation={filterList.storeLocations} />
+        <BikeModelFilter bikeModels={filterList.bikeModels} />
         <DatePickerFilter />
       </div>
 

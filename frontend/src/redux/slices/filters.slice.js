@@ -6,6 +6,9 @@ const initialState = defineState({
   startDate: dayjs().toDate(),
   endDate: dayjs().add(1, 'day').toDate(),
   rating: 0,
+  bikeModel: 0,
+  bikeColor: 0,
+  storeLocation: 0,
 })('filters');
 
 export const filtersSlice = createSlice({
@@ -24,7 +27,21 @@ export const filtersSlice = createSlice({
       state.rating = payload;
       return state;
     },
+    setBikeModel: (state, { payload }) => {
+      state.bikeModel = payload;
+      return state;
+    },
+    setBikeColor: (state, { payload }) => {
+      state.bikeColor = payload;
+      return state;
+    },
+    setStoreLocation: (state, { payload }) => {
+      state.storeLocation = payload;
+      return state;
+    },
   },
 });
 
-export const { setStartDate, setEndDate, setRating } = filtersSlice.actions;
+export const {
+  setStartDate, setEndDate, setRating, setBikeModel, setBikeColor, setStoreLocation,
+} = filtersSlice.actions;

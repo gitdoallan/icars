@@ -1,19 +1,20 @@
 import propTypes from 'prop-types';
 import { TextField, Autocomplete } from '@mui/material';
-// import { useDispatch } from 'react-redux';
-// import { setRating } from 'redux/slices';
+import { useDispatch } from 'react-redux';
+import { setBikeColor } from 'redux/slices';
 import * as S from './styles';
 
 export function BikeColorFilter({ bikeColors }) {
-  // const dispatch = useDispatch();
-  const defaultValue = [{ id: 0, name: 'Show All' }];
+  const dispatch = useDispatch();
+  const defaultValue = [{ id: 0, name: 'Loading...' }];
   const defaultProps = {
     options: bikeColors || defaultValue,
     getOptionLabel: (option) => option.name,
   };
 
   const handleChange = (value) => {
-    console.log(value);
+    const color = value ? value.id : 0;
+    dispatch(setBikeColor(color));
   };
 
   return (
