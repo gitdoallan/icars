@@ -5,7 +5,7 @@ import { Footer } from 'components/Footer';
 import { StatusMessages } from 'components/StatusMessages';
 import { BikesCard } from 'components/Cards';
 import { BikesCardSkeleton } from 'components/Skeletons';
-import { DatePicker } from 'components/Forms';
+import { DatePickerForm } from 'components/Forms';
 import { getAllFilteredBikes } from 'api';
 import * as S from './styles';
 
@@ -23,8 +23,6 @@ export function Store() {
       .then((res) => setBikesList(res))
       .catch((error) => setStatus({ status: true, message: error.message, type: 'error' }));
   }, [filter, selectedDates]);
-
-  console.log(bikesList);
 
   return (
     <>
@@ -72,7 +70,7 @@ export function Store() {
 
       <div>
         <h2>Filter by Date</h2>
-        <DatePicker />
+        <DatePickerForm />
       </div>
 
       <StatusMessages {...status} />
