@@ -121,23 +121,24 @@ const listAllReservationsBetweenDates = async (filter) => {
 };
 
 const getAllFilteredBikes = async (filter) => {
+  console.log('GET FILTERED BIKES', filter);
   const result = await Model.bikes.findAll({
     attributes: ['id', 'image', 'price', 'rating'],
     include: [
       {
         model: Model.storeLocations,
-        attributes: ['name'],
-        where: filter.location ? { id: filter.location } : {},
+        attributes: ['id', 'name'],
+        where: filter.storeLocation ? { id: filter.storeLocation } : {},
       },
       {
         model: Model.bikeModels,
-        attributes: ['name'],
-        where: filter.model ? { id: filter.model } : {},
+        attributes: ['id', 'name'],
+        where: filter.bikeModel ? { id: filter.bikeModel } : {},
       },
       {
         model: Model.bikeColors,
-        attributes: ['name'],
-        where: filter.color ? { id: filter.color } : {},
+        attributes: ['id', 'name'],
+        where: filter.bikeColor ? { id: filter.bikeColor } : {},
       },
     ],
     having: { rating: { [Op.gte]: filter.rating } },

@@ -31,16 +31,8 @@ module.exports = {
         name: 'Clermont',
       },
       {
-        id: 8,
-        name: 'Oviedo',
-      },
-      {
         id: 9,
         name: 'Winter Garden',
-      },
-      {
-        id: 10,
-        name: 'Apopka',
       },
       {
         id: 11,
@@ -65,10 +57,6 @@ module.exports = {
       {
         id: 16,
         name: 'Mount Dora',
-      },
-      {
-        id: 17,
-        name: 'Oviedo',
       },
       {
         id: 18,
