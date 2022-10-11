@@ -6,7 +6,7 @@ export const Title = ({ children }) => (
       fontSize: '2rem',
       fontWeight: 'bold',
       textAlign: 'center',
-      margin: { xs: '2rem 0', md: '1rem 0' },
+      margin: { xs: '2rem 0 1rem 0', md: '1rem 0' },
     }}
   >
     {children}
@@ -20,6 +20,32 @@ export const StoreContainer = ({ children }) => (
     margin="0 auto"
     paddingX={2}
     paddingY={{ xs: 2, sm: 3, md: 4 }}
+    display="flex"
+    flexWrap="wrap"
+    justifyContent="space-around"
+  >
+    {children}
+  </Box>
+);
+
+export const FiltersContainer = ({ children }) => (
+  <Box
+    maxWidth={{ sm: 400, lg: 1200 }}
+    width="100%"
+    margin="0 auto"
+    display="flex"
+    flexWrap="wrap"
+    justifyContent="space-around"
+  >
+    {children}
+  </Box>
+);
+
+export const DatePickerContainer = ({ children }) => (
+  <Box
+    maxWidth={{ sm: 400, md: 1200 }}
+    width="100%"
+    margin="0 auto"
     display="flex"
     flexWrap="wrap"
     justifyContent="space-around"

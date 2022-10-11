@@ -14,7 +14,7 @@ import {
 import * as S from './styles';
 
 export function Store() {
-  const [bikesList, setBikesList] = useState([]);
+  const [bikesList, setBikesList] = useState();
   const [status, setStatus] = useState({ status: false });
   const [filterList, setFilterList] = useState({ rating: 0 });
   const { filters } = useSelector((state) => state);
@@ -36,14 +36,13 @@ export function Store() {
     <>
       <Header />
       <S.Title>Bike Listings</S.Title>
-      <div>
+      <S.FiltersContainer>
+        <DatePickerFilter size="small" />
         <BikeRatingFilter />
         <BikeColorFilter bikeColors={filterList.bikeColors} />
         <StoreLocationFilter storeLocation={filterList.storeLocations} />
         <BikeModelFilter bikeModels={filterList.bikeModels} />
-        <DatePickerFilter />
-      </div>
-
+      </S.FiltersContainer>
       <StatusMessages {...status} />
       <S.StoreContainer>
         {

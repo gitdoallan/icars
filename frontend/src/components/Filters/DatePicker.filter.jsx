@@ -1,3 +1,4 @@
+import propTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { setStartDate, setEndDate } from 'redux/slices';
 import dayjs from 'dayjs';
@@ -7,7 +8,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import * as S from './styles';
 
-export function DatePickerFilter() {
+export function DatePickerFilter({ size }) {
   const dispatch = useDispatch();
   const { startDate, endDate } = useSelector((state) => state.filters);
   const formattedDate = (date) => dayjs(date).format('YYYY-MM-DD');
@@ -36,16 +37,24 @@ export function DatePickerFilter() {
           inputFormat="MM/DD/YYYY"
           value={startDate}
           onChange={handleStartDateChange}
-          renderInput={(params) => <TextField sx={{ width: { sm: '50%', md: '50%' } }} {...params} />}
+          renderInput={(params) => <TextField size={size} sx={{ width: { sm: '50%', md: '50%' } }} {...params} />}
         />
         <MobileDatePicker
           label="Drop off date"
           inputFormat="MM/DD/YYYY"
           value={endDate}
           onChange={handleEndDateChange}
-          renderInput={(params) => <TextField sx={{ width: { sm: '50%', md: '50%' }, marginLeft: 0.5 }} {...params} />}
+          renderInput={(params) => <TextField size={size} sx={{ width: { sm: '50%', md: '50%' }, marginLeft: 0.5 }} {...params} />}
         />
       </S.Stack>
     </LocalizationProvider>
   );
 }
+
+DatePickerFilter.propTypes = {
+  size: propTypes.string,
+};
+
+DatePickerFilter.defaultProps = {
+  size: 'large',
+};

@@ -1,1 +1,3 @@
-export { Title, StoreContainer } from './Store.styles';
+export {
+  Title, StoreContainer, FiltersContainer, DatePickerContainer,
+} from './Store.styles';

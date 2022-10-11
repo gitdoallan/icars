@@ -25,9 +25,10 @@ export function BikeRatingFilter() {
     <S.Filter>
       <Autocomplete
         {...defaultProps}
+        disablePortal
         onChange={(_e, newValue) => handleChange(newValue)}
         renderInput={(params) => (
-          <TextField {...params} label="Rating" variant="standard" />
+          <TextField {...params} label="Rating" size="small" variant="standard" />
         )}
       />
     </S.Filter>
