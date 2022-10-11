@@ -5,8 +5,8 @@ import * as S from './styles';
 
 export function BikeRatingFilter() {
   const dispatch = useDispatch();
-  const ratingOptions = Array.from(Array(5).keys()).reduce((acc, i) => {
-    const value = `${i + 1}+ stars`;
+  const ratingOptions = Array.from(Array(5).keys()).reduce((acc, curr) => {
+    const value = `${curr + 1}+ stars`;
     acc = [...acc, value];
     return acc;
   }, ['Show All']);
