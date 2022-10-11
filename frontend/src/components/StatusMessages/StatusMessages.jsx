@@ -23,10 +23,11 @@ export function StatusMessages({ message, type, status }) {
 StatusMessages.propTypes = {
   message: propTypes.string,
   type: propTypes.string,
-  status: propTypes.bool.isRequired,
+  status: propTypes.bool,
 };
 
 StatusMessages.defaultProps = {
   message: '',
   type: 'error',
+  status: false,
 };

@@ -7,7 +7,7 @@ import { isBikeAvailable, rentBike } from 'api';
 import * as S from './styles';
 
 export function RentNowAction({ id }) {
-  const [available, setAvailable] = useState(false);
+  const [statusMessage, setStatusMessage] = useState({ status: false });
   const { startDate, endDate } = useSelector((state) => state.filters);
   const navigate = useNavigate();
 
@@ -16,30 +16,28 @@ export function RentNowAction({ id }) {
       const { orderId } = await rentBike({ id, startDate, endDate });
       navigate(`/reservations/${orderId}`);
     } catch (err) {
-      setAvailable(false);
+      setStatusMessage(false);
     }
   };
 
   useEffect(() => {
     isBikeAvailable({ id, startDate, endDate })
-      .then((response) => available !== response && setAvailable(response))
-      .catch(() => setAvailable(false));
+      .then(() => setStatusMessage({ status: false }))
+      .catch(({ response }) => setStatusMessage(
+        { status: true, message: response.data.message, type: 'error' },
+      ));
   }, [startDate, endDate]);
 
   return (
     <>
       <S.RentNowButton
         type="button"
-        disabled={!available}
+        disabled={statusMessage.status}
         onClick={handleRentBike}
       >
         Rent now
       </S.RentNowButton>
-      <StatusMessages
-        status={!available}
-        message="This bike is not available for the selected dates"
-        type="error"
-      />
+      <StatusMessages {...statusMessage} />
     </>
   );
 }

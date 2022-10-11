@@ -22,6 +22,7 @@ const getAllBikes = async () => {
 };
 
 const isBikeAvailable = async ({ id, startDate, endDate }) => {
+  console.log(id, 'START', startDate, 'END', endDate);
   const result = await Model.bikes.findOne({
     where: { id },
     attributes: ['id'],
@@ -49,7 +50,7 @@ const isBikeAvailable = async ({ id, startDate, endDate }) => {
       },
     ],
   });
-  if (result) throw new ErrorHandler(400, 'Bike is not available');
+  if (result) throw new ErrorHandler(400, 'Bike is not available!');
   return true;
 };
 
