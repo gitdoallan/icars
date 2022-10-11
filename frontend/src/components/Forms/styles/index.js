@@ -12,5 +12,3 @@ export {
   Link,
   LoadingButton,
 } from './Forms.styles';
-
-export { Stack } from './DatePicker.form.styles';

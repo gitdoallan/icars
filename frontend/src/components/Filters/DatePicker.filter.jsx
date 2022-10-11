@@ -7,7 +7,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import * as S from './styles';
 
-export function DatePickerForm() {
+export function DatePickerFilter() {
   const dispatch = useDispatch();
   const { startDate, endDate } = useSelector((state) => state.filters);
   const formattedDate = (date) => dayjs(date).format('YYYY-MM-DD');

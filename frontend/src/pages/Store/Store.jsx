@@ -5,7 +5,7 @@ import { Footer } from 'components/Footer';
 import { StatusMessages } from 'components/StatusMessages';
 import { BikesCard } from 'components/Cards';
 import { BikesCardSkeleton } from 'components/Skeletons';
-import { DatePickerForm } from 'components/Forms';
+import { DatePickerFilter } from 'components/Filters';
 import { getAllFilteredBikes } from 'api';
 import * as S from './styles';
 
@@ -70,7 +70,7 @@ export function Store() {
 
       <div>
         <h2>Filter by Date</h2>
-        <DatePickerForm />
+        <DatePickerFilter />
       </div>
 
       <StatusMessages {...status} />
