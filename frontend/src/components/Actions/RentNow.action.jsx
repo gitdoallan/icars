@@ -6,7 +6,7 @@ import { StatusMessages } from 'components/StatusMessages';
 import { isBikeAvailable, rentBike } from 'api';
 import * as S from './styles';
 
-export function RentNowForm({ id }) {
+export function RentNowAction({ id }) {
   const [available, setAvailable] = useState(false);
   const { startDate, endDate } = useSelector((state) => state.filters);
   const navigate = useNavigate();
@@ -28,13 +28,13 @@ export function RentNowForm({ id }) {
 
   return (
     <>
-      <S.BookNowButton
+      <S.RentNowButton
         type="button"
         disabled={!available}
         onClick={handleRentBike}
       >
         Rent now
-      </S.BookNowButton>
+      </S.RentNowButton>
       <StatusMessages
         status={!available}
         message="This bike is not available for the selected dates"
@@ -44,6 +44,6 @@ export function RentNowForm({ id }) {
   );
 }
 
-RentNowForm.propTypes = {
+RentNowAction.propTypes = {
   id: propTypes.number.isRequired,
 };

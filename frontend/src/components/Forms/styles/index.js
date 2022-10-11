@@ -13,4 +13,4 @@ export {
   LoadingButton,
 } from './Forms.styles';
 
-export { BookNowButton, Stack } from './DatePicker.form.styles';
+export { Stack } from './DatePicker.form.styles';
