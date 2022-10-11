@@ -96,6 +96,30 @@ const rentBike = async ({
   }
 };
 
+const listAllReservationsBetweenDates = async (filter) => {
+  const result = await Model.reservations.findAll({
+    attributes: ['bikeId'],
+    where: {
+      [Op.or]: [
+        {
+          startDate: {
+            [Op.between]: [filter.startDate, filter.endDate],
+          },
+        },
+        {
+          endDate: {
+            [Op.between]: [filter.startDate, filter.endDate],
+          },
+        },
+      ],
+      orderStatus: {
+        [Op.not]: 'cancelled',
+      },
+    },
+  });
+  return result;
+};
+
 const getAllFilteredBikes = async (filter) => {
   const result = await Model.bikes.findAll({
     attributes: ['id', 'image', 'price', 'rating'],
@@ -116,32 +140,18 @@ const getAllFilteredBikes = async (filter) => {
         where: filter.color ? { id: filter.color } : {},
       },
     ],
-    excludes: [
-      {
-        model: Model.reservations,
-        attributes: ['id'],
-        where: {
-          [Op.or]: [
-            {
-              startDate: {
-                [Op.between]: [filter.startDate, filter.endDate],
-              },
-            },
-            {
-              endDate: {
-                [Op.between]: [filter.startDate, filter.endDate],
-              },
-            },
-          ],
-          orderStatus: {
-            [Op.not]: 'cancelled',
-          },
-        },
-      },
-    ],
     having: { rating: { [Op.gte]: filter.rating } },
   });
-  return result;
+
+  const excludeFromResults = await listAllReservationsBetweenDates(filter);
+
+  const filteredResult = result.reduce((acc, bike) => {
+    if (!excludeFromResults.some((el) => el.bikeId === bike.id)) {
+      acc = [...acc, bike];
+    }
+    return acc;
+  }, []);
+  return filteredResult;
 };
 
 module.exports = {
