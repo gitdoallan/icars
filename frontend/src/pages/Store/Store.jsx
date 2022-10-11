@@ -13,16 +13,16 @@ export function Store() {
   const [bikesList, setBikesList] = useState([]);
   const [status, setStatus] = useState({ status: false });
   const [filter, setFilter] = useState({ rating: 0 });
-  const { selectedDates } = useSelector((state) => state);
+  const { filters } = useSelector((state) => state);
   const skeletonArray = Array.from(Array(6).keys());
 
-  const allFilters = { ...filter, ...selectedDates };
+  const allFilters = { ...filter, ...filters };
 
   useEffect(() => {
     getAllFilteredBikes(allFilters)
-      .then((res) => setBikesList(res))
+      .then(setBikesList)
       .catch((error) => setStatus({ status: true, message: error.message, type: 'error' }));
-  }, [filter, selectedDates]);
+  }, [filter, filters]);
 
   return (
     <>

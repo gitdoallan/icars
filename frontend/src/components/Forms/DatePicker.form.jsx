@@ -9,7 +9,7 @@ import * as S from './styles';
 
 export function DatePickerForm() {
   const dispatch = useDispatch();
-  const { startDate, endDate } = useSelector((state) => state.selectedDates);
+  const { startDate, endDate } = useSelector((state) => state.filters);
   const formattedDate = (date) => dayjs(date).format('YYYY-MM-DD');
 
   const handleStartDateChange = (newValue) => {

@@ -8,7 +8,7 @@ import * as S from './styles';
 
 export function RentNowForm({ id }) {
   const [available, setAvailable] = useState(false);
-  const { startDate, endDate } = useSelector((state) => state.selectedDates);
+  const { startDate, endDate } = useSelector((state) => state.filters);
   const navigate = useNavigate();
 
   const handleRentBike = async () => {

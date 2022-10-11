@@ -15,7 +15,7 @@ export function BikeDetails() {
 
   useEffect(() => {
     getBikeById(id)
-      .then((response) => setBike(response))
+      .then(setBike)
       .catch(({ message }) => setStatus({ status: true, message, type: 'error' }));
   }, [id]);
 

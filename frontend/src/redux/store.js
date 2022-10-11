@@ -1,14 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import storeSynchronize from 'redux-localstore';
 import {
-  darkModeSlice, userInfoSlice, selectedDatesSlice,
+  darkModeSlice, userInfoSlice, filtersSlice,
 } from './slices';
 
 export const store = configureStore({
   reducer: {
     darkMode: darkModeSlice.reducer,
     userInfo: userInfoSlice.reducer,
-    selectedDates: selectedDatesSlice.reducer,
+    filters: filtersSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     serializableCheck: false,
@@ -16,5 +16,5 @@ export const store = configureStore({
 });
 
 storeSynchronize(store, {
-  blacklist: ['selectedDates'],
+  blacklist: ['filters'],
 });
