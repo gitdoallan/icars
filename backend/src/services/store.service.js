@@ -121,7 +121,6 @@ const listAllReservationsBetweenDates = async (filter) => {
 };
 
 const getAllFilteredBikes = async (filter) => {
-  console.log('GET FILTERED BIKES', filter);
   const result = await Model.bikes.findAll({
     attributes: ['id', 'image', 'price', 'rating'],
     include: [

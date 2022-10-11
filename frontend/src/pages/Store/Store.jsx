@@ -32,8 +32,6 @@ export function Store() {
       .catch((error) => setStatus({ status: true, message: error.message, type: 'error' }));
   }, []);
 
-  console.log(bikesList);
-
   return (
     <>
       <Header />
