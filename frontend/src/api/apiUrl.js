@@ -1,1 +1,1 @@
-export const API_URL = 'https://api.ibikes.win';
+export const API_URL = 'http://localhost:3011';
