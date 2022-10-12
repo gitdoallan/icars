@@ -12,6 +12,7 @@ export {
   bikeUpload,
   createBike,
   createNewUser,
+  listAllUsers,
 } from './admin';
 
 export { API_URL } from './apiUrl';

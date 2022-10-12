@@ -7,19 +7,19 @@ import { listAllUserReservations } from 'api/reservations';
 
 export function Reservations() {
   const [reservations, setReservations] = useState([]);
-  const [statusMessages, setStatusMessages] = useState({ status: false });
+  const [status, setStatus] = useState({ status: false });
 
   useEffect(() => {
     listAllUserReservations()
       .then((response) => setReservations(response))
-      .catch((error) => setStatusMessages({ status: true, message: error.message, type: 'error' }));
+      .catch((error) => setStatus({ status: true, message: error.message, type: 'error' }));
   }, []);
 
   return (
     <div>
       <Header />
       <h1>Reservations</h1>
-      <StatusMessages {...statusMessages} />
+      <StatusMessages {...status} />
       {reservations.map((reservation) => (
         <ReservationsCard key={reservation.id} {...reservation} />
       ))}

@@ -1,5 +1,14 @@
+import { Link } from 'react-router-dom';
+import { Header } from 'components/Header';
+import { Footer } from 'components/Footer';
+
 export function Bikes() {
   return (
-    <div>Bikes</div>
+    <>
+      <Header />
+      <h1>Bikes</h1>
+      <Link to="/admin/bike/new">Create new bike</Link>
+      <Footer />
+    </>
   );
 }
