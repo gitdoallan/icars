@@ -11,4 +11,6 @@ export {
   Agreement,
   Link,
   LoadingButton,
+  LabelUpload,
+  UploadContainer,
 } from './Forms.styles';

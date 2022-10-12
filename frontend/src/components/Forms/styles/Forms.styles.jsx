@@ -51,6 +51,18 @@ export const InputGrid = ({ children }) => (
   </Grid>
 );
 
+export const UploadContainer = ({ children }) => (
+  <Box display="flex">
+    {children}
+  </Box>
+);
+
+export const LabelUpload = ({ children }) => (
+  <Typography variant="subtitle2" sx={{ marginTop: 1 }}>
+    {children}
+  </Typography>
+);
+
 export const LabelText = ({ children }) => (
   <Typography variant="subtitle2" sx={{ marginBottom: 2 }}>
     {children}
