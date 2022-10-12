@@ -27,7 +27,6 @@ export function CreateNewUserForm() {
       const result = await createNewUser({
         name, email, password, role,
       });
-      console.log(result);
       navigate(`/admin/user/new/${result.id}`);
     } catch (err) {
       setStatus({ status: true, message: err.message, type: 'error' });
