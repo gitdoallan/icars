@@ -13,6 +13,7 @@ export {
   createBike,
   createNewUser,
   listAllUsers,
+  listAllBikes,
 } from './admin';
 
 export { API_URL } from './apiUrl';
