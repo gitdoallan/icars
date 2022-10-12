@@ -25,6 +25,35 @@ const listAllUserReservations = async ({ userId }) => {
   return reservations;
 };
 
+const rateOrderByReservationId = async ({
+  orderId, bikeId, userId, rate,
+}) => {
+  const transaction = await Model.sequelize.transaction();
+  try {
+    await Model.reservations.update({
+      rate: false,
+      where: { id: orderId, userId },
+    });
+    const bike = await Model.bikes.findOne({
+      where: { id: bikeId },
+      attributes: ['id', 'rating', 'receivedRates'],
+    });
+    const newRating = ((bike.rating * bike.receivedRates) + rate) / (bike.receivedRates + 1);
+    const updatedBike = await Model.bikes.update({
+      rating: newRating,
+      receivedRates: bike.receivedRates + 1,
+    }, {
+      where: { id: bikeId },
+      transaction,
+    });
+    await transaction.commit();
+    return updatedBike;
+  } catch (error) {
+    await transaction.rollback();
+    throw new ErrorHandler(500, 'Internal server error');
+  }
+};
+
 const cancelReservation = async ({ orderId, userId }) => {
   const { orderStatus } = await Model.reservations.findOne({
     where: { id: orderId, userId },
@@ -81,6 +110,7 @@ const getReservationById = async ({ orderId, userId, role }) => {
 
 module.exports = {
   getReservationById,
+  rateOrderByReservationId,
   listAllUserReservations,
   cancelReservation,
 };

@@ -53,6 +53,12 @@ module.exports = {
         type: Sequelize.FLOAT,
         defaultValue: 0,
       },
+      receivedRates: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        defaultValue: 0,
+        field: 'received_rates',
+      },
     });
   },
   down: async (queryInterface) => {

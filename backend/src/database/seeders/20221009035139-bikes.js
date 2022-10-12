@@ -10,6 +10,7 @@ module.exports = {
         image: '/images/bikes/1/main.jpeg',
         price: 10,
         rating: 0,
+        received_rates: 0,
       },
       {
         id: 2,
@@ -19,6 +20,7 @@ module.exports = {
         image: '/images/bikes/2/main.jpeg',
         price: 10,
         rating: 5,
+        received_rates: 1,
       },
       {
         id: 3,
@@ -28,6 +30,7 @@ module.exports = {
         image: '/images/bikes/3/main.jpeg',
         price: 10,
         rating: 4.5,
+        received_rates: 2,
       },
       {
         id: 4,
@@ -37,6 +40,7 @@ module.exports = {
         image: '/images/bikes/4/main.jpeg',
         price: 10,
         rating: 4,
+        received_rates: 3,
       },
       {
         id: 5,
@@ -46,6 +50,7 @@ module.exports = {
         image: '/images/bikes/5/main.jpeg',
         price: 10,
         rating: 3.5,
+        received_rates: 4,
       },
       {
         id: 6,
@@ -55,6 +60,7 @@ module.exports = {
         image: '/images/bikes/6/main.jpeg',
         price: 10,
         rating: 0,
+        received_rates: 0,
       },
     ],
 

@@ -5,6 +5,16 @@ const listAllUserReservations = async (req, res) => {
   res.status(200).json(result);
 };
 
+const rateOrderByReservationId = async (req, res) => {
+  const { orderId } = req.params;
+  const { bikeId, rate } = req.body;
+  const { id: userId } = req.user;
+  const result = await reservationsService.rateOrderByReservationId({
+    orderId, bikeId, userId, rate,
+  });
+  res.status(200).json(result);
+};
+
 const cancelReservation = async (req, res) => {
   const { orderId } = req.body;
   const { id } = req.user;
@@ -23,6 +33,7 @@ const getReservationById = async (req, res) => {
 
 module.exports = {
   getReservationById,
+  rateOrderByReservationId,
   listAllUserReservations,
   cancelReservation,
 };
