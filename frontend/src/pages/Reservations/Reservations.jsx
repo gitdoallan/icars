@@ -15,8 +15,6 @@ export function Reservations() {
       .catch((error) => setStatusMessages({ status: true, message: error.message, type: 'error' }));
   }, []);
 
-  console.log(reservations);
-
   return (
     <div>
       <Header />

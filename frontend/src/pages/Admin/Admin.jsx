@@ -12,12 +12,10 @@ export function Admin() {
       .catch(console.error);
   }, []);
 
-  console.log(reservations);
-
   return (
     <div>
       <Header />
-      <h1>Admin</h1>
+      <h1>Reservations</h1>
       {reservations.map((reservation) => (
         <AdminReservationsCard key={reservation.id} {...reservation} />
       ))}

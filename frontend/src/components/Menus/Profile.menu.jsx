@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Divider } from '@mui/material';
+import { Divider, Stack } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import gravatarUrl from 'gravatar-url';
 import * as S from './styles';
@@ -36,6 +36,13 @@ export function ProfileMenu() {
       >
         <S.MyAccount onClick={() => navigate('/account')}>My account</S.MyAccount>
         <Divider />
+        {userInfo.role === 'admin' && (
+          <Stack>
+            <S.MyOrders onClick={() => navigate('/admin')}>Reservations</S.MyOrders>
+            <S.MyOrders onClick={() => navigate('/admin/users')}>Users</S.MyOrders>
+            <S.MyOrders onClick={() => navigate('/admin/bikes')}>Bikes</S.MyOrders>
+          </Stack>
+        )}
         <S.MyOrders onClick={() => navigate('/reservations')}>My Orders</S.MyOrders>
         <S.Logout onClick={() => navigate('/logout')}>Logout</S.Logout>
       </S.ProfileMenu>

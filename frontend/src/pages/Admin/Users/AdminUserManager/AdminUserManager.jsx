@@ -27,7 +27,7 @@ export function AdminUserManager() {
   return (
     <div>
       <Header />
-      <h1>AdminUserManager</h1>
+      <h1>Manage User</h1>
       <button type="button" onClick={handleDeleteUser}>Delete user</button>
       <Footer />
     </div>
