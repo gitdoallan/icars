@@ -1,10 +1,9 @@
 import { Header } from 'components/Header';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { Footer } from 'components/Footer';
 
 export function Updated() {
   const { type, id } = useParams();
-  const navigate = useNavigate();
 
   const cases = {
     bike: {
@@ -23,16 +22,20 @@ export function Updated() {
     },
   };
 
-  if (!cases[type]) navigate('/store');
-
   return (
     <>
       <Header />
-      <h1>{cases[type].title}</h1>
-      <p>{cases[type].message}</p>
-      <Link to={cases[type].link}>{cases[type].linkText}</Link>
-      {' | '}
-      <Link to={cases[type].updateAnother}>Update Another</Link>
+      {cases[type]
+        ? (
+          <>
+            <h1>{cases[type].title}</h1>
+            <p>{cases[type].message}</p>
+            <Link to={cases[type].link}>{cases[type].linkText}</Link>
+            {' | '}
+            <Link to={cases[type].updateAnother}>Update Another</Link>
+          </>
+        )
+        : <h1>Not Found</h1>}
       <Footer />
     </>
   );
