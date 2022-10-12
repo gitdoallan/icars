@@ -33,18 +33,46 @@ export function ReservationDetails() {
       .catch((error) => setStatusMessages({ status: true, message: error.message, type: 'error' }));
   }, [id]);
 
-  console.log(reservationDetails);
-
   return (
     <div>
       <Header />
-      <h1>ReservationDetails</h1>
+      <h1>Reservation Details</h1>
       <StatusMessages {...statusMessages} />
       <div>
-        {reservationDetails?.bike.bikeModel.name}
-        <br />
-        Object details OK - Check console.log!
-        <br />
+        <p>
+          Id:
+          {' '}
+          {reservationDetails?.id}
+        </p>
+        <p>
+          Model:
+          {' '}
+          {reservationDetails?.bike.bikeModel.name}
+        </p>
+        <p>
+          Location:
+          {' '}
+          {reservationDetails?.bike.storeLocation.name}
+        </p>
+        <p>
+          Start Date:
+          {' '}
+          {reservationDetails?.startDate.slice(0, 10)}
+        </p>
+        <p>
+          End Date:
+          {' '}
+          {reservationDetails?.endDate.slice(0, 10)}
+        </p>
+        <p>
+          Total Price:
+          {' '}
+          {reservationDetails?.orderTotal}
+        </p>
+
+        <p>Check-in starts at 8AM</p>
+        <p>Check-out ends at 6PM</p>
+
         <button type="button" onClick={handleCancelReservation}>
           Cancel Reservation
         </button>
