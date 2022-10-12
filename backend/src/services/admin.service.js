@@ -1,4 +1,5 @@
 const { ErrorHandler } = require('../utils/errorHandler');
+const { hashPassword } = require('../utils/bcrypt');
 const Model = require('../database/models');
 
 const listAllReservations = async () => {
@@ -27,6 +28,31 @@ const listAllReservations = async () => {
   });
   if (!result) throw new ErrorHandler(404, 'No reservations found');
   return result;
+};
+
+const listAllUsers = async () => {
+  const result = await Model.users.findAll({
+    attributes: ['id', 'name', 'email', 'role'],
+  });
+  if (!result) throw new ErrorHandler(404, 'No users found');
+  return result;
+};
+
+const createNewAccount = async ({
+  email, password, name, role,
+}) => {
+  const hash = await hashPassword(password);
+  const transaction = await Model.sequelize.transaction();
+  try {
+    const result = await Model.users.create({
+      email, password: hash, name, role,
+    }, { transaction });
+    await transaction.commit();
+    return result;
+  } catch (err) {
+    await transaction.rollback();
+    throw new ErrorHandler(500, 'Error creating new account');
+  }
 };
 
 const updateUserById = async (id, user) => {
@@ -85,6 +111,28 @@ const deleteUserById = async (id) => {
   return result;
 };
 
+const listAllBikes = async () => {
+  const result = await Model.bikes.findAll({
+    attributes: ['id', 'image', 'price', 'rating'],
+    include: [
+      {
+        model: Model.storeLocations,
+        attributes: ['id', 'name'],
+      },
+      {
+        model: Model.bikeModels,
+        attributes: ['id', 'name'],
+      },
+      {
+        model: Model.bikeColors,
+        attributes: ['id', 'name'],
+      },
+    ],
+  });
+  if (!result) throw new ErrorHandler(404, 'No bikes found');
+  return result;
+};
+
 const createNewBike = async (bike) => {
   const transaction = await Model.sequelize.transaction();
   try {
@@ -133,9 +181,12 @@ const updateBikeById = async (id, bike) => {
 
 module.exports = {
   listAllReservations,
+  listAllUsers,
+  createNewAccount,
   getAllReservationsByUserId,
   updateUserById,
   deleteUserById,
+  listAllBikes,
   createNewBike,
   deleteBikeById,
   updateBikeById,

@@ -8,6 +8,21 @@ const listAllReservations = async (_req, res) => {
   res.status(200).json(result);
 };
 
+const listAllUsers = async (_req, res) => {
+  const result = await adminService.listAllUsers();
+  res.status(200).json(result);
+};
+
+const createNewAccount = async (req, res) => {
+  const {
+    email, password, name, role,
+  } = req.body;
+  const result = await adminService.createNewAccount({
+    email, password, name, role,
+  });
+  res.status(201).json(result);
+};
+
 const updateUserById = async (req, res) => {
   const { id } = req.params;
   const { name, email } = req.body;
@@ -26,6 +41,11 @@ const deleteUserById = async (req, res) => {
   const { id } = req.params;
   await adminService.deleteUserById(id);
   res.status(200).json({ message: 'User deleted' });
+};
+
+const listAllBikes = async (_req, res) => {
+  const result = await adminService.listAllBikes();
+  res.status(200).json(result);
 };
 
 const createNewBike = async (req, res) => {
@@ -79,10 +99,13 @@ const bikeImageUploader = async (req, res) => {
 
 module.exports = {
   listAllReservations,
+  listAllUsers,
+  createNewAccount,
   getAllReservationsByUserId,
   updateUserById,
   deleteUserById,
   bikeImageUploader,
+  listAllBikes,
   createNewBike,
   deleteBikeById,
   updateBikeById,
