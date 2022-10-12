@@ -6,7 +6,7 @@ import { Logout } from 'pages/Logout';
 import { NotFound } from 'pages/NotFound';
 
 import {
-  Admin, AdminUserManager, CreateNewBike, Created,
+  Admin, AdminUserManager, CreateNewBike, CreateNewUser, Created,
 } from 'pages/Admin';
 
 export function Router() {
@@ -20,6 +20,7 @@ export function Router() {
         <Route path="/reservations/:id" element={<ReservationDetails />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/user/:id" element={<AdminUserManager />} />
+        <Route path="/admin/user/new/" element={<CreateNewUser />} />
         <Route path="/admin/bike/new" element={<CreateNewBike />} />
         <Route path="/admin/:type/new/:id" element={<Created />} />
         <Route path="/logout" element={<Logout />} />

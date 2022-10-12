@@ -13,4 +13,5 @@ export {
   LoadingButton,
   LabelUpload,
   UploadContainer,
+  Select,
 } from './Forms.styles';

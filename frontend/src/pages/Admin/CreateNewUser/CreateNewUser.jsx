@@ -1,12 +1,12 @@
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
-import { CreateNewBikeForm } from 'components/Forms';
+import { CreateNewUserForm } from 'components/Forms';
 
-export function CreateNewBike() {
+export function CreateNewUser() {
   return (
     <>
       <Header />
-      <CreateNewBikeForm />
+      <CreateNewUserForm />
       <Footer />
     </>
   );

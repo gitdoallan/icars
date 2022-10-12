@@ -6,7 +6,12 @@ export {
 } from './store';
 
 export {
-  listAllReservations, getAllReservationsByUserId, deleteUsersById, bikeUpload, createBike,
+  listAllReservations,
+  getAllReservationsByUserId,
+  deleteUsersById,
+  bikeUpload,
+  createBike,
+  createNewUser,
 } from './admin';
 
 export { API_URL } from './apiUrl';

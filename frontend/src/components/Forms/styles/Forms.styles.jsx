@@ -1,5 +1,5 @@
 import {
-  Box, Grid, Typography, TextField as MUITextField, Link as MUILink,
+  Box, Grid, Typography, TextField as MUITextField, Link as MUILink, Select as MUISelect,
 } from '@mui/material';
 import MUILoadingButton from '@mui/lab/LoadingButton';
 import SendIcon from '@mui/icons-material/Send';
@@ -103,6 +103,15 @@ export const Link = ({ children, ...rest }) => (
   >
     {children}
   </MUILink>
+);
+
+export const Select = ({ children, ...rest }) => (
+  <MUISelect
+    fullWidth
+    {...rest}
+  >
+    {children}
+  </MUISelect>
 );
 
 export const Agreement = ({ children }) => (
