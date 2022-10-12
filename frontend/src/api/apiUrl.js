@@ -1,1 +1,1 @@
-export const API_URL = 'https://api.ibikes.win/api';
+export const API_URL = 'https://api.ibikes.win';
