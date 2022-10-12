@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import {
-  Registration, NotFound, Store, Logout,
-  BikeDetails, ReservationDetails, Reservations,
-  Admin, AdminUserManager, CreateNewBike,
-} from 'pages';
+import { Admin, AdminUserManager, CreateNewBike } from 'pages/Admin';
+import { Store, BikeDetails } from 'pages/Store';
+import { Registration } from 'pages/Registration';
+import { Reservations, ReservationDetails } from 'pages/Reservations';
+import { Logout } from 'pages/Logout';
+import { NotFound } from 'pages/NotFound';
 
 export function Router() {
   return (

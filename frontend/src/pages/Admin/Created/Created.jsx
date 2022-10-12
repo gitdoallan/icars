@@ -1,7 +1,12 @@
-import React from 'react';
+import { Header } from 'components/Header';
+import { Footer } from 'components/Footer';
 
-export default function Created() {
+export function Created() {
   return (
-    <div>Created</div>
+    <>
+      <Header />
+      <h1>Created</h1>
+      <Footer />
+    </>
   );
 }
