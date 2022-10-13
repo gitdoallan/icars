@@ -1,1 +1,1 @@
-export { Title } from './Users.styles';
+export { Title, CreateBtn } from './Users.styles';

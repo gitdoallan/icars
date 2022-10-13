@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Typography, Button } from '@mui/material';
 
 export const Title = ({ children }) => (
   <Typography
@@ -11,4 +11,20 @@ export const Title = ({ children }) => (
   >
     {children}
   </Typography>
+);
+
+export const CreateBtn = ({ children }) => (
+  <Button
+    variant="contained"
+    sx={{
+      backgroundColor: 'primary.main',
+      marginBottom: 3,
+      color: 'primary.contrastText',
+      '&:hover': {
+        backgroundColor: 'primary.dark',
+      },
+    }}
+  >
+    {children}
+  </Button>
 );
