@@ -14,7 +14,7 @@ export const Title = ({ children }) => (
   </Typography>
 );
 
-export const CreateBtn = ({ children }) => (
+export const CreateBtn = ({ children, ...rest }) => (
   <Button
     variant="contained"
     sx={{
@@ -25,6 +25,7 @@ export const CreateBtn = ({ children }) => (
         backgroundColor: 'primary.dark',
       },
     }}
+    {...rest}
   >
     {children}
   </Button>
