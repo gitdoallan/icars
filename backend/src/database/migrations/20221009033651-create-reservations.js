@@ -39,6 +39,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.ENUM('pending', 'confirmed', 'cancelled', 'completed'),
         field: 'order_status',
+        defaultValue: 'confirmed',
       },
       startDate: {
         allowNull: false,
