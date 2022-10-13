@@ -1,9 +1,11 @@
 import { Header } from 'components/Header';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Footer } from 'components/Footer';
+import * as S from 'components/Cards/styles';
 
 export function Updated() {
   const { type, id } = useParams();
+  const navigate = useNavigate();
 
   const cases = {
     bike: {
@@ -28,14 +30,18 @@ export function Updated() {
       {cases[type]
         ? (
           <>
-            <h1>{cases[type].title}</h1>
-            <p>{cases[type].message}</p>
-            <Link to={cases[type].link}>{cases[type].linkText}</Link>
-            {' | '}
-            <Link to={cases[type].updateAnother}>Update Another</Link>
+            <S.Title>{cases[type].title}</S.Title>
+            <S.Text>{cases[type].message}</S.Text>
+            <S.DetailsPage onClick={() => navigate(cases[type].link)}>
+              {cases[type].linkText}
+            </S.DetailsPage>
+            {'  '}
+            <S.DetailsPage onClick={() => navigate(cases[type].updateAnother)}>
+              Update Another
+            </S.DetailsPage>
           </>
         )
-        : <h1>Not Found</h1>}
+        : <S.Title>Not Found</S.Title>}
       <Footer />
     </>
   );

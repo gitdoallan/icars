@@ -6,4 +6,4 @@ export {
   CardDetails, CardDetailsText, CardDetailsRating, ReservationsContainer, Divider, Container,
 } from './BikeDetails.card.styles';
 
-export { DetailsPage } from 'pages/Reservations/styles';
+export { DetailsPage, Title, Text } from 'pages/Reservations/styles';
