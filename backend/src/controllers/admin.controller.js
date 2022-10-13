@@ -66,12 +66,8 @@ const deleteBikeById = async (req, res) => {
 
 const updateBikeById = async (req, res) => {
   const { id } = req.params;
-  const {
-    modelId, colorId, locationId, image, price,
-  } = req.body;
-  await adminService.updateBikeById(id, {
-    modelId, colorId, locationId, image, price,
-  });
+  const { image, price } = req.body;
+  await adminService.updateBikeById(id, { image, price });
   res.status(200).json({ message: 'Bike updated' });
 };
 

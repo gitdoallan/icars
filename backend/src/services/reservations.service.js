@@ -86,7 +86,7 @@ const getReservationById = async ({ orderId, userId, role }) => {
   const where = role === 'admin' ? { id: orderId } : { id: orderId, userId };
   const result = await Model.reservations.findOne({
     where,
-    attributes: ['id', 'orderTotal', 'startDate', 'endDate'],
+    attributes: ['id', 'orderTotal', 'orderStatus', 'rate', 'startDate', 'endDate'],
     include: [
       {
         model: Model.bikes,
