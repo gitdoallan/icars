@@ -3,98 +3,80 @@ import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
 import { useParams } from 'react-router-dom';
 import { StatusMessages } from 'components/StatusMessages';
-import { RateOrderAction } from 'components/Actions';
-import { getReservationById, cancelReservation } from 'api';
+import { RateOrderAction, CancelReservationAction } from 'components/Actions';
+import { getReservationById } from 'api';
+import * as S from './styles';
 
 export function ReservationDetails() {
   const { id } = useParams();
   const [reservationDetails, setReservationDetails] = useState();
-  const [statusMessages, setStatusMessages] = useState({ status: false });
-
-  const handleCancelReservation = async () => {
-    try {
-      await cancelReservation(id);
-      setStatusMessages({
-        status: true,
-        message: 'Reservation successfully cancelled.',
-        type: 'success',
-      });
-    } catch ({ response }) {
-      setStatusMessages({
-        status: true,
-        message: response.data.message,
-        type: 'error',
-      });
-    }
-  };
+  const [status, setStatus] = useState({ status: false });
 
   useEffect(() => {
     getReservationById(id)
       .then(setReservationDetails)
-      .catch(({ response }) => setStatusMessages({ status: true, message: response.data.message, type: 'error' }));
+      .catch(({ response }) => setStatus({ status: true, message: response.data.message, type: 'error' }));
   }, [id]);
 
   return (
-    <div>
+    <>
       <Header />
-      <h1>Reservation Details</h1>
-      <StatusMessages {...statusMessages} />
-      <div>
-        <p>
+      <S.Title>Reservation Details</S.Title>
+      <StatusMessages {...status} />
+      <S.DetailsContainer>
+        <S.Text>
           Id:
           {' '}
           {reservationDetails?.id}
-        </p>
-        <p>
+        </S.Text>
+        <S.Text>
           Model:
           {' '}
           {reservationDetails?.bike.bikeModel.name}
-        </p>
-        <p>
+        </S.Text>
+        <S.Text>
           Location:
           {' '}
           {reservationDetails?.bike.storeLocation.name}
-        </p>
-        <p>
+        </S.Text>
+        <S.Text>
           Start Date:
           {' '}
           {reservationDetails?.startDate.slice(0, 10)}
-        </p>
-        <p>
+        </S.Text>
+        <S.Text>
           End Date:
           {' '}
           {reservationDetails?.endDate.slice(0, 10)}
-        </p>
-        <p>
+        </S.Text>
+        <S.Text>
           Total Price:
           {' '}
           {reservationDetails?.orderTotal}
-        </p>
-        <p>
+        </S.Text>
+        <S.Text>
           Status:
           {' '}
           {reservationDetails?.orderStatus}
-        </p>
+        </S.Text>
 
-        <div>
-          {reservationDetails?.rate
-            ? 'Rating: Thank you for rating!'
-            : (
-              <RateOrderAction
-                orderId={reservationDetails?.id}
-                bikeId={reservationDetails?.bike.id}
-              />
-            )}
-        </div>
+        <S.Text>Check-in starts at 8AM</S.Text>
+        <S.Text>Check-out ends at 6PM</S.Text>
 
-        <p>Check-in starts at 8AM</p>
-        <p>Check-out ends at 6PM</p>
-
-        <button type="button" onClick={handleCancelReservation}>
-          Cancel Reservation
-        </button>
-      </div>
+        {reservationDetails?.rate
+          ? (<S.Text>Rating: Thank you for rating!</S.Text>)
+          : (
+            <RateOrderAction
+              orderId={reservationDetails?.id}
+              bikeId={reservationDetails?.bike.id}
+            />
+          )}
+        <CancelReservationAction
+          orderId={reservationDetails?.id}
+          setStatus={setStatus}
+        />
+      </S.DetailsContainer>
       <Footer />
-    </div>
+    </>
   );
 }

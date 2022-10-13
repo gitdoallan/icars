@@ -13,7 +13,13 @@ export const RatingContainer = ({ children }) => (
 );
 
 export const RatingLabel = ({ children }) => (
-  <Typography component="legend">
+  <Typography
+    component="legend"
+    sx={{
+      fontSize: '1.2rem',
+      margin: '-0.2rem 0',
+    }}
+  >
     {children}
   </Typography>
 );
