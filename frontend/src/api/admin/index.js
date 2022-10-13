@@ -7,3 +7,4 @@ export { createNewUser } from './createNewUser.admin.api';
 export { listAllUsers } from './listAllUsers.admin.api';
 export { listAllBikes } from './listAllBikes.admin.api';
 export { updateUsersById } from './updateUsersById.admin.api';
+export { deleteBikesById } from './deleteBikesById.admin.api';
