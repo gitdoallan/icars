@@ -42,6 +42,19 @@ export const ReservationsContainer = ({ children }) => (
   </Box>
 );
 
+export const Container = ({ children }) => (
+  <Box
+    sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      backgroundColor: 'background.default',
+    }}
+  >
+    {children}
+  </Box>
+);
+
 export const Divider = () => (
   <MUIDivider
     sx={{

@@ -3,7 +3,7 @@ export {
 } from './Bikes.card.styles';
 
 export {
-  CardDetails, CardDetailsText, CardDetailsRating, ReservationsContainer, Divider,
+  CardDetails, CardDetailsText, CardDetailsRating, ReservationsContainer, Divider, Container,
 } from './BikeDetails.card.styles';
 
 export { DetailsPage } from 'pages/Reservations/styles';

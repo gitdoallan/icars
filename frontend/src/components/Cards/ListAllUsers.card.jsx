@@ -1,41 +1,42 @@
 import propTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import * as S from './styles';
 
 export function ListAllUsersCard({
   id, name, email, role,
 }) {
+  const navigate = useNavigate();
   return (
-    <div>
-      <div>
-        <span>
-          User ID:
-          {' '}
-          {id}
-          {' '}
-        </span>
-        <span>
-          Name:
-          {' '}
-          {name}
-          {' '}
-        </span>
-        <span>
-          Email:
-          {' '}
-          {email}
-          {' '}
-        </span>
-        <span>
-          Role:
-          {' '}
-          {role}
-          {' '}
-        </span>
-        <span>
-          <Link to={`/admin/user/${id}`}>Manage User</Link>
-        </span>
-      </div>
-    </div>
+    <S.Container>
+      <S.CardDetailsText>
+        User ID:
+        {' '}
+        {id}
+        {' '}
+      </S.CardDetailsText>
+      <S.CardDetailsText>
+        Name:
+        {' '}
+        {name}
+        {' '}
+      </S.CardDetailsText>
+      <S.CardDetailsText>
+        Email:
+        {' '}
+        {email}
+        {' '}
+      </S.CardDetailsText>
+      <S.CardDetailsText>
+        Role:
+        {' '}
+        {role}
+        {' '}
+      </S.CardDetailsText>
+      <S.CardDetailsText>
+        <S.DetailsPage onClick={() => navigate(`/admin/user/${id}`)}>Manage User</S.DetailsPage>
+      </S.CardDetailsText>
+      <S.Divider />
+    </S.Container>
   );
 }
 
