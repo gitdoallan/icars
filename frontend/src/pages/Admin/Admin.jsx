@@ -4,6 +4,7 @@ import { Footer } from 'components/Footer';
 import { AdminReservationsCard } from 'components/Cards';
 import { StatusMessages } from 'components/StatusMessages';
 import { listAllReservations } from 'api';
+import * as S from './Users/styles';
 
 export function Admin() {
   const [reservations, setReservations] = useState([]);
@@ -17,7 +18,7 @@ export function Admin() {
   return (
     <div>
       <Header />
-      <h1>Reservations</h1>
+      <S.Title>Reservations</S.Title>
       <StatusMessages {...status} />
       {reservations.map((reservation) => (
         <AdminReservationsCard key={reservation.id} {...reservation} />

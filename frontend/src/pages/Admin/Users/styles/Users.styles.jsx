@@ -6,6 +6,7 @@ export const Title = ({ children }) => (
       fontWeight: 700,
       fontSize: 30,
       color: 'text.primary',
+      marginTop: 3,
       marginBottom: 1,
     }}
   >
