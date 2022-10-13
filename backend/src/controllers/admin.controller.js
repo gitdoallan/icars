@@ -25,8 +25,8 @@ const createNewAccount = async (req, res) => {
 
 const updateUserById = async (req, res) => {
   const { id } = req.params;
-  const { name, email } = req.body;
-  const user = { name, email };
+  const { name, email, role } = req.body;
+  const user = { name, email, role };
   await adminService.updateUserById(id, user);
   res.status(200).json({ message: 'User updated successfully' });
 };
