@@ -1,7 +1,9 @@
 const errorMiddleware = async (err, _req, res, next) => {
   const { status, message } = err;
   if (!err) next();
-  return res.status(status || 500).json({ message });
+  if (status) {
+    return res.status(status).json({ message });
+  } return res.status(500).json({ message: 'Internal server error' });
 };
 
 module.exports = errorMiddleware;

@@ -15,8 +15,6 @@ module.exports = {
           key: 'id',
         },
         field: 'model_id',
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
       },
       colorId: {
         allowNull: false,
@@ -26,8 +24,6 @@ module.exports = {
           key: 'id',
         },
         field: 'color_id',
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
       },
       locationId: {
         allowNull: false,
@@ -37,8 +33,6 @@ module.exports = {
           key: 'id',
         },
         field: 'location_id',
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
       },
       image: {
         allowNull: false,
