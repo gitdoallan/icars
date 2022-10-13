@@ -53,7 +53,7 @@ export function EditBikeForm() {
 
   return (
     <S.Form onSubmit={onSubmit}>
-      <S.FormTitle>Create New Bike</S.FormTitle>
+      <S.FormTitle>Update Bike</S.FormTitle>
       <StatusMessages {...status} />
       <S.FormContainer>
         <S.Input>
