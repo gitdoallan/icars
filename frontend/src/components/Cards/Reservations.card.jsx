@@ -1,7 +1,9 @@
 import propTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import * as S from './styles';
 
 export function ReservationsCard({ id, bike, orderStatus }) {
+  const navigate = useNavigate();
   return (
     <div>
       <span>
@@ -22,7 +24,7 @@ export function ReservationsCard({ id, bike, orderStatus }) {
         {orderStatus}
         {' '}
       </span>
-      <Link to={`/reservations/${id}`}>Details</Link>
+      <S.DetailsPage onClick={() => navigate(`/reservations/${id}`)}>Details</S.DetailsPage>
     </div>
   );
 }

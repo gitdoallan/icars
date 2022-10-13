@@ -21,6 +21,7 @@ export function Reservations() {
       <Header />
       <S.Title>Reservations</S.Title>
       <StatusMessages {...status} />
+      {reservations.length === 0 && <S.Text>No reservations found</S.Text>}
       {reservations.map((reservation) => (
         <ReservationsCard key={reservation.id} {...reservation} />
       ))}

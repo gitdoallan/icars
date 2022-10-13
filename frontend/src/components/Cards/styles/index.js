@@ -3,3 +3,5 @@ export {
 } from './Bikes.card.styles';
 
 export { CardDetails, CardDetailsText, CardDetailsRating } from './BikeDetails.card.styles';
+
+export { DetailsPage } from 'pages/Reservations/styles';

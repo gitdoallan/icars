@@ -1,1 +1,1 @@
-export { Title } from './Reservations.styles';
+export { Title, Text, DetailsPage } from './Reservations.styles';
