@@ -7,10 +7,10 @@ const createUser = async ({ name, email, password }) => {
   const hash = await hashPassword(password);
   const transaction = await Model.users.sequelize.transaction();
   try {
-    const { dataValues } = await Model.users
+    const result = await Model.users
       .create({ name, email, password: hash }, { transaction });
     await transaction.commit();
-    const { password: _, ...userInfo } = dataValues;
+    const { password: _, ...userInfo } = result;
     userInfo.role = 'user';
     const token = createToken(userInfo);
     return {
@@ -23,9 +23,9 @@ const createUser = async ({ name, email, password }) => {
 };
 
 const loginUser = async ({ email, password }) => {
-  const { dataValues } = await Model.users.findOne({ where: { email } });
-  if (!dataValues) throw new ErrorHandler(401, 'Invalid email or password');
-  const { password: hash, ...userInfo } = dataValues;
+  const result = await Model.users.findOne({ where: { email } });
+  if (!result) throw new ErrorHandler(401, 'Invalid email or password');
+  const { password: hash, ...userInfo } = result;
   await comparePassword(password, hash);
   const token = createToken(userInfo);
   return { token, ...userInfo, isLogged: true };
