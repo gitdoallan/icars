@@ -13,8 +13,8 @@ export function BikeAdminActions({ id }) {
     try {
       const result = await deleteBikesById(id);
       setStatus({ status: true, message: result.message, type: 'success' });
-    } catch ({ response }) {
-      setStatus({ status: true, message: response.data.message, type: 'error' });
+    } catch (err) {
+      setStatus({ status: true, message: 'Sorry. We cannot delete this bike right now.', type: 'error' });
     }
   };
   return (
