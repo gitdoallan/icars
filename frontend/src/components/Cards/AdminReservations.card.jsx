@@ -1,40 +1,39 @@
 import propTypes from 'prop-types';
 import dayjs from 'dayjs';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import * as S from './styles';
 
 export function AdminReservationsCard({
   id, startDate, endDate, user,
 }) {
+  const navigate = useNavigate();
   return (
-    <div>
-      <div>
-        <span>
-          Reservation ID:
-          {' '}
-          {id}
-          {' '}
-          <Link to={`/reservations/${id}`}>Details</Link>
-        </span>
-        <span>
-          Period:
-          {' '}
-          {dayjs(startDate).format('DD/MM/YYYY')}
-          {' '}
-          -
-          {' '}
-          {dayjs(endDate).format('DD/MM/YYYY')}
-          {' '}
-        </span>
-        <span>
-          User:
-          {' '}
-          {user.id}
-          {' '}
-          <Link to={`/admin/user/${user.id}`}>Manage User</Link>
-        </span>
-      </div>
-
-    </div>
+    <S.Container>
+      <S.CardDetailsText>
+        Reservation ID:
+        {' '}
+        {id}
+      </S.CardDetailsText>
+      <S.CardDetailsText>
+        Period:
+        {' '}
+        {dayjs(startDate).format('DD/MM/YYYY')}
+        {' '}
+        -
+        {' '}
+        {dayjs(endDate).format('DD/MM/YYYY')}
+        {' '}
+      </S.CardDetailsText>
+      <S.CardDetailsText>
+        User:
+        {' '}
+        {user.id}
+      </S.CardDetailsText>
+      <S.CardDetailsText>
+        <S.DetailsPage onClick={() => navigate(`/reservations/${id}`)}>Manage Reservation</S.DetailsPage>
+      </S.CardDetailsText>
+      <S.Divider />
+    </S.Container>
   );
 }
 
