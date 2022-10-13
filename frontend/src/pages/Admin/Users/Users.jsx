@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { listAllUsers } from 'api';
 import { ListAllUsersCard } from 'components/Cards';
 import { StatusMessages } from 'components/StatusMessages';
+import * as S from './styles';
 
 export function Users() {
   const [users, setUsers] = useState([]);
@@ -18,7 +19,7 @@ export function Users() {
   return (
     <>
       <Header />
-      <h1>Users</h1>
+      <S.Title>Users</S.Title>
       <StatusMessages {...status} />
       <Link to="/admin/user/new">Create new user</Link>
       {' '}
