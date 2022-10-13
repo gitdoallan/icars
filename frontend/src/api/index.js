@@ -25,6 +25,7 @@ export {
   createNewUser,
   listAllUsers,
   listAllBikes,
+  updateUsersById,
 } from './admin';
 
 export { API_URL } from './apiUrl';

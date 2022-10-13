@@ -1,2 +1,4 @@
 export { checkCurrentTheme } from './checkCurrentTheme';
-export { loginFormValidation, signUpFormValidation, createNewUserFormValidation } from './validations';
+export {
+  loginFormValidation, signUpFormValidation, createNewUserFormValidation, editUserFormValidation,
+} from './validations';
