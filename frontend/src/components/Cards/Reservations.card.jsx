@@ -5,27 +5,25 @@ import * as S from './styles';
 export function ReservationsCard({ id, bike, orderStatus }) {
   const navigate = useNavigate();
   return (
-    <div>
-      <span>
+    <S.ReservationsContainer>
+      <S.CardDetailsText>
         ID:
         {' '}
         {id}
-        {' '}
-      </span>
-      <span>
+      </S.CardDetailsText>
+      <S.CardDetailsText>
         Model:
         {' '}
         {bike.bikeModel.name}
-        {' '}
-      </span>
-      <span>
+      </S.CardDetailsText>
+      <S.CardDetailsText>
         Status:
         {' '}
         {orderStatus}
-        {' '}
-      </span>
+      </S.CardDetailsText>
       <S.DetailsPage onClick={() => navigate(`/reservations/${id}`)}>Details</S.DetailsPage>
-    </div>
+      <S.Divider />
+    </S.ReservationsContainer>
   );
 }
 

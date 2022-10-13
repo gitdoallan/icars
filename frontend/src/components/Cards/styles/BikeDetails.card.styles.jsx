@@ -1,4 +1,6 @@
-import { Box, Typography, Rating } from '@mui/material';
+import {
+  Box, Typography, Rating, Divider as MUIDivider,
+} from '@mui/material';
 
 export const CardDetails = ({ children }) => (
   <Box
@@ -25,4 +27,26 @@ export const CardDetailsText = ({ children }) => (
 
 export const CardDetailsRating = ({ children }) => (
   <Rating name="read-only" value={children} precision={0.5} readOnly />
+);
+
+export const ReservationsContainer = ({ children }) => (
+  <Box
+    sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      backgroundColor: 'background.default',
+    }}
+  >
+    {children}
+  </Box>
+);
+
+export const Divider = () => (
+  <MUIDivider
+    sx={{
+      width: '100%',
+      margin: '1rem 0',
+    }}
+  />
 );
