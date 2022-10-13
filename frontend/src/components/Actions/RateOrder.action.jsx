@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Box, Rating, Typography } from '@mui/material';
+import { Rating } from '@mui/material';
 import { rateReservation } from 'api';
 import { StatusMessages } from 'components/StatusMessages';
+import * as S from './styles';
 
 export function RateOrderAction({ orderId, bikeId }) {
   const [status, setStatus] = useState({ status: false });
@@ -22,19 +23,19 @@ export function RateOrderAction({ orderId, bikeId }) {
     }
   };
   return (
-    <Box sx={{ '& > legend': { mt: 2 } }}>
+    <S.BoxContainer>
       {!status.status && (
-        <Box display="flex">
-          <Typography component="legend">Rating: </Typography>
+        <S.RatingContainer>
+          <S.RatingLabel>Rating: </S.RatingLabel>
           <Rating
             defaultValue={0}
             onChange={(_e, newValue) => {
               handleRateReservation(newValue);
             }}
           />
-        </Box>
+        </S.RatingContainer>
       )}
       <StatusMessages {...status} />
-    </Box>
+    </S.BoxContainer>
   );
 }
