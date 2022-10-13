@@ -4,6 +4,7 @@ import { Footer } from 'components/Footer';
 import { ReservationsCard } from 'components/Cards';
 import { StatusMessages } from 'components/StatusMessages';
 import { listAllUserReservations } from 'api/reservations';
+import * as S from './styles';
 
 export function Reservations() {
   const [reservations, setReservations] = useState([]);
@@ -16,14 +17,14 @@ export function Reservations() {
   }, []);
 
   return (
-    <div>
+    <>
       <Header />
-      <h1>Reservations</h1>
+      <S.Title>Reservations</S.Title>
       <StatusMessages {...status} />
       {reservations.map((reservation) => (
         <ReservationsCard key={reservation.id} {...reservation} />
       ))}
       <Footer />
-    </div>
+    </>
   );
 }
