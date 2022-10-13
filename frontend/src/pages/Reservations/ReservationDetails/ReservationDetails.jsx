@@ -73,6 +73,7 @@ export function ReservationDetails() {
           )}
         <CancelReservationAction
           orderId={reservationDetails?.id}
+          orderStatus={reservationDetails?.orderStatus}
           setStatus={setStatus}
         />
       </S.DetailsContainer>

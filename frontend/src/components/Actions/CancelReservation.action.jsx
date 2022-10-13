@@ -2,8 +2,8 @@ import propTypes from 'prop-types';
 import { cancelReservation } from 'api';
 import * as S from './styles';
 
-export function CancelReservationAction({ orderId, setStatus }) {
-  const disabled = orderId === 0;
+export function CancelReservationAction({ orderId, setStatus, orderStatus }) {
+  const disabled = orderId === 0 || orderStatus === 'cancelled';
   const handleCancelReservation = async () => {
     try {
       await cancelReservation(orderId);
@@ -29,9 +29,11 @@ export function CancelReservationAction({ orderId, setStatus }) {
 
 CancelReservationAction.propTypes = {
   orderId: propTypes.number,
+  orderStatus: propTypes.string,
   setStatus: propTypes.func.isRequired,
 };
 
 CancelReservationAction.defaultProps = {
   orderId: 0,
+  orderStatus: '',
 };
