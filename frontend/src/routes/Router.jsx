@@ -48,7 +48,7 @@ export function Router() {
         />
         <Route
           path="/logout"
-          element={<PrivateRouter isUser={isUser}><Logout /></PrivateRouter>}
+          element={<Logout />}
         />
         <Route
           path="/admin"
