@@ -22,7 +22,6 @@ export function EditUserForm() {
 
   const onSubmit = async ({ name, email, role }) => {
     setIsSubmitting(true);
-    console.log(role);
     try {
       await updateUsersById({
         id, name, email, role,
