@@ -77,10 +77,8 @@ export function ReservationDetails() {
         </p>
 
         <div>
-          Rate:
-          {' '}
           {reservationDetails?.rate
-            ? 'Thank you for rating!'
+            ? 'Rating: Thank you for rating!'
             : (
               <RateOrderAction
                 orderId={reservationDetails?.id}

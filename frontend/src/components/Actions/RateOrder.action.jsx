@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Rating } from '@mui/material';
+import { Box, Rating, Typography } from '@mui/material';
 import { rateReservation } from 'api';
 import { StatusMessages } from 'components/StatusMessages';
 
@@ -24,12 +24,15 @@ export function RateOrderAction({ orderId, bikeId }) {
   return (
     <Box sx={{ '& > legend': { mt: 2 } }}>
       {!status.status && (
-      <Rating
-        defaultValue={0}
-        onChange={(_e, newValue) => {
-          handleRateReservation(newValue);
-        }}
-      />
+        <Box display="flex">
+          <Typography component="legend">Rating: </Typography>
+          <Rating
+            defaultValue={0}
+            onChange={(_e, newValue) => {
+              handleRateReservation(newValue);
+            }}
+          />
+        </Box>
       )}
       <StatusMessages {...status} />
     </Box>
