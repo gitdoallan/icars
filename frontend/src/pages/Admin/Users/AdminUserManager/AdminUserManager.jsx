@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
 import { StatusMessages } from 'components/StatusMessages';
@@ -9,6 +9,7 @@ export function AdminUserManager() {
   const [reservations, setReservations] = useState([]);
   const [status, setStatus] = useState({ status: false });
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const handleDeleteUser = async () => {
     try {
@@ -31,7 +32,10 @@ export function AdminUserManager() {
       <h1>Manage User</h1>
       <StatusMessages {...status} />
       <button type="button" onClick={handleDeleteUser}>Delete user</button>
+      {' - '}
+      <button type="button" onClick={() => navigate(`/admin/user/${id}/update`)}>Edit user</button>
       <h2>Reservations</h2>
+      {!reservations.length && <p>No reservations</p>}
       {reservations?.map((reservation) => (
         <div key={reservation.id}>
           <p>
