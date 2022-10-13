@@ -23,7 +23,7 @@ export function Users() {
       <Header />
       <S.Title>Users</S.Title>
       <StatusMessages {...status} />
-      <S.CreateBtn onChange={() => navigate('/admin/user/new')}>Create new user</S.CreateBtn>
+      <S.CreateBtn onClick={() => navigate('/admin/user/new')}>Create new user</S.CreateBtn>
       {users.map((user) => (
         <ListAllUsersCard key={user.id} {...user} />
       ))}
