@@ -38,9 +38,9 @@ export function ProfileMenu() {
         <Divider />
         {userInfo.role === 'admin' && (
           <Stack>
-            <S.MyOrders onClick={() => navigate('/admin')}>Reservations</S.MyOrders>
-            <S.MyOrders onClick={() => navigate('/admin/users')}>Users</S.MyOrders>
-            <S.MyOrders onClick={() => navigate('/admin/bikes')}>Bikes</S.MyOrders>
+            <S.OrdersMenu onClick={() => navigate('/admin')}>Reservations</S.OrdersMenu>
+            <S.UsersMenu onClick={() => navigate('/admin/users')}>Users</S.UsersMenu>
+            <S.BikesMenu onClick={() => navigate('/admin/bikes')}>Bikes</S.BikesMenu>
           </Stack>
         )}
         <S.MyOrders onClick={() => navigate('/reservations')}>My Orders</S.MyOrders>

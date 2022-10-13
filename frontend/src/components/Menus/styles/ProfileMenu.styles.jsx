@@ -1,7 +1,11 @@
 import {
   Box, IconButton, Tooltip, Menu, MenuItem, ListItemIcon, Avatar as MUIAvatar,
 } from '@mui/material';
-import { History, Logout as MUILogout } from '@mui/icons-material';
+import {
+  History, Logout as MUILogout, Wallet,
+} from '@mui/icons-material';
+import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
+import GroupIcon from '@mui/icons-material/Group';
 
 export const ProfileAvatar = ({ children, ...rest }) => (
   <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -71,6 +75,33 @@ export const MyOrders = ({ children, ...rest }) => (
   <MenuItem {...rest}>
     <ListItemIcon>
       <History fontSize="small" />
+    </ListItemIcon>
+    {children}
+  </MenuItem>
+);
+
+export const BikesMenu = ({ children, ...rest }) => (
+  <MenuItem {...rest}>
+    <ListItemIcon>
+      <DirectionsBikeIcon fontSize="small" />
+    </ListItemIcon>
+    {children}
+  </MenuItem>
+);
+
+export const OrdersMenu = ({ children, ...rest }) => (
+  <MenuItem {...rest}>
+    <ListItemIcon>
+      <Wallet fontSize="small" />
+    </ListItemIcon>
+    {children}
+  </MenuItem>
+);
+
+export const UsersMenu = ({ children, ...rest }) => (
+  <MenuItem {...rest}>
+    <ListItemIcon>
+      <GroupIcon fontSize="small" />
     </ListItemIcon>
     {children}
   </MenuItem>
