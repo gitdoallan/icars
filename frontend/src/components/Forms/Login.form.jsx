@@ -27,7 +27,7 @@ export function LoginForm() {
       const redirectPath = result.role === 'admin' ? '/admin' : '/store';
       navigate(redirectPath);
     } catch ({ response }) {
-      setStatus({ status: true, message: response.data.message, type: 'error' });
+      setStatus({ status: true, message: 'Wrong login or password!', type: 'error' });
     } finally {
       setIsSubmitting(false);
     }
