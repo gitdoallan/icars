@@ -34,8 +34,8 @@ export function CreateNewBikeForm() {
     try {
       const { path } = await bikeUpload(formData);
       return path;
-    } catch (err) {
-      return setStatus({ status: true, message: err.message, type: 'error' });
+    } catch ({ response }) {
+      return setStatus({ status: true, message: response.data.message, type: 'error' });
     }
   };
 
@@ -54,15 +54,17 @@ export function CreateNewBikeForm() {
         modelId, colorId, locationId, price: Number(price), image,
       });
       navigate(`/admin/bike/new/${result.id}`);
-    } catch (err) {
-      setStatus({ status: true, message: err.message, type: 'error' });
+    } catch ({ response }) {
+      setStatus({ status: true, message: response.data.message, type: 'error' });
     } finally {
       setIsSubmitting(false);
     }
   };
 
   useEffect(() => {
-    getAllFilters().then(setFilters).catch((err) => ({ status: true, message: err.message, type: 'error' }));
+    getAllFilters()
+      .then(setFilters)
+      .catch(({ response }) => ({ status: true, message: response.data.message, type: 'error' }));
   }, []);
 
   return (

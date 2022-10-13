@@ -18,10 +18,10 @@ export function ReservationDetails() {
         message: 'Reservation successfully cancelled.',
         type: 'success',
       });
-    } catch (error) {
+    } catch ({ response }) {
       setStatusMessages({
         status: true,
-        message: error.message,
+        message: response.data.message,
         type: 'error',
       });
     }
@@ -30,7 +30,7 @@ export function ReservationDetails() {
   useEffect(() => {
     getReservationById(id)
       .then(setReservationDetails)
-      .catch((error) => setStatusMessages({ status: true, message: error.message, type: 'error' }));
+      .catch(({ response }) => setStatusMessages({ status: true, message: response.data.message, type: 'error' }));
   }, [id]);
 
   return (

@@ -12,7 +12,7 @@ export function Users() {
   useEffect(() => {
     listAllUsers()
       .then((response) => setUsers(response))
-      .catch((error) => setStatus({ status: true, message: error.message, type: 'error' }));
+      .catch(({ response }) => setStatus({ status: true, message: response.data.message, type: 'error' }));
   }, []);
 
   return (

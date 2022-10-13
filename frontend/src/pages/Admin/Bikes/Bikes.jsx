@@ -12,7 +12,7 @@ export function Bikes() {
   useEffect(() => {
     listAllBikes()
       .then((response) => setBikes(response))
-      .catch((error) => setStatus({ status: true, message: error.message, type: 'error' }));
+      .catch(({ response }) => setStatus({ status: true, message: response.data.message, type: 'error' }));
   }, []);
 
   return (

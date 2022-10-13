@@ -14,15 +14,15 @@ export function AdminUserManager() {
     try {
       const result = await deleteUsersById(id);
       setStatus({ status: true, message: result.message, type: 'success' });
-    } catch (err) {
-      setStatus({ status: true, message: err.message, type: 'error' });
+    } catch ({ response }) {
+      setStatus({ status: true, message: response.data.message, type: 'error' });
     }
   };
 
   useEffect(() => {
     getAllReservationsByUserId(id)
       .then(setReservations)
-      .catch((err) => setStatus({ status: true, message: err.message, type: 'error' }));
+      .catch(({ response }) => setStatus({ status: true, message: response.data.message, type: 'error' }));
   }, []);
 
   return (

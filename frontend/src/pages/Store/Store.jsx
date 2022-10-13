@@ -23,13 +23,13 @@ export function Store() {
   useEffect(() => {
     getAllFilteredBikes(filters)
       .then(setBikesList)
-      .catch((error) => setStatus({ status: true, message: error.message, type: 'error' }));
+      .catch(({ response }) => setStatus({ status: true, message: response.data.message, type: 'error' }));
   }, [filters]);
 
   useEffect(() => {
     getAllFilters()
       .then(setFilterList)
-      .catch((error) => setStatus({ status: true, message: error.message, type: 'error' }));
+      .catch(({ response }) => setStatus({ status: true, message: response.data.message, type: 'error' }));
   }, []);
 
   return (

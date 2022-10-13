@@ -12,7 +12,7 @@ export function Reservations() {
   useEffect(() => {
     listAllUserReservations()
       .then((response) => setReservations(response))
-      .catch((error) => setStatus({ status: true, message: error.message, type: 'error' }));
+      .catch(({ response }) => setStatus({ status: true, message: response.data.message, type: 'error' }));
   }, []);
 
   return (

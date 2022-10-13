@@ -28,8 +28,8 @@ export function CreateNewUserForm() {
         name, email, password, role,
       });
       navigate(`/admin/user/new/${result.id}`);
-    } catch (err) {
-      setStatus({ status: true, message: err.message, type: 'error' });
+    } catch ({ response }) {
+      setStatus({ status: true, message: response.data.message, type: 'error' });
     } finally {
       setIsSubmitting(false);
     }

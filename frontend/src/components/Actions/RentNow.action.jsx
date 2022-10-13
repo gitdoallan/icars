@@ -15,8 +15,8 @@ export function RentNowAction({ id }) {
     try {
       const { orderId } = await rentBike({ id, startDate, endDate });
       navigate(`/reservations/${orderId}`);
-    } catch (err) {
-      setStatusMessage(false);
+    } catch ({ response }) {
+      setStatusMessage({ status: true, message: response.data.message, type: 'error' });
     }
   };
 

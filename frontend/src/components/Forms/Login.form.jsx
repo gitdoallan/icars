@@ -26,8 +26,8 @@ export function LoginForm() {
       dispatch(setUserInfo(result));
       const redirectPath = result.role === 'admin' ? '/admin' : '/store';
       navigate(redirectPath);
-    } catch (err) {
-      setStatus({ status: true, message: err.message, type: 'error' });
+    } catch ({ response }) {
+      setStatus({ status: true, message: response.data.message, type: 'error' });
     } finally {
       setIsSubmitting(false);
     }

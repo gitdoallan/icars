@@ -20,7 +20,7 @@ export function BikeDetails() {
   useEffect(() => {
     getBikeById(id)
       .then(setBike)
-      .catch(({ message }) => setStatus({ status: true, message, type: 'error' }));
+      .catch(({ response }) => setStatus({ status: true, message: response.data.message, type: 'error' }));
   }, [id]);
 
   return (
