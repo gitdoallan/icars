@@ -9,7 +9,7 @@ export function Admin() {
   useEffect(() => {
     listAllReservations()
       .then(setReservations)
-      .catch(({ response }) => console.log(response.data));
+      .catch(({ response }) => console.log(response.data.message));
   }, []);
 
   return (

@@ -6,6 +6,7 @@ import { Logout } from 'pages/Logout';
 import { NotFound } from 'pages/NotFound';
 import { AdminUserManager, CreateNewUser } from 'pages/Admin/Users';
 import { CreateNewBike } from 'pages/Admin/Bikes';
+import { Account } from 'pages/Account';
 import {
   Admin, Created, Users, Bikes,
 } from 'pages/Admin';
@@ -26,6 +27,7 @@ export function Router() {
         <Route path="/admin/bikes" element={<Bikes />} />
         <Route path="/admin/bike/new" element={<CreateNewBike />} />
         <Route path="/admin/:type/new/:id" element={<Created />} />
+        <Route path="/account" element={<Account />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
