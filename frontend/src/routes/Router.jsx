@@ -5,7 +5,7 @@ import { Reservations, ReservationDetails } from 'pages/Reservations';
 import { Logout } from 'pages/Logout';
 import { NotFound } from 'pages/NotFound';
 import { AdminUserManager, CreateNewUser, EditUser } from 'pages/Admin/Users';
-import { CreateNewBike } from 'pages/Admin/Bikes';
+import { CreateNewBike, EditBike } from 'pages/Admin/Bikes';
 import { Account } from 'pages/Account';
 import {
   Admin, Created, Users, Bikes, Updated,
@@ -28,6 +28,7 @@ export function Router() {
         <Route path="/admin/user/:id" element={<AdminUserManager />} />
         <Route path="/admin/user/new/" element={<CreateNewUser />} />
         <Route path="/admin/bikes" element={<Bikes />} />
+        <Route path="/admin/bike/:id/update" element={<EditBike />} />
         <Route path="/admin/bike/new" element={<CreateNewBike />} />
         <Route path="/account" element={<Account />} />
         <Route path="/logout" element={<Logout />} />

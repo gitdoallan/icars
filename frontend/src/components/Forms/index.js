@@ -3,3 +3,4 @@ export { LoginForm } from './Login.form';
 export { CreateNewBikeForm } from './CreateNewBike.admin.form';
 export { CreateNewUserForm } from './CreateNewUser.admin.form';
 export { EditUserForm } from './EditUser.admin.form';
+export { EditBikeForm } from './EditBike.admin.form';

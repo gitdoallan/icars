@@ -27,6 +27,7 @@ export {
   listAllBikes,
   updateUsersById,
   deleteBikesById,
+  updateBikesById,
 } from './admin';
 
 export { API_URL } from './apiUrl';
