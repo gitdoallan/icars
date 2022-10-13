@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
+import { AdminUserManagerCard } from 'components/Cards';
 import { StatusMessages } from 'components/StatusMessages';
 import { getAllReservationsByUserId, deleteUsersById } from 'api';
+import * as S from 'components/Cards/styles';
 
 export function AdminUserManager() {
   const [reservations, setReservations] = useState([]);
@@ -27,46 +29,26 @@ export function AdminUserManager() {
   }, []);
 
   return (
-    <div>
+    <>
       <Header />
-      <h1>Manage User</h1>
+      <S.Title>Manage User</S.Title>
       <StatusMessages {...status} />
-      <button type="button" onClick={handleDeleteUser}>Delete user</button>
-      {' - '}
-      <button type="button" onClick={() => navigate(`/admin/user/${id}/update`)}>Edit user</button>
-      <h2>Reservations</h2>
-      {!reservations.length && <p>No reservations</p>}
+      <S.DetailsPage type="button" onClick={handleDeleteUser}>Delete user</S.DetailsPage>
+      {' '}
+      <S.DetailsPage type="button" onClick={() => navigate(`/admin/user/${id}/update`)}>Edit user</S.DetailsPage>
+      <S.CardTitle>Reservations</S.CardTitle>
+      <S.Divider />
+      {!reservations.length && <S.Text>No reservations</S.Text>}
       {reservations?.map((reservation) => (
-        <div key={reservation.id}>
-          <p>
-            Order ID:
-            {' '}
-            {reservation.id}
-          </p>
-          <p>
-            Start Date:
-            {' '}
-            {reservation.startDate.split('T')[0]}
-          </p>
-          <p>
-            End Date:
-            {' '}
-            {reservation.endDate.split('T')[0]}
-          </p>
-          <p>
-            Status:
-            {' '}
-            {reservation.orderStatus}
-          </p>
-          <p>
-            Total:
-            {' '}
-            {reservation.orderTotal}
-          </p>
-          <hr />
-        </div>
+        <AdminUserManagerCard
+          key={reservation.id}
+          id={reservation.id}
+          startDate={reservation.startDate.split('T')[0]}
+          endDate={reservation.endDate.split('T')[0]}
+          orderTotal={reservation.orderTotal}
+        />
       ))}
       <Footer />
-    </div>
+    </>
   );
 }
