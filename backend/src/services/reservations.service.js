@@ -30,10 +30,10 @@ const rateOrderByReservationId = async ({
 }) => {
   const transaction = await Model.sequelize.transaction();
   try {
-    await Model.reservations.update({
-      rate: false,
-      where: { id: orderId, userId },
-    });
+    await Model.reservations.update(
+      { rate: true },
+      { where: { id: orderId, userId }, transaction },
+    );
     const bike = await Model.bikes.findOne({
       where: { id: bikeId },
       attributes: ['id', 'rating', 'receivedRates'],
