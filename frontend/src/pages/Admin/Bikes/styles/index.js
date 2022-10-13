@@ -1,1 +1,1 @@
-export { CreateNewBikeBtn } from './Bikes.styles';
+export { CreateNewBikeBtn, BikesContainer } from './Bikes.styles';

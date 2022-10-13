@@ -24,10 +24,11 @@ export function Bikes() {
       <h1>Bikes</h1>
       <StatusMessages {...status} />
       <S.CreateNewBikeBtn onClick={() => navigate('/admin/bike/new')}>Create new bike</S.CreateNewBikeBtn>
-      {' '}
-      {bikes.map((bike) => (
-        <BikesCard key={bike.id} {...bike} />
-      ))}
+      <S.BikesContainer>
+        {bikes.map((bike) => (
+          <BikesCard key={bike.id} {...bike} />
+        ))}
+      </S.BikesContainer>
       <Footer />
     </>
   );
