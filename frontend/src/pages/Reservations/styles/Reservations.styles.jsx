@@ -6,7 +6,7 @@ export const Title = ({ children, ...rest }) => (
     sx={{
       fontWeight: 'bold',
       fontSize: '1.5rem',
-      margin: '1rem 0',
+      margin: '2rem 0',
     }}
     {...rest}
   >
