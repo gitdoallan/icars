@@ -39,9 +39,16 @@ export const filtersSlice = createSlice({
       state.storeLocation = payload;
       return state;
     },
+    resetFilters: (state) => {
+      state.rating = 0;
+      state.bikeModel = 0;
+      state.bikeColor = 0;
+      state.storeLocation = 0;
+      return state;
+    },
   },
 });
 
 export const {
-  setStartDate, setEndDate, setRating, setBikeModel, setBikeColor, setStoreLocation,
+  setStartDate, setEndDate, setRating, setBikeModel, setBikeColor, setStoreLocation, resetFilters,
 } = filtersSlice.actions;
