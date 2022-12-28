@@ -4,47 +4,27 @@ module.exports = {
     [
       {
         id: 1,
-        name: 'Bonvelo',
+        name: 'Honda Civic',
       },
       {
         id: 2,
-        name: 'BZEN',
+        name: 'Toyotta Corolla',
       },
       {
         id: 3,
-        name: 'Mate',
+        name: 'Honda Fit',
       },
       {
         id: 4,
-        name: 'Cairn',
+        name: 'Wolksvagem Gol',
       },
       {
         id: 5,
-        name: 'Canyon',
+        name: 'Wolksvagem Golf',
       },
       {
         id: 6,
-        name: 'Angell',
-      },
-      {
-        id: 7,
-        name: 'MODMO',
-      },
-      {
-        id: 8,
-        name: 'Sushi cars',
-      },
-      {
-        id: 9,
-        name: 'Mokumono',
-      },
-      {
-        id: 10,
-        name: 'BEEQ',
-      },
-      {
-        id: 11,
-        name: 'Turbine Bicycles',
+        name: 'Wolksvagem Jetta',
       },
     ],
 

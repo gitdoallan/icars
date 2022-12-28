@@ -4,22 +4,38 @@ import {
 import MUILoadingButton from '@mui/lab/LoadingButton';
 import SendIcon from '@mui/icons-material/Send';
 import { Container } from 'themes/styles';
+import { useTheme } from '@mui/material/styles';
 
-export const Form = ({ children, ...rest }) => (
-  <Box
-    position="relative"
-    display="flex"
-    alignItems="center"
-    justifyContent="center"
-    height="100%"
-  >
-    <Container maxWidth={600}>
-      <form {...rest}>
-        {children}
-      </form>
-    </Container>
-  </Box>
-);
+export const Form = ({ children, ...rest }) => {
+  const theme = useTheme();
+  return (
+    <Box
+      position="relative"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      height="100%"
+      alignSelf="center"
+      marginTop={4}
+    >
+      <Container
+        maxWidth={600}
+        bgcolor={theme.palette.background.paper}
+        boxShadow={theme.shadows[3]}
+        borderRadius={theme.shape.borderRadius}
+        sx={{
+          backdropFilter: 'blur(5px)',
+          WebkitBackdropFilter: 'blur(5px)',
+          filter: 'opacity(0.85)',
+        }}
+      >
+        <form {...rest}>
+          {children}
+        </form>
+      </Container>
+    </Box>
+  );
+};
 
 export const FormTitle = ({ children }) => (
   <Typography variant="h4" component="h1" textAlign="center" gutterBottom>
