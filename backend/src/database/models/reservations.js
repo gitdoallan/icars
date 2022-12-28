@@ -20,8 +20,8 @@ module.exports = (sequelize, DataTypes) => {
     reservationsModel.belongsTo(models.users, {
       foreignKey: 'userId',
     });
-    reservationsModel.belongsTo(models.bikes, {
-      foreignKey: 'bikeId',
+    reservationsModel.belongsTo(models.cars, {
+      foreignKey: 'carId',
     });
   };
 

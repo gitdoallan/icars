@@ -8,11 +8,11 @@ export {
 } from './reservations';
 
 export {
-  getAllBikes,
-  getBikeById,
-  isBikeAvailable,
-  rentBike,
-  getAllFilteredBikes,
+  getAllCars,
+  getCarById,
+  isCarAvailable,
+  rentCar,
+  getAllFilteredCars,
   getAllFilters,
 } from './store';
 
@@ -20,14 +20,14 @@ export {
   listAllReservations,
   getAllReservationsByUserId,
   deleteUsersById,
-  bikeUpload,
-  createBike,
+  carUpload,
+  createCar,
   createNewUser,
   listAllUsers,
-  listAllBikes,
+  listAllCars,
   updateUsersById,
-  deleteBikesById,
-  updateBikesById,
+  deleteCarsById,
+  updateCarsById,
 } from './admin';
 
 export { API_URL } from './apiUrl';

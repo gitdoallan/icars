@@ -43,40 +43,40 @@ const deleteUserById = async (req, res) => {
   res.status(200).json({ message: 'User deleted' });
 };
 
-const listAllBikes = async (_req, res) => {
-  const result = await adminService.listAllBikes();
+const listAllCars = async (_req, res) => {
+  const result = await adminService.listAllCars();
   res.status(200).json(result);
 };
 
-const createNewBike = async (req, res) => {
+const createNewCar = async (req, res) => {
   const {
     modelId, colorId, locationId, image, price,
   } = req.body;
-  const result = await adminService.createNewBike({
+  const result = await adminService.createNewCar({
     modelId, colorId, locationId, image, price,
   });
   res.status(200).json(result);
 };
 
-const deleteBikeById = async (req, res) => {
+const deleteCarById = async (req, res) => {
   const { id } = req.params;
-  await adminService.deleteBikeById(id);
-  res.status(200).json({ message: 'Bike deleted' });
+  await adminService.deleteCarById(id);
+  res.status(200).json({ message: 'Car deleted' });
 };
 
-const updateBikeById = async (req, res) => {
+const updateCarById = async (req, res) => {
   const { id } = req.params;
   const { image, price } = req.body;
-  await adminService.updateBikeById(id, { image, price });
-  res.status(200).json({ message: 'Bike updated' });
+  await adminService.updateCarById(id, { image, price });
+  res.status(200).json({ message: 'Car updated' });
 };
 
-const bikeImageUploader = async (req, res) => {
+const carImageUploader = async (req, res) => {
   const allowedMimeTypes = ['image/jpeg', 'image/jpg'];
   const file = { name: uuid.v4() };
   const storage = multer.diskStorage({
     destination(_, _file, cb) {
-      cb(null, 'src/images/bikes/store');
+      cb(null, 'src/images/cars/store');
     },
     filename(_, { mimetype, originalname }, cb) {
       if (!allowedMimeTypes.includes(mimetype)) {
@@ -89,7 +89,7 @@ const bikeImageUploader = async (req, res) => {
   const upload = multer({ storage });
   upload.single('image')(req, res, (err) => {
     if (err) return res.status(400).json({ message: err.message });
-    return res.status(200).json({ message: 'Image uploaded', path: `/images/bikes/store/${file.name}${file.ext}` });
+    return res.status(200).json({ message: 'Image uploaded', path: `/images/cars/store/${file.name}${file.ext}` });
   });
 };
 
@@ -100,9 +100,9 @@ module.exports = {
   getAllReservationsByUserId,
   updateUserById,
   deleteUserById,
-  bikeImageUploader,
-  listAllBikes,
-  createNewBike,
-  deleteBikeById,
-  updateBikeById,
+  carImageUploader,
+  listAllCars,
+  createNewCar,
+  deleteCarById,
+  updateCarById,
 };

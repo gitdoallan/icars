@@ -4,8 +4,8 @@ const Model = require('../database/models');
 const { ONE_DAY } = require('../utils/magicNumbers');
 require('express-async-errors');
 
-const getAllBikes = async () => {
-  const result = await Model.bikes.findAll({
+const getAllCars = async () => {
+  const result = await Model.cars.findAll({
     attributes: ['id', 'image', 'price', 'rating'],
     include: [
       {
@@ -13,7 +13,7 @@ const getAllBikes = async () => {
         attributes: ['name'],
       },
       {
-        model: Model.bikeModels,
+        model: Model.carModels,
         attributes: ['name'],
       },
     ],
@@ -21,8 +21,8 @@ const getAllBikes = async () => {
   return result;
 };
 
-const isBikeAvailable = async ({ id, startDate, endDate }) => {
-  const result = await Model.bikes.findOne({
+const isCarAvailable = async ({ id, startDate, endDate }) => {
+  const result = await Model.cars.findOne({
     where: { id },
     attributes: ['id'],
     include: [
@@ -49,12 +49,12 @@ const isBikeAvailable = async ({ id, startDate, endDate }) => {
       },
     ],
   });
-  if (result) throw new ErrorHandler(400, 'Bike is not available!');
+  if (result) throw new ErrorHandler(400, 'Car is not available!');
   return true;
 };
 
-const getBikeById = async (id) => {
-  const result = await Model.bikes.findOne({
+const getCarById = async (id) => {
+  const result = await Model.cars.findOne({
     where: { id },
     attributes: ['id', 'image', 'price', 'rating'],
     include: [
@@ -63,11 +63,11 @@ const getBikeById = async (id) => {
         attributes: ['name'],
       },
       {
-        model: Model.bikeModels,
+        model: Model.carModels,
         attributes: ['name'],
       },
       {
-        model: Model.bikeColors,
+        model: Model.carColors,
         attributes: ['name'],
       },
     ],
@@ -75,30 +75,30 @@ const getBikeById = async (id) => {
   return result;
 };
 
-const rentBike = async ({
-  bikeId, userId, startDate, endDate,
+const rentCar = async ({
+  carId, userId, startDate, endDate,
 }) => {
-  await isBikeAvailable({ id: bikeId, startDate, endDate });
-  const { price } = await getBikeById(bikeId);
+  await isCarAvailable({ id: carId, startDate, endDate });
+  const { price } = await getCarById(carId);
   const calcEndDate = new Date(endDate.split('T')[0]).getTime();
   const calcStartDate = new Date(startDate.split('T')[0]).getTime();
   const orderTotal = ((calcEndDate - calcStartDate) / ONE_DAY) * +price;
   const transaction = await Model.reservations.sequelize.transaction();
   try {
     const result = await Model.reservations.create({
-      bikeId, userId, orderTotal, startDate, endDate,
+      carId, userId, orderTotal, startDate, endDate,
     }, { transaction });
     await transaction.commit();
     return { orderId: result.id };
   } catch (error) {
     await transaction.rollback();
-    throw new ErrorHandler(400, 'Error while renting bike');
+    throw new ErrorHandler(400, 'Error while renting car');
   }
 };
 
 const listAllReservationsBetweenDates = async (filter) => {
   const result = await Model.reservations.findAll({
-    attributes: ['bikeId'],
+    attributes: ['carId'],
     where: {
       [Op.or]: [
         {
@@ -120,8 +120,8 @@ const listAllReservationsBetweenDates = async (filter) => {
   return result;
 };
 
-const getAllFilteredBikes = async (filter) => {
-  const result = await Model.bikes.findAll({
+const getAllFilteredCars = async (filter) => {
+  const result = await Model.cars.findAll({
     attributes: ['id', 'image', 'price', 'rating'],
     include: [
       {
@@ -130,14 +130,14 @@ const getAllFilteredBikes = async (filter) => {
         where: filter.storeLocation ? { id: filter.storeLocation } : {},
       },
       {
-        model: Model.bikeModels,
+        model: Model.carModels,
         attributes: ['id', 'name'],
-        where: filter.bikeModel ? { id: filter.bikeModel } : {},
+        where: filter.carModel ? { id: filter.carModel } : {},
       },
       {
-        model: Model.bikeColors,
+        model: Model.carColors,
         attributes: ['id', 'name'],
-        where: filter.bikeColor ? { id: filter.bikeColor } : {},
+        where: filter.carColor ? { id: filter.carColor } : {},
       },
     ],
     having: { rating: { [Op.gte]: filter.rating } },
@@ -145,9 +145,9 @@ const getAllFilteredBikes = async (filter) => {
 
   const excludeFromResults = await listAllReservationsBetweenDates(filter);
 
-  const filteredResult = result.reduce((acc, bike) => {
-    if (!excludeFromResults.some((el) => el.bikeId === bike.id)) {
-      acc = [...acc, bike];
+  const filteredResult = result.reduce((acc, car) => {
+    if (!excludeFromResults.some((el) => el.carId === car.id)) {
+      acc = [...acc, car];
     }
     return acc;
   }, []);
@@ -161,11 +161,11 @@ const getAllFilters = async () => {
       attributes: ['id', 'name'],
       order: [['name', 'ASC']],
     }),
-    Model.bikeModels.findAll({
+    Model.carModels.findAll({
       attributes: ['id', 'name'],
       order: [['name', 'ASC']],
     }),
-    Model.bikeColors.findAll({
+    Model.carColors.findAll({
       attributes: ['id', 'name'],
       order: [['name', 'ASC']],
     }),
@@ -173,16 +173,16 @@ const getAllFilters = async () => {
   if (!result) throw new ErrorHandler(400, 'Error while getting filters');
   return {
     storeLocations: result[0],
-    bikeModels: result[1],
-    bikeColors: result[2],
+    carModels: result[1],
+    carColors: result[2],
   };
 };
 
 module.exports = {
-  getAllBikes,
-  getBikeById,
-  isBikeAvailable,
-  rentBike,
-  getAllFilteredBikes,
+  getAllCars,
+  getCarById,
+  isCarAvailable,
+  rentCar,
+  getAllFilteredCars,
   getAllFilters,
 };

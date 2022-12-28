@@ -1,11 +1,11 @@
 export { listAllReservations } from './listAllReservations.admin.api';
 export { getAllReservationsByUserId } from './getAllReservationsByUserId.admin.api';
 export { deleteUsersById } from './deleteUsersById.admin.api';
-export { bikeUpload } from './bikeUpload.admin.api';
-export { createBike } from './createBike.admin.api';
+export { carUpload } from './carUpload.admin.api';
+export { createCar } from './createCar.admin.api';
 export { createNewUser } from './createNewUser.admin.api';
 export { listAllUsers } from './listAllUsers.admin.api';
-export { listAllBikes } from './listAllBikes.admin.api';
+export { listAllCars } from './listAllCars.admin.api';
 export { updateUsersById } from './updateUsersById.admin.api';
-export { deleteBikesById } from './deleteBikesById.admin.api';
-export { updateBikesById } from './updateBikesById.admin.api';
+export { deleteCarsById } from './deleteCarsById.admin.api';
+export { updateCarsById } from './updateCarsById.admin.api';

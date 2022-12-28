@@ -7,7 +7,7 @@ const listAllUserReservations = async ({ userId }) => {
     attributes: ['id', 'orderTotal', 'orderStatus', 'rate', 'startDate', 'endDate'],
     include: [
       {
-        model: Model.bikes,
+        model: Model.cars,
         attributes: ['id', 'image', 'price', 'rating'],
         include: [
           {
@@ -15,7 +15,7 @@ const listAllUserReservations = async ({ userId }) => {
             attributes: ['id', 'name'],
           },
           {
-            model: Model.bikeModels,
+            model: Model.carModels,
             attributes: ['name'],
           },
         ],
@@ -26,7 +26,7 @@ const listAllUserReservations = async ({ userId }) => {
 };
 
 const rateOrderByReservationId = async ({
-  orderId, bikeId, userId, rate,
+  orderId, carId, userId, rate,
 }) => {
   const transaction = await Model.sequelize.transaction();
   try {
@@ -34,20 +34,20 @@ const rateOrderByReservationId = async ({
       { rate: true },
       { where: { id: orderId, userId }, transaction },
     );
-    const bike = await Model.bikes.findOne({
-      where: { id: bikeId },
+    const car = await Model.cars.findOne({
+      where: { id: carId },
       attributes: ['id', 'rating', 'receivedRates'],
     });
-    const newRating = ((bike.rating * bike.receivedRates) + rate) / (bike.receivedRates + 1);
-    const updatedBike = await Model.bikes.update({
+    const newRating = ((car.rating * car.receivedRates) + rate) / (car.receivedRates + 1);
+    const updatedCar = await Model.cars.update({
       rating: newRating,
-      receivedRates: bike.receivedRates + 1,
+      receivedRates: car.receivedRates + 1,
     }, {
-      where: { id: bikeId },
+      where: { id: carId },
       transaction,
     });
     await transaction.commit();
-    return updatedBike;
+    return updatedCar;
   } catch (error) {
     await transaction.rollback();
     throw new ErrorHandler(500, 'Internal server error');
@@ -89,7 +89,7 @@ const getReservationById = async ({ orderId, userId, role }) => {
     attributes: ['id', 'orderTotal', 'orderStatus', 'rate', 'startDate', 'endDate'],
     include: [
       {
-        model: Model.bikes,
+        model: Model.cars,
         attributes: ['id', 'image', 'price', 'rating'],
         include: [
           {
@@ -97,7 +97,7 @@ const getReservationById = async ({ orderId, userId, role }) => {
             attributes: ['name'],
           },
           {
-            model: Model.bikeModels,
+            model: Model.carModels,
             attributes: ['name'],
           },
         ],

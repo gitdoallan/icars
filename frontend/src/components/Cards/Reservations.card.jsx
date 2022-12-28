@@ -2,7 +2,7 @@ import propTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import * as S from './styles';
 
-export function ReservationsCard({ id, bike, orderStatus }) {
+export function ReservationsCard({ id, car, orderStatus }) {
   const navigate = useNavigate();
   return (
     <S.ReservationsContainer>
@@ -14,7 +14,7 @@ export function ReservationsCard({ id, bike, orderStatus }) {
       <S.CardDetailsText>
         Model:
         {' '}
-        {bike.bikeModel.name}
+        {car.carModel.name}
       </S.CardDetailsText>
       <S.CardDetailsText>
         Status:
@@ -29,8 +29,8 @@ export function ReservationsCard({ id, bike, orderStatus }) {
 
 ReservationsCard.propTypes = {
   id: propTypes.number,
-  bike: propTypes.shape({
-    bikeModel: propTypes.shape({
+  car: propTypes.shape({
+    carModel: propTypes.shape({
       name: propTypes.string.isRequired,
     }).isRequired,
   }),

@@ -4,11 +4,11 @@ import { rateReservation } from 'api';
 import { StatusMessages } from 'components/StatusMessages';
 import * as S from './styles';
 
-export function RateOrderAction({ orderId, bikeId }) {
+export function RateOrderAction({ orderId, carId }) {
   const [status, setStatus] = useState({ status: false });
   const handleRateReservation = async (rate) => {
     try {
-      await rateReservation({ orderId, bikeId, rate });
+      await rateReservation({ orderId, carId, rate });
       setStatus({
         status: true,
         message: 'Reservation successfully rated.',

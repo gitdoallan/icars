@@ -40,7 +40,7 @@ export function ProfileMenu() {
           <Stack>
             <S.OrdersMenu onClick={() => navigate('/admin')}>Reservations</S.OrdersMenu>
             <S.UsersMenu onClick={() => navigate('/admin/users')}>Users</S.UsersMenu>
-            <S.BikesMenu onClick={() => navigate('/admin/bikes')}>Bikes</S.BikesMenu>
+            <S.CarsMenu onClick={() => navigate('/admin/cars')}>Cars</S.CarsMenu>
           </Stack>
         )}
         <S.MyOrders onClick={() => navigate('/reservations')}>My Orders</S.MyOrders>

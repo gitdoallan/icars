@@ -43,7 +43,7 @@ export function SignUpForm() {
 
   return (
     <S.Form onSubmit={formik.handleSubmit}>
-      <S.FormTitle>Welcome to iBikes!</S.FormTitle>
+      <S.FormTitle>Welcome to iCars!</S.FormTitle>
       <S.FormSubtitle>Sign up to get started.</S.FormSubtitle>
       <StatusMessages {...status} />
       <S.FormContainer>

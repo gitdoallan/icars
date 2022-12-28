@@ -12,10 +12,10 @@ router.post('/user/new', adminController.createNewAccount);
 router.put('/user/:id', adminController.updateUserById);
 router.get('/user/:id', adminController.getAllReservationsByUserId);
 router.delete('/user/:id', adminController.deleteUserById);
-router.get('/bikes', adminController.listAllBikes);
-router.post('/bike/upload', adminController.bikeImageUploader);
-router.post('/bike/create', adminController.createNewBike);
-router.delete('/bike/:id', adminController.deleteBikeById);
-router.put('/bike/:id', adminController.updateBikeById);
+router.get('/cars', adminController.listAllCars);
+router.post('/car/upload', adminController.carImageUploader);
+router.post('/car/create', adminController.createNewCar);
+router.delete('/car/:id', adminController.deleteCarById);
+router.put('/car/:id', adminController.updateCarById);
 
 module.exports = router;

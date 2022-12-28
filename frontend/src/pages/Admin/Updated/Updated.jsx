@@ -8,12 +8,12 @@ export function Updated() {
   const navigate = useNavigate();
 
   const cases = {
-    bike: {
-      title: 'Bike Updated',
-      message: 'The bike has been updated successfully',
-      link: `/store/bike/${id}`,
-      linkText: 'View Bike',
-      updateAnother: '/admin/bikes',
+    car: {
+      title: 'Car Updated',
+      message: 'The car has been updated successfully',
+      link: `/store/car/${id}`,
+      linkText: 'View Car',
+      updateAnother: '/admin/cars',
     },
     user: {
       title: 'User Updated',

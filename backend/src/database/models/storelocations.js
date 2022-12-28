@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   storeLocationsModel.associate = (models) => {
-    storeLocationsModel.hasMany(models.bikes, {
+    storeLocationsModel.hasMany(models.cars, {
       foreignKey: 'locationId',
     });
   };

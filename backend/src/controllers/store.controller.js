@@ -1,38 +1,38 @@
 const storeService = require('../services/store.service');
 
-const getAllBikes = async (_req, res) => {
-  const result = await storeService.getAllBikes();
+const getAllCars = async (_req, res) => {
+  const result = await storeService.getAllCars();
   res.status(200).json(result);
 };
 
-const isBikeAvailable = async (req, res) => {
+const isCarAvailable = async (req, res) => {
   const { id, startDate, endDate } = req.body;
-  const result = await storeService.isBikeAvailable({ id, startDate, endDate });
+  const result = await storeService.isCarAvailable({ id, startDate, endDate });
   res.status(200).json(result);
 };
 
-const rentBike = async (req, res) => {
+const rentCar = async (req, res) => {
   const {
     id, orderTotal, startDate, endDate,
   } = req.body;
-  const result = await storeService.rentBike({
-    bikeId: id, userId: req.user.id, orderTotal, startDate, endDate,
+  const result = await storeService.rentCar({
+    carId: id, userId: req.user.id, orderTotal, startDate, endDate,
   });
   res.status(200).json(result);
 };
 
-const getBikeById = async (req, res) => {
+const getCarById = async (req, res) => {
   const { id } = req.params;
-  const result = await storeService.getBikeById(id);
+  const result = await storeService.getCarById(id);
   res.status(200).json(result);
 };
 
-const getAllFilteredBikes = async (req, res) => {
+const getAllFilteredCars = async (req, res) => {
   const {
-    storeLocation, bikeModel, bikeColor, rating, startDate, endDate,
+    storeLocation, carModel, carColor, rating, startDate, endDate,
   } = req.body;
-  const result = await storeService.getAllFilteredBikes({
-    storeLocation, bikeModel, bikeColor, rating, startDate, endDate,
+  const result = await storeService.getAllFilteredCars({
+    storeLocation, carModel, carColor, rating, startDate, endDate,
   });
   res.status(200).json(result);
 };
@@ -43,10 +43,10 @@ const getAllFilters = async (_req, res) => {
 };
 
 module.exports = {
-  getAllBikes,
-  isBikeAvailable,
-  rentBike,
-  getBikeById,
-  getAllFilteredBikes,
+  getAllCars,
+  isCarAvailable,
+  rentCar,
+  getCarById,
+  getAllFilteredCars,
   getAllFilters,
 };

@@ -5,7 +5,7 @@ export {
   MyAccount,
   MyOrders,
   Logout,
-  BikesMenu,
+  CarsMenu,
   OrdersMenu,
   UsersMenu,
 } from './ProfileMenu.styles';

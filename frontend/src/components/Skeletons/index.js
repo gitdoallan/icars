@@ -1,1 +1,1 @@
-export { BikesCardSkeleton } from './Bikes.card.skeleton';
+export { CarsCardSkeleton } from './Cars.card.skeleton';

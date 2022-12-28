@@ -80,7 +80,7 @@ export const MyOrders = ({ children, ...rest }) => (
   </MenuItem>
 );
 
-export const BikesMenu = ({ children, ...rest }) => (
+export const CarsMenu = ({ children, ...rest }) => (
   <MenuItem {...rest}>
     <ListItemIcon>
       <DirectionsBikeIcon fontSize="small" />

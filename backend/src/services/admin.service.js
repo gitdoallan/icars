@@ -11,11 +11,11 @@ const listAllReservations = async () => {
         attributes: ['id', 'name', 'email'],
       },
       {
-        model: Model.bikes,
+        model: Model.cars,
         attributes: ['id'],
         include: [
           {
-            model: Model.bikeModels,
+            model: Model.carModels,
             attributes: ['name'],
           },
           {
@@ -82,11 +82,11 @@ const getAllReservationsByUserId = async (id) => {
         attributes: ['id', 'name', 'email'],
       },
       {
-        model: Model.bikes,
+        model: Model.cars,
         attributes: ['id'],
         include: [
           {
-            model: Model.bikeModels,
+            model: Model.carModels,
             attributes: ['name'],
           },
           {
@@ -111,8 +111,8 @@ const deleteUserById = async (id) => {
   return result;
 };
 
-const listAllBikes = async () => {
-  const result = await Model.bikes.findAll({
+const listAllcars = async () => {
+  const result = await Model.cars.findAll({
     attributes: ['id', 'image', 'price', 'rating'],
     include: [
       {
@@ -120,23 +120,23 @@ const listAllBikes = async () => {
         attributes: ['id', 'name'],
       },
       {
-        model: Model.bikeModels,
+        model: Model.carModels,
         attributes: ['id', 'name'],
       },
       {
-        model: Model.bikeColors,
+        model: Model.carColors,
         attributes: ['id', 'name'],
       },
     ],
   });
-  if (!result) throw new ErrorHandler(404, 'No bikes found');
+  if (!result) throw new ErrorHandler(404, 'No cars found');
   return result;
 };
 
-const createNewBike = async (bike) => {
+const createNewCar = async (car) => {
   const transaction = await Model.sequelize.transaction();
   try {
-    const result = await Model.bikes.create(bike, { transaction });
+    const result = await Model.cars.create(car, { transaction });
     await transaction.commit();
     return result;
   } catch (err) {
@@ -145,10 +145,10 @@ const createNewBike = async (bike) => {
   }
 };
 
-const deleteBikeById = async (id) => {
+const deleteCarById = async (id) => {
   const transaction = await Model.sequelize.transaction();
   try {
-    const result = await Model.bikes.destroy({
+    const result = await Model.cars.destroy({
       where: {
         id,
       },
@@ -162,10 +162,10 @@ const deleteBikeById = async (id) => {
   }
 };
 
-const updateBikeById = async (id, bike) => {
+const updateCarById = async (id, car) => {
   const transaction = await Model.sequelize.transaction();
   try {
-    const result = await Model.bikes.update(bike, {
+    const result = await Model.cars.update(car, {
       where: {
         id,
       },
@@ -186,8 +186,8 @@ module.exports = {
   getAllReservationsByUserId,
   updateUserById,
   deleteUserById,
-  listAllBikes,
-  createNewBike,
-  deleteBikeById,
-  updateBikeById,
+  listAllcars,
+  createNewCar,
+  deleteCarById,
+  updateCarById,
 };

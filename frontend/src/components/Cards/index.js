@@ -1,5 +1,5 @@
-export { BikesCard } from './Bikes.card';
-export { BikeDetailsCard } from './BikeDetails.card';
+export { CarsCard } from './Cars.card';
+export { CarDetailsCard } from './CarDetails.card';
 export { ReservationsCard } from './Reservations.card';
 export { AdminReservationsCard } from './AdminReservations.card';
 export { ListAllUsersCard } from './ListAllUsers.card';

@@ -1,15 +1,15 @@
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Store, BikeDetails } from 'pages/Store';
+import { Store, CarDetails } from 'pages/Store';
 import { Registration } from 'pages/Registration';
 import { Reservations, ReservationDetails } from 'pages/Reservations';
 import { Logout } from 'pages/Logout';
 import { NotFound } from 'pages/NotFound';
 import { AdminUserManager, CreateNewUser, EditUser } from 'pages/Admin/Users';
-import { CreateNewBike, EditBike } from 'pages/Admin/Bikes';
+import { CreateNewCar, EditCar } from 'pages/Admin/Cars';
 import { Account } from 'pages/Account';
 import {
-  Admin, Created, Users, Bikes, Updated,
+  Admin, Created, Users, Cars, Updated,
 } from 'pages/Admin';
 
 import { PublicRouter } from './PublicRouter';
@@ -31,8 +31,8 @@ export function Router() {
           element={(<PrivateRouter isUser={isUser}><Store /></PrivateRouter>)}
         />
         <Route
-          path="/store/bike/:id"
-          element={<PrivateRouter isUser={isUser}><BikeDetails /></PrivateRouter>}
+          path="/store/car/:id"
+          element={<PrivateRouter isUser={isUser}><CarDetails /></PrivateRouter>}
         />
         <Route
           path="/reservations"
@@ -79,16 +79,16 @@ export function Router() {
           element={<PrivateRouter isUser={isManager}><CreateNewUser /></PrivateRouter>}
         />
         <Route
-          path="/admin/bikes"
-          element={<PrivateRouter isUser={isManager}><Bikes /></PrivateRouter>}
+          path="/admin/cars"
+          element={<PrivateRouter isUser={isManager}><Cars /></PrivateRouter>}
         />
         <Route
-          path="/admin/bike/:id/update"
-          element={<PrivateRouter isUser={isManager}><EditBike /></PrivateRouter>}
+          path="/admin/car/:id/update"
+          element={<PrivateRouter isUser={isManager}><EditCar /></PrivateRouter>}
         />
         <Route
-          path="/admin/bike/new"
-          element={<PrivateRouter isUser={isManager}><CreateNewBike /></PrivateRouter>}
+          path="/admin/car/new"
+          element={<PrivateRouter isUser={isManager}><CreateNewCar /></PrivateRouter>}
         />
         <Route path="*" element={<NotFound />} />
       </Routes>

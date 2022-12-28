@@ -16,14 +16,14 @@ module.exports = {
         },
         field: 'user_id',
       },
-      bikeId: {
+      carId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'bikes',
+          model: 'cars',
           key: 'id',
         },
-        field: 'bike_id',
+        field: 'car_id',
       },
       orderTotal: {
         allowNull: false,

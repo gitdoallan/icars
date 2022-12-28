@@ -8,12 +8,12 @@ export function Created() {
   const navigate = useNavigate();
 
   const cases = {
-    bike: {
-      title: 'Bike Created',
-      message: 'Your bike has been created successfully',
-      link: `/store/bike/${id}`,
-      linkText: 'View Bike',
-      createAnother: '/admin/bike/new',
+    car: {
+      title: 'car Created',
+      message: 'Your car has been created successfully',
+      link: `/store/car/${id}`,
+      linkText: 'View car',
+      createAnother: '/admin/car/new',
     },
     user: {
       title: 'User Created',

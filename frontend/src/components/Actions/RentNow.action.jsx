@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { StatusMessages } from 'components/StatusMessages';
-import { isBikeAvailable, rentBike } from 'api';
+import { isCarAvailable, rentCar } from 'api';
 import * as S from './styles';
 
 export function RentNowAction({ id }) {
@@ -11,9 +11,9 @@ export function RentNowAction({ id }) {
   const { startDate, endDate } = useSelector((state) => state.filters);
   const navigate = useNavigate();
 
-  const handleRentBike = async () => {
+  const handleRentCar = async () => {
     try {
-      const { orderId } = await rentBike({ id, startDate, endDate });
+      const { orderId } = await rentCar({ id, startDate, endDate });
       navigate(`/reservations/${orderId}`);
     } catch ({ response }) {
       setStatusMessage({ status: true, message: response.data.message, type: 'error' });
@@ -21,7 +21,7 @@ export function RentNowAction({ id }) {
   };
 
   useEffect(() => {
-    isBikeAvailable({ id, startDate, endDate })
+    isCarAvailable({ id, startDate, endDate })
       .then(() => setStatusMessage({ status: false }))
       .catch(({ response }) => setStatusMessage(
         { status: true, message: response.data.message, type: 'error' },
@@ -33,7 +33,7 @@ export function RentNowAction({ id }) {
       <S.RentNowButton
         type="button"
         disabled={statusMessage.status}
-        onClick={handleRentBike}
+        onClick={handleRentCar}
       >
         Rent now
       </S.RentNowButton>

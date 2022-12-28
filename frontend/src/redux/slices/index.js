@@ -3,5 +3,5 @@ export { userInfoSlice, setUserInfo, clearUserInfo } from './userInfo.slice';
 
 export {
   filtersSlice, setStartDate, setEndDate, setRating,
-  setBikeModel, setBikeColor, setStoreLocation, resetFilters,
+  setCarModel, setCarColor, setStoreLocation, resetFilters,
 } from './filters.slice';

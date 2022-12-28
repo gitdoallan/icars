@@ -1,12 +1,12 @@
 {
-  "name": "ibikes-web-app",
+  "name": "icars-web-app",
   "version": "1.0.0",
-  "description": "iBikes Full Stack Web Application",
+  "description": "iCars Full Stack Web Application",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "backend": "cd backend && node index.js",
-    "container": "docker exec -it ibikes_app bash",
+    "container": "docker exec -it icars_app bash",
     "docker": "docker-compose up -d",
     "docker:stop": "docker-compose down",
     "frontend": "cd frontend && npm start",

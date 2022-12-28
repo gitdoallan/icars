@@ -32,12 +32,12 @@ export function ReservationDetails() {
         <S.Text>
           Model:
           {' '}
-          {reservationDetails?.bike.bikeModel.name}
+          {reservationDetails?.car.carModel.name}
         </S.Text>
         <S.Text>
           Location:
           {' '}
-          {reservationDetails?.bike.storeLocation.name}
+          {reservationDetails?.car.storeLocation.name}
         </S.Text>
         <S.Text>
           Start Date:
@@ -68,7 +68,7 @@ export function ReservationDetails() {
           : (
             <RateOrderAction
               orderId={reservationDetails?.id}
-              bikeId={reservationDetails?.bike.id}
+              carId={reservationDetails?.car.id}
             />
           )}
         <CancelReservationAction

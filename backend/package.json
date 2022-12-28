@@ -1,15 +1,18 @@
 {
-  "name": "ihotels-backend",
+  "name": "icars-backend",
   "version": "1.0.0",
-  "description": "iHotels Backend",
+  "description": "iCars Backend",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "container": "docker exec -it ihotels_app bash",
+    "container": "docker exec -it icars_app bash",
     "dev": "nodemon index.js",
     "docker": "docker-compose up -d",
-    "docker:stop": "docker-compose down"
+    "docker:stop": "docker-compose down",
+    "db:up": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+    "db:down": "npx sequelize-cli db:migrate:undo:all",
+    "db:reset": "npm run db:down && npm run db:up"
   },
   "keywords": [],
   "author": "Allan Hubner",

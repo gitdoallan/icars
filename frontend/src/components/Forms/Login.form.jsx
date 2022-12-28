@@ -41,7 +41,7 @@ export function LoginForm() {
 
   return (
     <S.Form onSubmit={formik.handleSubmit}>
-      <S.FormTitle>iBikes Login</S.FormTitle>
+      <S.FormTitle>iCars Login</S.FormTitle>
       <StatusMessages {...status} />
       <S.FormContainer>
         <S.Input>

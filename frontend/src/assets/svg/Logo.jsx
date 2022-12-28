@@ -16,7 +16,7 @@ export function Logo() {
           <DirectionsBikeIcon color="primary" />
         </Box>
         <Typography marginLeft={1} color="primary" sx={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
-          iBikes
+          iCars
         </Typography>
       </Box>
     </Link>

@@ -7,10 +7,10 @@ const listAllUserReservations = async (req, res) => {
 
 const rateOrderByReservationId = async (req, res) => {
   const { orderId } = req.params;
-  const { bikeId, rate } = req.body;
+  const { carId, rate } = req.body;
   const { id: userId } = req.user;
   const result = await reservationsService.rateOrderByReservationId({
-    orderId: Number(orderId), bikeId, userId, rate,
+    orderId: Number(orderId), carId, userId, rate,
   });
   res.status(200).json(result);
 };
