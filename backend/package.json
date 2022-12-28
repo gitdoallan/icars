@@ -1,7 +1,7 @@
 {
-  "name": "ibikes-backend",
+  "name": "ihotels-backend",
   "version": "1.0.0",
-  "description": "iBikes Backend",
+  "description": "iHotels Backend",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
