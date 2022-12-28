@@ -3,7 +3,7 @@ version: "3"
 services:
   node:
     build: .
-    container_name: ibikes_app
+    container_name: ihotels_app
     tty: true
     stdin_open: true
     command: bash
@@ -22,7 +22,7 @@ services:
       PORT: '3001'
 
   db:
-    container_name: ibikes_app_db
+    container_name: ihotels_app_db
     image: mysql:8
     platform: linux/amd64
     environment:
@@ -32,7 +32,7 @@ services:
 
 networks:
   default:
-    name: ibikes_app_net
+    name: ihotels_app_net
 
 volumes:
   node_modules:
