@@ -111,7 +111,7 @@ const deleteUserById = async (id) => {
   return result;
 };
 
-const listAllcars = async () => {
+const listAllCars = async () => {
   const result = await Model.cars.findAll({
     attributes: ['id', 'image', 'price', 'rating'],
     include: [
@@ -186,7 +186,7 @@ module.exports = {
   getAllReservationsByUserId,
   updateUserById,
   deleteUserById,
-  listAllcars,
+  listAllCars,
   createNewCar,
   deleteCarById,
   updateCarById,
