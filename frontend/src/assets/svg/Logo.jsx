@@ -1,4 +1,4 @@
-import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import { useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 import { Box, Typography, Link } from '@mui/material';
@@ -13,7 +13,7 @@ export function Logo() {
     >
       <Box display="flex" alignItems="center">
         <Box>
-          <DirectionsBikeIcon color="primary" />
+          <DirectionsCarIcon color="primary" />
         </Box>
         <Typography marginLeft={1} color="primary" sx={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
           iCars

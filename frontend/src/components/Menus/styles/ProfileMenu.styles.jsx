@@ -4,7 +4,7 @@ import {
 import {
   History, Logout as MUILogout, Wallet,
 } from '@mui/icons-material';
-import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import GroupIcon from '@mui/icons-material/Group';
 
 export const ProfileAvatar = ({ children, ...rest }) => (
@@ -83,7 +83,7 @@ export const MyOrders = ({ children, ...rest }) => (
 export const CarsMenu = ({ children, ...rest }) => (
   <MenuItem {...rest}>
     <ListItemIcon>
-      <DirectionsBikeIcon fontSize="small" />
+      <DirectionsCarIcon fontSize="small" />
     </ListItemIcon>
     {children}
   </MenuItem>
